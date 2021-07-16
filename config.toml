@@ -1,0 +1,4 @@
+baseURL = "https://cunnie.github.io/"
+languageCode = "en-us"
+title = "Brian Cunnie's Technical Blog"
+theme = "hugo-theme-bootstrap4-blog"
