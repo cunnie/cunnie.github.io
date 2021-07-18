@@ -1,7 +1,7 @@
 ---
 title: "The Old Blog is Dead. Long Live the New Blog!"
 date: 2021-07-18T10:34:36-07:00
-draft: true
+draft: false
 ---
 
 Why am I creating a new blog? What was wrong with the old blog? Why don't I use [Medium](https://medium.com)?
