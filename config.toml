@@ -13,6 +13,27 @@ copyright = "Except where otherwise noted, content on this site is licensed unde
 #googleAnalytics = "UA-123-45"
 #disqusShortname = "XYW"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+      [markup.goldmark.parser.attribute]
+        block = false
+        title = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xhtml = false
+
 [permalinks]
   # posts = "/:year/:month/:title/"
   # page = "/:slug/"

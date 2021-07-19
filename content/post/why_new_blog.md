@@ -6,8 +6,10 @@ draft: false
 
 Why am I creating a new blog? What was wrong with the old blog? Why don't I use [Medium](https://medium.com)?
 
-The short version: The old blog is frozen in time, like a prince caught in
-amber or a dandy in aspic. I can no longer post to it.
+The short version: The old blog is frozen in time, like a prince caught in amber
+<sup>[1](https://en.wikipedia.org/wiki/Nine_Princes_in_Amber)</sup> or a dandy
+in aspic <sup>[2](https://en.wikipedia.org/wiki/A_Dandy_in_Aspic)</sup>. I can no
+longer post to it.
 
 The old blog, the _[Pivotal Engineering
 Journal](https://tanzu.vmware.com/content/pivotal-engineering-journal)_, was
