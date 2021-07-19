@@ -1,6 +1,6 @@
-## cunnie.github.io
+## blog.nono.io (cunnie.github.io)
 
-This contains the Markdown source for my technical blog.
+This contains the Markdown source for my technical blog, <https://blog.nono.io>
 
 Notes:
 
@@ -16,7 +16,7 @@ When satisfied:
 
 - change `draft` status from `true` to `false`
 - commit & push
-- browse to <https://cunnie.github.io> to check
+- browse to <https://blog.nono.io> to check
 
 ### References
 
