@@ -22,4 +22,5 @@ When satisfied:
 
 - Overall how-to: <https://youngkin.github.io/post/createafreeblogsite/>
 - Fixing first failed deploy: <https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token>
-- Blog theme: <https://themes.gohugo.io/themes/hugo-theme-bootstrap4-blog/>
+- Blog theme: <https://themes.gohugo.io/themes/hugo-papermod/>
+  - on GitHub: <https://github.com/adityatelange/hugo-PaperMod/wiki/Installation>
