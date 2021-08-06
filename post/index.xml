@@ -9,7 +9,20 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 18 Jul 2021 10:34:36 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Aug 2021 16:38:00 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concourse CI on Kubernetes (GKE), Part 1: Terraform</title>
+      <link>https://blog.nono.io/post/concourse_on_k8s-1/</link>
+      <pubDate>Fri, 06 Aug 2021 16:38:00 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/concourse_on_k8s-1/</guid>
+      <description>Let&amp;rsquo;s deploy Concourse, a continuous-integration, continuous delivery (CI/CD) application (similar to Jenkins and CircleCI).
+We&amp;rsquo;ll deploy it to Google Cloud, to our Google Kubernetes Engine (GKE).
+In this post, we&amp;rsquo;ll use HashiCorp&amp;rsquo;s Terraform to create our cluster.
+We assume you&amp;rsquo;ve already installed the terraform command-line interface (CLI) and created a Google Cloud account.
+mkdir -p ~/workspace/gke cd ~/workspace/gke Next we download the terraform templates and terraform vars file:</description>
+    </item>
+    
     <item>
       <title>The Old Blog is Dead. Long Live the New Blog!</title>
       <link>https://blog.nono.io/post/why_new_blog/</link>
