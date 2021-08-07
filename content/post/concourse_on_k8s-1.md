@@ -109,10 +109,33 @@ NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          2m21s
 ```
 
+#### Save that `terraform.tfstate` file!
+
+Save the `terraform.tfstate` file; if you lose it, it becomes much more
+difficult to make changes to your terraform infrastructure (you'll have to
+manually tear it down & start from scratch).
+
+We won't tell you how or where to save it, but we will tell you that we've
+chosen to save ours in a [public GitHub
+repo](https://github.com/cunnie/deployments/blob/551509bd1cbf2f62de8fca3a3f6cbf0f5a0ec976/terraform/gcp/gke/terraform.tfstate).
+This is a bad idea! `terraform.tfstate` files often contain secrets which you do
+not want to make public. Ours doesn't appear to contain any secrets, and we like
+to have it publicly viewable for instructional purposes, but we may have made a
+terrible mistake by publishing it.
+
+#### Stay Tuned!
+
 Stay tuned for the next installment, where we configure load balancers and
 install Concourse CI.
 
 ---
+
+### References
+
+- HashiCorp's excellent tutorial, _Provision a GKE Cluster (Google Cloud)_
+  <https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster>
+- Companion GitHub repository,
+  <https://github.com/hashicorp/learn-terraform-provision-gke-cluster>
 
 ### Footnotes
 
