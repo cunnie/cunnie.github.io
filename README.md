@@ -7,7 +7,7 @@ Notes:
 ```bash
 hugo server -D &
 hugo new post/why_new_blog.md
-nvim post/why_new_blog
+nvim content/post/why_new_blog.md
 ```
 
 Browse to <http://localhost:1313>.
