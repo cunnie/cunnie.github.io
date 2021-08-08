@@ -10,7 +10,12 @@ images:
 
 In our previous blog post, we set up our Kubernetes cluster and deployed a pod
 running nginx, but the experience was disappointing—we couldn't browse to our
-pod. Let's fix that by deploying the nginx Ingress controller.
+pod. Let's fix that by deploying the nginx Ingress controller. It's simple; it's
+a one-liner:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/static/provider/cloud/deploy.yaml
+```
 
 ---
 
