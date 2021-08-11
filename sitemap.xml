@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.nono.io/</loc>
-    <lastmod>2021-08-06T16:38:00-07:00</lastmod>
+    <lastmod>2021-08-07T14:49:17-07:00</lastmod>
   </url><url>
-    <loc>https://blog.nono.io/post/concourse_on_k8s-1/</loc>
-    <lastmod>2021-08-06T16:38:00-07:00</lastmod>
+    <loc>https://blog.nono.io/post/concourse_on_k8s-2/</loc>
+    <lastmod>2021-08-07T14:49:17-07:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/</loc>
+    <lastmod>2021-08-07T14:49:17-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/post/concourse_on_k8s-1/</loc>
     <lastmod>2021-08-06T16:38:00-07:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/why_new_blog/</loc>
