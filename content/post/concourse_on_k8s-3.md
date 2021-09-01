@@ -1,7 +1,7 @@
 ---
 title: "Concourse CI on Kubernetes (GKE), Part 3: TLS"
 date: 2021-08-11T16:55:31-07:00
-draft: true
+draft: false
 images:
 - https://letsencrypt.org/images/letsencrypt-logo-horizontal.svg
 ---
@@ -19,8 +19,7 @@ We merely condensed it & made it more opinionated.
 
 ### Installation
 
-Let's [add the Jetstack Helm Repository](
-https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.yaml):
+Let's add the Jetstack Helm Repository:
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io
@@ -94,7 +93,7 @@ kubectl apply -f https://netlify.cert-manager.io/docs/tutorials/acme/example/ser
 ```
 
 Let's download and edit the Ingress (we've already configured `gke.nono.io` to
-point to the GCP/GKE load balancer at 104.155.144.4). **Replace `gke.nono.io`
+point to the GCP/GKE load balancer at 34.135.26.144). **Replace `gke.nono.io`
 with the DNS record of your load balancer** set up in the previous blog post:
 
 ```bash
@@ -132,13 +131,17 @@ kubectl apply -f <(
 kubectl apply -f <(
   curl -o- https://cert-manager.io/docs/tutorials/acme/example/production-issuer.yaml |
   sed 's/user@example.com/brian.cunnie@gmail.com/')
+ # check to make sure they were deployed:
 kubectl describe issuer letsencrypt-staging
 kubectl describe issuer letsencrypt-prod
 ```
 
 #### 7. [Step 7 - Deploy a TLS Ingress Resource](https://cert-manager.io/docs/tutorials/acme/ingress/#step-7-deploy-a-tls-ingress-resource)
 
-Let's deploy the ingress resource using annotations to obtain the certificate:
+Let's deploy the ingress resource using annotations to obtain the certificate.
+**Replace `gke.nono.io` with the DNS record of your load balancer** set up in
+the previous blog post:
+
 ```bash
 kubectl apply -f <(
   curl -o- https://cert-manager.io/docs/tutorials/acme/example/ingress-tls.yaml |
@@ -148,26 +151,29 @@ kubectl describe certificate quickstart-example-tls
 kubectl describe secret quickstart-example-tls
 ```
 
-Browse to <https://gke.nono.io> and notice that although the cert is still
-invalid it's no longer self-signed; instead, it's issued by the Let's Encrypt
-staging CA.
-
-Let's use curl again to check the
-GKE load balancer. **Replace `gke.nono.io` with the DNS record
-of your load balancer** set up in the previous blog post:
+Let's use curl again to check the GKE load balancer's certificate. **Replace
+`gke.nono.io` with the DNS record of your load balancer** set up in the previous
+blog post:
 
 ```bash
 curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
 ```
 
 You should see output similar to the following:
+
 ```
 ...
 * Server certificate:
-*  subject: O=Acme Co; CN=Kubernetes Ingress Controller Fake Certificate
+*  subject: CN=gke.nono.io
+*  start date: Sep  1 22:02:55 2021 GMT
+*  expire date: Nov 30 22:02:54 2021 GMT
+*  issuer: C=US; O=(STAGING) Let's Encrypt; CN=(STAGING) Artificial Apricot R3
 ```
 
-Let's do the production certificate:
+Great! We have the staging cert, but that's not quite good enough—we want a real
+certificate. Let's upgrade to the production certificate. As usual, **Replace
+`gke.nono.io` with the DNS record of your load balancer** set up in the previous
+blog post:
 
 ```bash
 kubectl apply -f <(
@@ -179,18 +185,36 @@ kubectl describe certificate quickstart-example-tls
 kubectl describe secret quickstart-example-tls
 ```
 
-And now browse: <https://gke.nono.io/>
+Let's use curl one more time to check the GKE load balancer's certificate.
+**Replace `gke.nono.io` with the DNS record of your load balancer** set up in
+the previous blog post:
+
+```bash
+curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+```
+
+You should see output similar to the following:
+
+```
+...
+* Server certificate:
+*  subject: CN=gke.nono.io
+*  start date: Sep  1 22:11:36 2021 GMT
+*  expire date: Nov 30 22:11:35 2021 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=R3
+*  SSL certificate verify ok.
+```
+
+And now browse (replacing `gke.nono.io` with the DNS record of your load
+balancer): <https://gke.nono.io/>. Yes, we get an HTTP 503 status, but our
+certificate is valid!
+
+#### Stay Tuned!
+
+Stay tuned for our next installment, where we install Concourse CI on GKE.
 
 ---
 
 ### References
 
 - cert-manager documentation: <https://cert-manager.io/docs/>
-
-### Footnotes
-
-**<a id="external_address">external address</a>**
-
-You can also acquire the external address via the command line (don't forget to
-change "blabbertabber" to your project's name):
-
