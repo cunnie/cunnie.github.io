@@ -15,7 +15,7 @@ certificate management tool.
 
 Disclaimer: most of this blog post was lifted whole cloth from the
 most-excellent [cert-manager documentation](https://cert-manager.io/docs/).
-I merely condensed it & made it more opinionated.
+We merely condensed it & made it more opinionated.
 
 ### Installation
 
@@ -93,22 +93,38 @@ kubectl apply -f https://netlify.cert-manager.io/docs/tutorials/acme/example/dep
 kubectl apply -f https://netlify.cert-manager.io/docs/tutorials/acme/example/service.yaml
 ```
 
-Let's download and edit the Ingress (I've already configured `gke.nono.io` to
-point to the GCP/GKE load balancer at 104.155.144.4):
+Let's download and edit the Ingress (we've already configured `gke.nono.io` to
+point to the GCP/GKE load balancer at 104.155.144.4). **Replace `gke.nono.io`
+with the DNS record of your load balancer** set up in the previous blog post:
+
 ```bash
 curl -o ingress-kuard.yml -L https://netlify.cert-manager.io/docs/tutorials/acme/example/ingress.yaml
 sed -i '' "s/example.example.com/gke.nono.io/g" ingress-kuard.yml
 kubectl apply -f ingress-kuard.yml
 ```
 
-Let's use curl to check (note the cert is still self-signed at this point):
+Let's use curl to check the
+GKE load balancer. **Replace `gke.nono.io` with the DNS record
+of your load balancer** set up in the previous blog post:
+
 ```bash
-curl -kivL -H 'Host: gke.nono.io' 'http://104.155.144.4'
+curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+```
+
+You should see output similar to the following (note that the cert is still
+self-signed):
+
+```
+...
+* Server certificate:
+*  subject: O=Acme Co; CN=Kubernetes Ingress Controller Fake Certificate
 ```
 
 #### 6. [Configure Let’s Encrypt Issuer](https://cert-manager.io/docs/tutorials/acme/ingress/#step-6-configure-let-s-encrypt-issuer)
 
-Let's deploy the staging & production issuers:
+Let's deploy the staging & production issuers.  **Replace
+`brian.cunnie@gmail.com` with your email address**:
+
 ```bash
 kubectl apply -f <(
   curl -o- https://cert-manager.io/docs/tutorials/acme/example/staging-issuer.yaml |
@@ -135,6 +151,21 @@ kubectl describe secret quickstart-example-tls
 Browse to <https://gke.nono.io> and notice that although the cert is still
 invalid it's no longer self-signed; instead, it's issued by the Let's Encrypt
 staging CA.
+
+Let's use curl again to check the
+GKE load balancer. **Replace `gke.nono.io` with the DNS record
+of your load balancer** set up in the previous blog post:
+
+```bash
+curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+```
+
+You should see output similar to the following:
+```
+...
+* Server certificate:
+*  subject: O=Acme Co; CN=Kubernetes Ingress Controller Fake Certificate
+```
 
 Let's do the production certificate:
 
