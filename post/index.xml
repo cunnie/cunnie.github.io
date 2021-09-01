@@ -9,7 +9,18 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 07 Aug 2021 14:49:17 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Aug 2021 16:55:31 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concourse CI on Kubernetes (GKE), Part 3: TLS</title>
+      <link>https://blog.nono.io/post/concourse_on_k8s-3/</link>
+      <pubDate>Wed, 11 Aug 2021 16:55:31 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/concourse_on_k8s-3/</guid>
+      <description>In our previous blog post, we configured ingress to our Kubernetes cluster but were disappointed to discover that the TLS certificates were self-signed. In this post we&amp;rsquo;ll remedy that by installing cert-manager, the Cloud native certificate management tool.
+Disclaimer: most of this blog post was lifted whole cloth from the most-excellent cert-manager documentation. We merely condensed it &amp;amp; made it more opinionated.
+Installation Let&amp;rsquo;s add the Jetstack Helm Repository:</description>
+    </item>
+    
     <item>
       <title>Concourse CI on Kubernetes (GKE), Part 2: Ingress</title>
       <link>https://blog.nono.io/post/concourse_on_k8s-2/</link>
