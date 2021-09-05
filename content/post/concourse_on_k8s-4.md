@@ -46,15 +46,17 @@ status 503, then wait another ten seconds and try again.
 
 ### Second Install: now with GitHub OAuth
 
-We want to authenticate with GitHub, so we follow [these
-instructions](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
-to set up a GitHub Oauth app. Better yet, read the instructions below.
+We want to authenticate against our GitHub organization, "blabbertabber", so we
+browse to our organization (<https://github.com/blabbertabber>) → Settings →
+Developer Settings → OAuth Apps → New OAuth App.
 
-We browse to GitHub → dropdown menu on our user → Settings → Developer Settings
-→ OAuth Apps → New OAuth App.
+_Note: "[Note that the client must be created under an organization if you want
+to authorize users based on organization/team
+membership](https://concourse-ci.org/github-auth.html)."_
 
-Here's how we filled out ours. **Make sure to replace
-`gke.nono.io` with your URL**. We want the correct callback URL:
+Here's how we filled out ours. **Make sure to replace `gke.nono.io` with your
+URL**. The authorization callback URL is particularly important; don't mess it
+up:
 
 {{< figure src="https://user-images.githubusercontent.com/1020675/132111425-a20812dc-78c6-41bb-ae9f-5e6fde7c1d6f.png" alt="GitHub OAuth Application #1" >}}
 
@@ -63,7 +65,7 @@ get the Client ID (`2317874f614900d21bdd`) and then click "Generate a new client
 secret" to get the Client secret (`08d670a1916193d9294705e223fb0a09d0fccb08`).
 Don't forget to click "Update Application"!
 
-{{< figure src="https://user-images.githubusercontent.com/1020675/132111554-3cccc044-85b6-40e2-9f15-32c43a988c7e.png" alt="GitHub OAuth Application #1" >}}
+{{< figure src="https://user-images.githubusercontent.com/1020675/132131649-678f961b-978a-4055-8388-0b67debbc62e.png" alt="GitHub OAuth Application #2" >}}
 
 Now we can add the four GitHub OAuth-related lines to our `helm install`
 command. **Replace the GitHub org `blabbertabber` and the GitHub Client ID and
@@ -83,14 +85,23 @@ helm install gke-nono-io concourse/concourse \
   \
   --set concourse.web.auth.mainTeam.github.org=blabbertabber \
   --set concourse.web.auth.github.enabled=true \
-  --set secrets.githubClientId=2317874f614900d21bdd \
-  --set secrets.githubClientSecret=08d670a1916193d9294705e223fb0a09d0fccb08 \
+  --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
+  --set secrets.githubClientSecret=549e10b1680ead9cafa30d4c9a715681cec9b074 \
 
 ```
 
 We wait our 30 seconds, and then browse to our URL: <https://gke.nono.io>. We
 log in with GitHub Auth. We authorize our app. We download & install our `fly`
-CLI. We create the following simple pipeline file, `simple.yml`:
+CLI. Then we log in:
+
+```bash
+fly -t gke login -c https://gke.nono.io
+ # click the link
+ # click "Authorize blabbertabber"
+ # see "login successful!"
+```
+
+We create the following simple pipeline file, `simple.yml`:
 
 ```yaml
 jobs:
@@ -104,17 +115,25 @@ jobs:
         source:
           repository: fedora
       run:
-        path: true
+        path: "true"
 ```
 
-We connect to our new Concourse server:
+Let's `fly` our new pipeline:
 
 ```bash
-fly -t gke login -c https://gke.nono.io # click the link, see "login successful!"
-fly -t gke sp -p simple -c simple.yml
+fly -t gke set-pipeline -p simple -c simple.yml
+fly -t gke expose-pipeline -p simple
+fly -t gke unpause-pipeline -p simple
 ```
 
-### Extra Credit: Creating an External Concourse Worker
+We browse to our Concourse and see the sweet green of success (it'll take a
+minute or two to run):
+
+{{< figure src="https://user-images.githubusercontent.com/1020675/132132483-feee3bda-f883-463e-8a4d-b43ef2ff7065.png" alt="GitHub OAuth Application #2" >}}
+
+Yay! We're done.
+
+### Addendum: Notes on Creating an External Concourse Worker
 
 Let's say, hypothetically, we have a home vSphere setup, where VMs and disk are
 essentially free. Furthermore, let's say that cost is a very big consideration
