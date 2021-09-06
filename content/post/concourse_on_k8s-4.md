@@ -1,7 +1,7 @@
 ---
 title: "Concourse CI on Kubernetes (GKE), Part 4: Concourse"
 date: 2021-09-01T18:39:26-07:00
-draft: true
+draft: false
 images:
 - https://pbs.twimg.com/profile_images/971772210821070848/jnsjSQcw_400x400.jpg
 ---
@@ -67,9 +67,13 @@ Don't forget to click "Update Application"!
 
 {{< figure src="https://user-images.githubusercontent.com/1020675/132131649-678f961b-978a-4055-8388-0b67debbc62e.png" alt="GitHub OAuth Application #2" >}}
 
-Now we can add the four GitHub OAuth-related lines to our `helm install`
+Now we can add the five GitHub OAuth-related lines to our `helm install`
 command. **Replace the GitHub org `blabbertabber` and the GitHub Client ID and
 Client Secret with the ones you've created**:
+
+_[Note: we take the opportunity to disable `localAuth` so that strangers can't
+log into our Concourse server using the account "test" with the password
+"test".]_
 
 ```bash
 helm delete gke-nono-io # we want to clear out the old Concourse CI
@@ -83,6 +87,7 @@ helm install gke-nono-io concourse/concourse \
   --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
   --set 'web.ingress.tls[0].secretName=gke.nono.io' \
   \
+  --set concourse.web.localAuth.enabled=false \
   --set concourse.web.auth.mainTeam.github.org=blabbertabber \
   --set concourse.web.auth.github.enabled=true \
   --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
@@ -129,61 +134,16 @@ fly -t gke unpause-pipeline -p simple
 We browse to our Concourse and see the sweet green of success (it'll take a
 minute or two to run):
 
-{{< figure src="https://user-images.githubusercontent.com/1020675/132132483-feee3bda-f883-463e-8a4d-b43ef2ff7065.png" alt="GitHub OAuth Application #2" >}}
+{{< figure src="https://user-images.githubusercontent.com/1020675/132144890-29253cd7-18bb-4c99-8466-10f4013000ec.png" alt="A successful green build!" >}}
 
 Yay! We're done.
-
-### Addendum: Notes on Creating an External Concourse Worker
-
-Let's say, hypothetically, we have a home vSphere setup, where VMs and disk are
-essentially free. Furthermore, let's say that cost is a very big consideration
-because these VMs are paid for out-of-pocket (i.e. we're buying them, our
-corporation isn't). In that case, we might want to create a large worker VM on
-our vSphere setup.
-
-An alternative motivation for setting up an external Concourse worker would be
-network access: a Concourse worker within a corporate network would have
-access to resources that a GKE worker wouldn't, e.g.: an internal GitLab
-instance.
-
-To create an external Concourse worker, we must first create a Kubernetes
-service that allows the external Concourse worker to contact the Concourse
-server on port 2222. Below is our version. Remember to **replace `34.135.26.144`
-with your load balancer's IP and any occurrence of `nono-io` with something more
-appropriate to your setup**. Name the file `concourse-service.yml`:
-
-```yaml
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ci-nono-io-web-worker-gateway-lb
-  namespace: default
-spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
-  loadBalancerIP: 34.135.26.144
-  ports:
-  - name: concourse-worker
-    port: 2222
-    protocol: TCP
-    targetPort: tsa
-  selector:
-    app: gke-nono-io-web
-```
-
-Now apply it.
-
-```bash
-kubectl apply -f concourse-service.yml
-```
 
 #### Pro-tip
 
 Rather than having an onerous number of `--set` arguments to our `helm install`
 command, we find it easier to modify the corresponding settings in the
 [`values.yml`](https://github.com/concourse/concourse-chart/blob/master/values.yaml)
-file and pass it in instead, i.e. `helm install -f values.yml ...`
+file and pass it to our invocation of `helm`, i.e. `helm install -f values.yml ...`
 
 ---
 
