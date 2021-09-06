@@ -22,8 +22,8 @@ for the Concourse CI Helm chart found here:
 
 We use `helm` to install Concourse. We first add the helm repo, and then install
 it. We take the opportunity to bump the default login time from 24 hours to ten
-days (`duration=240h`) because we hate re-authenticating every morning to our
-Concourse every morning.  **Replace `gke.nono.io` with your DNS record**:
+days (`duration=240h`) because we hate re-authenticating to our Concourse every
+morning.  **Replace `gke.nono.io` with your DNS record**:
 
 ```bash
 kubectl delete ingress kuard # to free up https://gke.nono.io
