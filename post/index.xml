@@ -9,7 +9,18 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 11 Aug 2021 16:55:31 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 18:39:26 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concourse CI on Kubernetes (GKE), Part 4: Concourse</title>
+      <link>https://blog.nono.io/post/concourse_on_k8s-4/</link>
+      <pubDate>Wed, 01 Sep 2021 18:39:26 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/concourse_on_k8s-4/</guid>
+      <description>In our previous post, we configured our GKE (Google Kubernetes Engine) to use Let&amp;rsquo;s Encrypt TLS certificates. In this post, the capstone of our series, we install Concourse CI.
+Installation These instructions are a more-opinionated version of the canonical instructions for the Concourse CI Helm chart found here: https://github.com/concourse/concourse-chart.
+First Install with Helm We use helm to install Concourse. We first add the helm repo, and then install it.</description>
+    </item>
+    
     <item>
       <title>Concourse CI on Kubernetes (GKE), Part 3: TLS</title>
       <link>https://blog.nono.io/post/concourse_on_k8s-3/</link>
