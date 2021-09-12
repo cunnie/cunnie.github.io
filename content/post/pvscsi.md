@@ -1,18 +1,25 @@
 ---
-title: "Disk Controller Benchmarks: VMware Paravirtual's vs. LSI Logic's"
+title: "Disk Controller Benchmarks: VMware Paravirtual's vs. LSI Logic Parallel's"
 date: 2021-09-08T10:45:28-07:00
 draft: true
 ---
+
+Is it worth switching your VMware vSphere VM's SCSI (small computer system
+interface) from the LSI Logic Parallel controller to the VMware Paravirtual SCSI
+controller? Except for ultra-high-end database servers (> 1M IOPS ( input/output
+operations per second)), the answer is "no"; the difference is negligible.
 
 Our benchmarks show that VMware's Paravirtual SCSI (small computer system
 interface) controller offered a 2-3% performance increase in IOPS (I/O
 (input/output) operations per second) over the LSI Logic Parallel SCSI
 controller at the cost of a similar decrease in sequential performance (both
 read & write). Additionally the Paravirtual SCSI controller (pvscsi) had a
-slight reduction in CPU (central processing unit) usage on the host best-case
+slight reduction in CPU (central processing unit) usage on the host (best-case
 scenario is a 3% lower CPU usage).
 
-{{< figure src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTddYLAn6UFpesWIPH5S6ptr9sm3ECcHxf5aYobpfKqT1pdp8IyTZu4D9yV7SOmwQEVkhgwpy5xnlUW/pubchart?oid=881167435&format=image" alt="IOPS" caption="On average the Paravirtual Driver's IOPS performance is 2.5% better than the LSI Logic's">}}
+
+
+{{< figure src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTddYLAn6UFpesWIPH5S6ptr9sm3ECcHxf5aYobpfKqT1pdp8IyTZu4D9yV7SOmwQEVkhgwpy5xnlUW/pubchart?oid=881167435&format=image" alt="IOPS" caption="On average the Paravirtual Driver's (red) IOPS performance is 2.5% better than the LSI Logic's">}}
 
 {{< figure src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTddYLAn6UFpesWIPH5S6ptr9sm3ECcHxf5aYobpfKqT1pdp8IyTZu4D9yV7SOmwQEVkhgwpy5xnlUW/pubchart?oid=941146114&format=image" alt="Sequential Read Throughput" caption="Although not consistently faster, the LSI Logic averages 2% faster than the Paravirtual on sequential read operations">}}
 
@@ -20,11 +27,11 @@ scenario is a 3% lower CPU usage).
 
 #### Host CPU Utilization
 
-{{< figure src="https://user-images.githubusercontent.com/1020675/132873236-1d446a53-6e7b-49bb-996a-2fd016c4f7d9.png" alt="LSI Logic Host CPU Utilization" >}}
+{{< figure src="https://user-images.githubusercontent.com/1020675/132873236-1d446a53-6e7b-49bb-996a-2fd016c4f7d9.png" alt="LSI Logic Host CPU Utilization (lower is better)" >}}
 
-{{< figure src="https://user-images.githubusercontent.com/1020675/132873272-08d29b13-b1ba-4401-8c3d-94d087b421f3.png" alt="VMware Paravirtual Host CPU Utilization" >}}
+{{< figure src="https://user-images.githubusercontent.com/1020675/132873272-08d29b13-b1ba-4401-8c3d-94d087b421f3.png" alt="VMware Paravirtual Host CPU Utilization (lower is better)" >}}
 
-{{< figure src="https://user-images.githubusercontent.com/1020675/132879128-cc093daa-18b5-4a81-8085-aa5b721a4ddd.jpg" alt="Samsung NVMe SSD 960 Pro" >}}
+{{< figure src="https://user-images.githubusercontent.com/1020675/132879128-cc093daa-18b5-4a81-8085-aa5b721a4ddd.jpg" alt="Samsung NVMe SSD 960 Pro" caption="The Samsung NVMe SSD 960 Pro is a gold standard for NVMe disk performance. ">}}
 
 ### Why These Benchmarks Are Flawed
 
