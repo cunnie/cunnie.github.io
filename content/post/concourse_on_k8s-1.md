@@ -136,6 +136,24 @@ install Concourse CI.
   <https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster>
 - Companion GitHub repository,
   <https://github.com/hashicorp/learn-terraform-provision-gke-cluster>
+- <https://github.com/cloudfoundry/bosh-community-stemcell-ci-infra> is the repo
+  that contains the scripts to spin up Concourse CI on GKE, and may be of
+  interest to those who would like a more automated way of spinning up Concourse
+  on GKE. This repo is actively maintained, and is used by the team that
+  produces the BOSH Bionic stemcells. "It also uses config connector instead of
+  Terraform for managing the cloud SQL instance
+  <https://cloud.google.com/config-connector/docs/overview>." Thanks, Ruben
+  Koster!
+- <https://github.com/pivotal-cf/pci-infrastructure/tree/master/k8s> "sets up a
+  GKE cluster using Terraform, Vault with Google KMS [Key Management Service]
+  integration, Concourse with Vault integration, as well as cert-manager,
+  Kubernetes ingress-nginx and external DNS that hooks into Google Cloud's DNS
+  to create our external IP." Thanks Brian Rieger!
+
+### Updates/Errata
+
+**2021-09-16** Added two additional references for more complete/more automated
+ways to spin up Concourse on GKE.
 
 ### Footnotes
 
