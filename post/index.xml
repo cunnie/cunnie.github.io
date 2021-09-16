@@ -9,7 +9,17 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Sep 2021 18:39:26 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Sep 2021 08:12:28 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disk Controller Benchmarks: VMware Paravirtual&#39;s vs. LSI Logic Parallel&#39;s</title>
+      <link>https://blog.nono.io/post/pvscsi/</link>
+      <pubDate>Thu, 16 Sep 2021 08:12:28 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/pvscsi/</guid>
+      <description>Is it worth switching your VMware vSphere VM&amp;rsquo;s SCSI (small computer system interface) from the LSI Logic Parallel controller to the VMware Paravirtual SCSI controller? Except for ultra-high-end database servers (&amp;gt; 1M IOPS ( input/output operations per second)), the answer is &amp;ldquo;no&amp;rdquo;; the difference is negligible.
+Our benchmarks show that VMware&amp;rsquo;s Paravirtual SCSI (small computer system interface) controller offered a 2-3% performance increase in IOPS (I/O (input/output) operations per second) over the LSI Logic Parallel SCSI controller at the cost of a similar decrease in sequential performance (both read &amp;amp; write).</description>
+    </item>
+    
     <item>
       <title>Concourse CI on Kubernetes (GKE), Part 4: Concourse</title>
       <link>https://blog.nono.io/post/concourse_on_k8s-4/</link>

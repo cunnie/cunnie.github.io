@@ -55,68 +55,19 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
-<h2>Disk Controller Benchmarks: VMware Paravirtual's vs. LSI Logic Parallel's</h2>
+<h2>The Old Blog is Dead. Long Live the New Blog!</h2>
 </header>
 <section class=entry-content>
-<p>Is it worth switching your VMware vSphere VM’s SCSI (small computer system interface) from the LSI Logic Parallel controller to the VMware Paravirtual SCSI controller? Except for ultra-high-end database servers (> 1M IOPS ( input/output operations per second)), the answer is “no”; the difference is negligible.
-Our benchmarks show that VMware’s Paravirtual SCSI (small computer system interface) controller offered a 2-3% performance increase in IOPS (I/O (input/output) operations per second) over the LSI Logic Parallel SCSI controller at the cost of a similar decrease in sequential performance (both read & write)....</p>
+<p>Why am I creating a new blog? What was wrong with the old blog? Why don’t I use Medium?
+The short version: The old blog is frozen in time, like a prince caught in amber 1 or a dandy in aspic 2. I can no longer post to it.
+The old blog, the Pivotal Engineering Journal, which many of Pivotal’s engineers contributed to, was archived a year after VMware acquired Pivotal....</p>
 </section>
-<footer class=entry-footer>September 16, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Disk Controller Benchmarks: VMware Paravirtual's vs. LSI Logic Parallel's" href=https://blog.nono.io/post/pvscsi/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Concourse CI on Kubernetes (GKE), Part 4: Concourse</h2>
-</header>
-<section class=entry-content>
-<p>In our previous post, we configured our GKE (Google Kubernetes Engine) to use Let’s Encrypt TLS certificates. In this post, the capstone of our series, we install Concourse CI.
-Installation These instructions are a more-opinionated version of the canonical instructions for the Concourse CI Helm chart found here: https://github.com/concourse/concourse-chart.
-First Install with Helm We use helm to install Concourse. We first add the helm repo, and then install it....</p>
-</section>
-<footer class=entry-footer>September 1, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 4: Concourse" href=https://blog.nono.io/post/concourse_on_k8s-4/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Concourse CI on Kubernetes (GKE), Part 3: TLS</h2>
-</header>
-<section class=entry-content>
-<p>In our previous blog post, we configured ingress to our Kubernetes cluster but were disappointed to discover that the TLS certificates were self-signed. In this post we’ll remedy that by installing cert-manager, the Cloud native certificate management tool.
-Disclaimer: most of this blog post was lifted whole cloth from the most-excellent cert-manager documentation. We merely condensed it & made it more opinionated.
-Installation Let’s add the Jetstack Helm Repository:...</p>
-</section>
-<footer class=entry-footer>August 11, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 3: TLS" href=https://blog.nono.io/post/concourse_on_k8s-3/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Concourse CI on Kubernetes (GKE), Part 2: Ingress</h2>
-</header>
-<section class=entry-content>
-<p>In our previous blog post, we set up our Kubernetes cluster and deployed a pod running nginx, but the experience was disappointing—we couldn’t browse to our pod. Let’s fix that by deploying the nginx Ingress controller.
-Acquire the External IP Address (Elastic IP) We’ll use the Google Cloud console to acquire the external address [external address] for our load balancer.
-Navigate to VPC network → External IP addresses → Reserve Static Address:...</p>
-</section>
-<footer class=entry-footer>August 7, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 2: Ingress" href=https://blog.nono.io/post/concourse_on_k8s-2/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Concourse CI on Kubernetes (GKE), Part 1: Terraform</h2>
-</header>
-<section class=entry-content>
-<p>Let’s deploy Concourse, a continuous-integration, continuous delivery (CI/CD) application (similar to Jenkins and CircleCI).
-We’ll deploy it to Google Cloud, to our Google Kubernetes Engine (GKE).
-In this post, we’ll use HashiCorp’s Terraform to create our cluster.
-We assume you’ve already installed the terraform command-line interface (CLI) and created a Google Cloud account.
-mkdir -p ~/workspace/gke cd ~/workspace/gke Next we download the terraform templates and terraform vars file:...</p>
-</section>
-<footer class=entry-footer>August 6, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 1: Terraform" href=https://blog.nono.io/post/concourse_on_k8s-1/></a>
+<footer class=entry-footer>July 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Brian Cunnie</footer>
+<a class=entry-link aria-label="post link to The Old Blog is Dead. Long Live the New Blog!" href=https://blog.nono.io/post/why_new_blog/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
-<a class=next href=https://blog.nono.io/post/page/2/>Next Page »</a>
+<a class=prev href=https://blog.nono.io/post/>« Prev Page</a>
 </nav>
 </footer>
 </main>
