@@ -149,11 +149,16 @@ install Concourse CI.
   integration, Concourse with Vault integration, as well as cert-manager,
   Kubernetes ingress-nginx and external DNS that hooks into Google Cloud's DNS
   to create our external IP." Thanks Brian Rieger!
+- <https://github.com/skyscrapers/terraform-concourse> is a good resource for
+  those interested in deploying to AWS instead of GCP. Thanks Ringo De Smet!
 
 ### Updates/Errata
 
 **2021-09-16** Added two additional references for more complete/more automated
 ways to spin up Concourse on GKE.
+
+**2021-09-30** Added an additional reference for those interested in deploying
+to AWS.
 
 ### Footnotes
 
