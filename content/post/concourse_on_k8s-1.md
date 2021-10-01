@@ -150,7 +150,8 @@ install Concourse CI.
   Kubernetes ingress-nginx and external DNS that hooks into Google Cloud's DNS
   to create our external IP." Thanks Brian Rieger!
 - <https://github.com/skyscrapers/terraform-concourse> is a good resource for
-  those interested in deploying to AWS instead of GCP. Thanks Ringo De Smet!
+  those interested in deploying to AWS instead of GCP. Thanks [Ringo De
+  Smet](https://twitter.com/ringods)!
 
 ### Updates/Errata
 
