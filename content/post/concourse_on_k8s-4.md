@@ -143,7 +143,44 @@ Yay! We're done.
 Rather than having an onerous number of `--set` arguments to our `helm install`
 command, we find it easier to modify the corresponding settings in the
 [`values.yml`](https://github.com/concourse/concourse-chart/blob/master/values.yaml)
-file and pass it to our invocation of `helm`, i.e. `helm install -f values.yml ...`
+file and pass it to our invocation of `helm`, i.e. `helm install -f values.yml
+...`
+
+### Addendum: Keeping Concourse Up-to-date
+
+Blindly upgrading Concourse without reading the release notes is a recipe for
+disaster; however, that's what we're going to show you. Let's update the helm
+repos first.
+
+```bash
+helm repo update
+helm search repo concourse/concourse --versions # look for latest "APP VERSION"
+```
+
+Now let's re-run our `helm install` command, changing it to `helm upgrade`:
+
+```bash
+helm upgrade gke-nono-io concourse/concourse \
+  --set concourse.web.externalUrl=https://gke.nono.io \
+  --set concourse.web.auth.duration=240h \
+  --set 'web.ingress.enabled=true' \
+  --set 'web.ingress.annotations.cert-manager\.io/issuer=letsencrypt-prod' \
+  --set 'web.ingress.annotations.kubernetes\.io/ingress.class=nginx' \
+  --set 'web.ingress.hosts={gke.nono.io}' \
+  --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
+  --set 'web.ingress.tls[0].secretName=gke.nono.io' \
+  \
+  --set concourse.web.localAuth.enabled=false \
+  --set concourse.web.auth.mainTeam.github.org=blabbertabber \
+  --set concourse.web.auth.github.enabled=true \
+  --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
+  --set secrets.githubClientSecret=549e10b1680ead9cafa30d4c9a715681cec9b074 \
+
+helm show chart concourse/concourse # to check that it's upgrading
+```
+
+Browse to your Concourse server, and check that it has the updated version
+number.
 
 ---
 
@@ -153,3 +190,7 @@ file and pass it to our invocation of `helm`, i.e. `helm install -f values.yml .
 - Helm Chart Install: Advanced Usage of the “Set” Argument: <https://itnext.io/helm-chart-install-advanced-usage-of-the-set-argument-3e214b69c87a>
 - Creating an OAuth App on GitHub:
   <https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app>
+
+### Updates/Errata
+
+**2021-11-13** Added section on keeping Concourse up-to-date.
