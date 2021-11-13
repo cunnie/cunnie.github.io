@@ -33,7 +33,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.5.0 \
+  --version v1.6.0 \
   --set installCRDs=true
 ```
 
@@ -218,3 +218,7 @@ Stay tuned for our next installment, where we install Concourse CI on GKE.
 ### References
 
 - cert-manager documentation: <https://cert-manager.io/docs/>
+
+### Updates/Errata
+
+**2021-11-13** Bumped the _cert-manager_ version 1.5.0 → 1.6.0
