@@ -208,9 +208,6 @@ overrides](https://github.com/cunnie/deployments/blob/5111c782e8f1670616be354781
 
 ### Addendum: Keeping Concourse Up-to-date
 
-_[Warning: this procedure has not been tested as-is (my setup is slightly
-different). Let us know if this procedure doesn't work.]_
-
 Blindly upgrading Concourse without reading the release notes is a recipe for
 disaster; however, that's what we're going to show you. Let's update the Helm
 repos first.
