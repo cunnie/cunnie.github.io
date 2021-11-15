@@ -18,9 +18,9 @@ These instructions are a more-opinionated version of the canonical instructions
 for the Concourse CI Helm chart found here:
 <https://github.com/concourse/concourse-chart>.
 
-#### First Install with Helm
+#### First Install: with Helm
 
-We use `helm` to install Concourse. We first add the helm repo, and then install
+We use `helm` to install Concourse. We first add the Helm repo, and then install
 it. We take the opportunity to bump the default login time from 24 hours to ten
 days (`duration=240h`) because we hate re-authenticating to our Concourse every
 morning.  **Replace `gke.nono.io` with your DNS record**:
@@ -44,7 +44,62 @@ We wait approximately 30 seconds for the acquisition of the TLS certificate for
 gke.nono.io, then browse to our site <https://gke.nono.io>. If we get an HTTP
 status 503, then wait another ten seconds and try again.
 
-### Second Install: now with GitHub OAuth
+#### First Upgrade: Locking Down Concourse
+
+_[This section was added later and has not been thoroughly tested; if you find
+any mistakes, please let us know. Thanks.]_
+
+Our Concourse is insecure: we haven't changed the default private keys. Our
+Concourse is public-facing, and we must change the keys lest evildoers
+compromise us. The [Concourse
+README](https://github.com/concourse/concourse-chart/tree/4cab2d0d2023a80e870a98500fa834f5fa7990d7#secrets)
+warns:
+
+> For your convenience, this chart provides some default values for secrets,
+> but it is recommended that you **generate and manage these secrets outside the
+> Helm chart**.
+
+Let's make our keys. The [Concourse
+documentation](https://concourse-ci.org/concourse-generate-key.html) provides
+two ways to do it, but we're gonna show a third way:
+
+```bash
+mkdir -p secrets/
+for KEY in session_signing_key tsa_host_key worker_key; do
+  ssh-keygen -t rsa -b 4096 -m PEM -f secrets/$KEY -C $KEY < /dev/null
+done
+rm secrets/session_signing_key.pub # "You can remove the session_signing_key.pub file if you have one, it is not needed by any process in Concourse"
+```
+
+While we're locking things down, we also remove the local user "test" (along
+with the easy-to-guess password, "test"). We do this by setting
+`secrets.localUsers` to "". Just to be safe, we disable local auth entirely (we
+set `concourse.web.localAuth.enabled` to false).
+
+```bash
+helm upgrade gke-nono-io concourse/concourse \
+  --set concourse.web.externalUrl=https://gke.nono.io \
+  --set concourse.web.auth.duration=240h \
+  --set 'web.ingress.enabled=true' \
+  --set 'web.ingress.annotations.cert-manager\.io/issuer=letsencrypt-prod' \
+  --set 'web.ingress.annotations.kubernetes\.io/ingress.class=nginx' \
+  --set 'web.ingress.hosts={gke.nono.io}' \
+  --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
+  --set 'web.ingress.tls[0].secretName=gke.nono.io' \
+  \
+  --set-file secrets.sessionSigningKey=secrets/session_signing_key \
+  --set-file secrets.hostKey=secrets/tsa_host_key \
+  --set-file secrets.hostKeyPub=secrets/tsa_host_key.pub \
+  --set-file secrets.workerKey=secrets/worker_key \
+  --set-file secrets.workerKeyPub=secrets/worker_key.pub \
+  --set      secrets.localUsers="" \
+  --set      concourse.web.localAuth.enabled=false \
+
+```
+
+#### Third Upgrade: now with GitHub OAuth
+
+We have a Concourse CI server, but we can't log in. What to do?
 
 We want to authenticate against our GitHub organization, "blabbertabber", so we
 browse to our organization (<https://github.com/blabbertabber>) → Settings →
@@ -67,17 +122,12 @@ Don't forget to click "Update Application"!
 
 {{< figure src="https://user-images.githubusercontent.com/1020675/132131649-678f961b-978a-4055-8388-0b67debbc62e.png" alt="GitHub OAuth Application #2" >}}
 
-Now we can add the five GitHub OAuth-related lines to our `helm install`
+Now we can add the five GitHub OAuth-related lines to our `helm upgrade`
 command. **Replace the GitHub org `blabbertabber` and the GitHub Client ID and
 Client Secret with the ones you've created**:
 
-_[Note: we take the opportunity to disable `localAuth` so that strangers can't
-log into our Concourse server using the account "test" with the password
-"test".]_
-
 ```bash
-helm delete gke-nono-io # we want to clear out the old Concourse CI
-helm install gke-nono-io concourse/concourse \
+helm upgrade gke-nono-io concourse/concourse \
   --set concourse.web.externalUrl=https://gke.nono.io \
   --set concourse.web.auth.duration=240h \
   --set 'web.ingress.enabled=true' \
@@ -87,7 +137,14 @@ helm install gke-nono-io concourse/concourse \
   --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
   --set 'web.ingress.tls[0].secretName=gke.nono.io' \
   \
-  --set concourse.web.localAuth.enabled=false \
+  --set-file secrets.sessionSigningKey=secrets/session_signing_key \
+  --set-file secrets.hostKey=secrets/tsa_host_key \
+  --set-file secrets.hostKeyPub=secrets/tsa_host_key.pub \
+  --set-file secrets.workerKey=secrets/worker_key \
+  --set-file secrets.workerKeyPub=secrets/worker_key.pub \
+  --set      secrets.localUsers="" \
+  --set      concourse.web.localAuth.enabled=false \
+  \
   --set concourse.web.auth.mainTeam.github.org=blabbertabber \
   --set concourse.web.auth.github.enabled=true \
   --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
@@ -140,24 +197,27 @@ Yay! We're done.
 
 #### Pro-tip
 
-Rather than having an onerous number of `--set` arguments to our `helm install`
+Rather than having an onerous number of `--set` arguments to our `helm upgrade`
 command, we find it easier to modify the corresponding settings in the
 [`values.yml`](https://github.com/concourse/concourse-chart/blob/master/values.yaml)
-file and pass it to our invocation of `helm`, i.e. `helm install -f values.yml
-...`
+file and pass it to our invocation of `helm`, i.e. `helm upgrade -f values.yml
+...`. Here's our [file of
+overrides](https://github.com/cunnie/deployments/blob/5111c782e8f1670616be354781958f1f0955cdae/terraform/gcp/gke/concourse-values.yml).
 
 ### Addendum: Keeping Concourse Up-to-date
 
+_[Warning: this procedure has not been tested as-is (my setup is slightly
+different). Let us know if this procedure doesn't work.]_
+
 Blindly upgrading Concourse without reading the release notes is a recipe for
-disaster; however, that's what we're going to show you. Let's update the helm
+disaster; however, that's what we're going to show you. Let's update the Helm
 repos first.
 
 ```bash
 helm repo update
-helm search repo concourse/concourse --versions # look for latest "APP VERSION"
 ```
 
-Now let's re-run our `helm install` command, changing it to `helm upgrade`:
+Now let's upgrade our install:
 
 ```bash
 helm upgrade gke-nono-io concourse/concourse \
@@ -170,13 +230,19 @@ helm upgrade gke-nono-io concourse/concourse \
   --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
   --set 'web.ingress.tls[0].secretName=gke.nono.io' \
   \
-  --set concourse.web.localAuth.enabled=false \
+  --set-file secrets.sessionSigningKey=secrets/session_signing_key \
+  --set-file secrets.hostKey=secrets/tsa_host_key \
+  --set-file secrets.hostKeyPub=secrets/tsa_host_key.pub \
+  --set-file secrets.workerKey=secrets/worker_key \
+  --set-file secrets.workerKeyPub=secrets/worker_key.pub \
+  --set      secrets.localUsers="" \
+  --set      concourse.web.localAuth.enabled=false \
+  \
   --set concourse.web.auth.mainTeam.github.org=blabbertabber \
   --set concourse.web.auth.github.enabled=true \
   --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
   --set secrets.githubClientSecret=549e10b1680ead9cafa30d4c9a715681cec9b074 \
 
-helm show chart concourse/concourse # to check that it's upgrading
 ```
 
 Browse to your Concourse server, and check that it has the updated version
@@ -194,3 +260,5 @@ number.
 ### Updates/Errata
 
 **2021-11-13** Added section on keeping Concourse up-to-date.
+
+**2021-11-14** Added section on locking down Concourse.
