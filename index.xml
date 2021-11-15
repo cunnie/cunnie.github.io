@@ -28,7 +28,7 @@ Our benchmarks show that VMware&amp;rsquo;s Paravirtual SCSI (small computer sys
       <guid>https://blog.nono.io/post/concourse_on_k8s-4/</guid>
       <description>In our previous post, we configured our GKE (Google Kubernetes Engine) to use Let&amp;rsquo;s Encrypt TLS certificates. In this post, the capstone of our series, we install Concourse CI.
 Installation These instructions are a more-opinionated version of the canonical instructions for the Concourse CI Helm chart found here: https://github.com/concourse/concourse-chart.
-First Install with Helm We use helm to install Concourse. We first add the helm repo, and then install it.</description>
+First Install: with Helm We use helm to install Concourse. We first add the Helm repo, and then install it.</description>
     </item>
     
     <item>
