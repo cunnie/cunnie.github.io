@@ -59,7 +59,7 @@ warns:
 Let's make our keys. The [Concourse
 documentation](https://concourse-ci.org/concourse-generate-key.html) provides
 two excellent ways to do it, and we've modified one of the ways to suit our
-setup:
+setup. **Replace `gke.nono.io` with your DNS record**:
 
 ```bash
 mkdir -p secrets/
@@ -106,9 +106,8 @@ _Note: "[Note that the client must be created under an organization if you want
 to authorize users based on organization/team
 membership](https://concourse-ci.org/github-auth.html)."_
 
-Here's how we filled out ours. **Make sure to replace `gke.nono.io` with your
-URL**. The authorization callback URL is particularly important; don't mess it
-up:
+Here's how we filled out ours. **Replace `gke.nono.io` with your URL**. The
+authorization callback URL is particularly important; don't mess it up:
 
 {{< figure src="https://user-images.githubusercontent.com/1020675/132111425-a20812dc-78c6-41bb-ae9f-5e6fde7c1d6f.png" alt="GitHub OAuth Application #1" >}}
 
@@ -120,13 +119,14 @@ Don't forget to click "Update Application"!
 {{< figure src="https://user-images.githubusercontent.com/1020675/132131649-678f961b-978a-4055-8388-0b67debbc62e.png" alt="GitHub OAuth Application #2" >}}
 
 Now we can add the five GitHub OAuth-related lines to our `helm upgrade`
-command. **Replace the GitHub org `blabbertabber` and the GitHub Client ID and
-Client Secret with the ones you've created**:
+command. **Replace the GitHub org `blabbertabber`, the GitHub Client ID and
+Client Secret with the ones you've created, `gke.nono.io` with your DNS
+record**:
 
 While we're locking things down, we also remove the local user "test" (along
 with the easy-to-guess password, "test"). We do this by setting
-`secrets.localUsers` to "". Just to be safe, we disable local auth entirely (we
-set `concourse.web.localAuth.enabled` to false).
+`secrets.localUsers` to "". To be safe, we also disable local auth (we set
+`concourse.web.localAuth.enabled` to false).
 
 ```bash
 helm upgrade gke-nono-io concourse/concourse \
@@ -156,7 +156,8 @@ helm upgrade gke-nono-io concourse/concourse \
 ```
 
 Browse to our URL: <https://gke.nono.io>. We log in with GitHub Auth. We
-authorize our app. We download & install our `fly` CLI. Then we log in:
+authorize our app. We download & install our `fly` CLI. Then we log in.
+**Replace `gke.nono.io` with your DNS record**:
 
 ```bash
 fly -t gke login -c https://gke.nono.io
@@ -216,7 +217,7 @@ repos first.
 helm repo update
 ```
 
-Now let's upgrade our install:
+Now let's upgrade our install. **Replace `gke.nono.io` with your DNS record**:
 
 ```bash
 helm upgrade gke-nono-io concourse/concourse \
