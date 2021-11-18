@@ -35,9 +35,8 @@ kubectl apply -f <(
   sed 's/user@example.com/brian.cunnie@gmail.com/') -n vault
 ```
 
-Let's create `vault-values.yml`, which contains the necessary customizations for
-our Vault server.
-**Replace `vault.nono.io` with your DNS record**:
+Let's create `vault-values.yml`, which contains the necessary customizations
+for our Vault server.  **Replace `vault.nono.io` with your DNS record**:
 
 ```yaml
 injector:
@@ -71,7 +70,9 @@ helm install vault hashicorp/vault \
   --wait
 ```
 
-Let's initialize our pristine Vault server:
+Let's initialize our pristine Vault server. We want only one key
+(`"secret_shares": 1`) to unseal the vault; we're not a nuclear missile silo
+that needs three separate keys to trigger a launch.
 
 ```bash
 curl \
@@ -80,20 +81,74 @@ curl \
   https://vault.nono.io/v1/sys/init | jq
 ```
 
-Record `root_token` and `keys`; you'll need them to unseal the Vault and to log
+Record `root_token` and `keys`; you'll need them to unseal the Vault and log
 in, respectively.
-
-Now let's unseal the vault...
+**Replace `VAULT_KEY` and `VAULT_TOKEN` with your `keys` and `root_token`**:
 
 ```bash
+export VAULT_KEY=5a302397xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 export VAULT_TOKEN=s.QmByxxxxxxxxxxxxxxxxxxxx
 export VAULT_ADDR=https://vault.nono.io
 curl \
     --request POST \
-    --data '{"key": "5a302397xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}' \
+    --data '{"key": "'$VAULT_KEY'"}' \
     $VAULT_ADDR/v1/sys/unseal | jq
  # check initialization status
 curl $VAULT_ADDR/v1/sys/init
+```
+
+### Concourse Integration
+
+Much of this section was shamelessly copied from the excellent canonical
+Concourse documentation, _[The Vault credential
+manager](https://concourse-ci.org/vault-credential-manager.html)_.
+
+#### Configure the Secrets Engine
+
+Create a key-value `concourse/` path in Vault for Concourse to access its
+secrets:
+
+```bash
+vault secrets enable -version=1 -path=concourse kv
+```
+
+Create `concourse-policy.hcl` so that our Concourse server has access to that
+path:
+
+```hcl
+path "concourse/*" {
+  policy = "read"
+}
+```
+
+Let's upload that policy to Vault:
+
+```bash
+vault policy write concourse concourse-policy.hcl
+```
+
+#### Configure a Vault `approle` for Concourse
+
+Let's enable the `approle` backend on Vault:
+
+```bash
+vault auth enable approle
+```
+
+Let's create the Concourse `approle`:
+
+```bash
+vault write auth/approle/role/concourse policies=concourse period=1h
+```
+
+We need the `approle`'s `role_id` and `secret_id` to set in our Concourse
+server:
+
+```bash
+vault read auth/approle/role/concourse/role-id
+  # role_id    045e3a37-6cc4-4f6b-xxxx-xxxxxxxxxxxx
+vault write -f auth/approle/role/concourse/secret-id
+  # secret_id             85ed8dec-757d-f6c2-xxxx-xxxxxxxxxxxx
 ```
 
 ### What We Did Wrong
@@ -105,8 +160,8 @@ Hashicorp
 
 We're doing the exact opposite of what they suggest. If we're going to the
 trouble of deploying Vault, we want to make sure we can use it from everywhere,
-security be damned; we don't want to sprinkle separate Vault deployments on each
-of our environments.
+security be damned; we don't want to spend time sprinkling separate Vault
+deployments like magic fairy dust on each of our environments.
 
 Hashicorp also
 [warns](https://learn.hashicorp.com/tutorials/vault/kubernetes-raft-deployment-guide?in=vault/kubernetes#configure-vault-helm-chart):
@@ -115,8 +170,8 @@ Hashicorp also
 > installed in high availability (HA) mode
 
 We're installing in _standalone_ mode, not _HA_ mode. We think _HA_ mode is
-overkill. Also, our GKE cluster is small because we pay for it out-of-pocket,
-and we don't have the resources to spend on _HA_ mode.
+overkill for our use case. Also, our GKE cluster is small because we pay for it
+out-of-pocket, and we don't have the resources to spend on _HA_ mode.
 
 ### Addendum: Motivation
 
