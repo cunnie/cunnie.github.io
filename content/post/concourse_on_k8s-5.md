@@ -1,7 +1,7 @@
 ---
 title: "Concourse CI on Kubernetes (GKE), Part 5: Vault"
 date: 2021-11-18T03:46:53-08:00
-draft: true
+draft: false
 images:
 - https://d1q6f0aelx0por.cloudfront.net/product-logos/library-vault-logo.png
 ---
@@ -146,10 +146,107 @@ server:
 
 ```bash
 vault read auth/approle/role/concourse/role-id
-  # role_id    045e3a37-6cc4-4f6b-xxxx-xxxxxxxxxxxx
+  # role_id    045e3a37-6cc4-4f6b-4312-36eed80f7adc
 vault write -f auth/approle/role/concourse/secret-id
-  # secret_id             85ed8dec-757d-f6c2-xxxx-xxxxxxxxxxxx
+  # secret_id  59b8015d-8d4a-fcce-f689-xxxxxxxxxxxx
 ```
+
+#### Configure Concourse to Use Vault
+
+Let's configure our Concourse deployment to use Vault. We append yet even more
+arguments to our already-gargantuan <sup>[[values_file](#values_file)]</sup>
+command to deploy Concourse.
+**Replace `gke-nono-io` with the name of your Helm release, `gke.nono.io` with
+the hostname of your Concourse server**, and replace all the various and sundry
+credentials, too:
+
+
+```bash
+helm upgrade gke-nono-io concourse/concourse \
+  --set concourse.web.externalUrl=https://gke.nono.io \
+  --set concourse.web.auth.duration=240h \
+  --set 'web.ingress.enabled=true' \
+  --set 'web.ingress.annotations.cert-manager\.io/issuer=letsencrypt-prod' \
+  --set 'web.ingress.annotations.kubernetes\.io/ingress.class=nginx' \
+  --set 'web.ingress.hosts={gke.nono.io}' \
+  --set 'web.ingress.tls[0].hosts[0]=gke.nono.io' \
+  --set 'web.ingress.tls[0].secretName=gke.nono.io' \
+  \
+  --set-file secrets.sessionSigningKey=secrets/session_signing_key \
+  --set-file secrets.hostKey=secrets/tsa_host_key \
+  --set-file secrets.hostKeyPub=secrets/tsa_host_key.pub \
+  --set-file secrets.workerKey=secrets/worker_key \
+  --set-file secrets.workerKeyPub=secrets/worker_key.pub \
+  \
+  --set secrets.localUsers="" \
+  --set concourse.web.localAuth.enabled=false \
+  --set concourse.web.auth.mainTeam.github.org=blabbertabber \
+  --set concourse.web.auth.github.enabled=true \
+  --set secrets.githubClientId=5e4ffee9dfdced62ebe3 \
+  --set secrets.githubClientSecret=549e10b1680ead9cafa30d4c9a715681cec9b074 \
+  \
+  --set concourse.web.vault.enabled=true \
+  --set concourse.web.vault.url=https://vault.nono.io:443 \
+  --set concourse.web.vault.authBackend=approle \
+  --set concourse.web.vault.useAuthParam=true \
+  --set secrets.vaultAuthParam="role_id:045e3a37-6cc4-4f6b-4312-36eed80f7adc\\,secret_id:59b8015d-8d4a-fcce-f689-xxxxxxxxxxxx" \
+  \
+  --wait
+```
+
+_Gotchas: you need `:443` at the end of the vault URL
+<sup>[[443](#443)]</sup>,
+and you need the double-backslash before the comma in the `vaultAuthParam`
+<sup>[[double_backslash](#double_backslash)]</sup>._
+
+#### Putting It Together
+
+Let's create a secret which we'll interpolate into our pipeline. We create the
+key under the Vault path `concourse/main` (`main` is our Concourse team's name.
+If you're not sure what your Concourse team name, it's probably `main`):
+
+```bash
+vault kv put concourse/main/ozymandias-secret value="Look on my Works, ye Mighty, and despair\!"
+```
+
+Let's create a simple Concourse pipeline definition, `pipeline-ozymandias.yml`
+
+```yaml
+jobs:
+- name: ozymandias-job
+  plan:
+  - task: ozymandias-task
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: fedora
+      run:
+        path: echo
+        args:
+        - "Ozymandias says:"
+        - ((ozymandias-secret))
+```
+
+Let's `fly` our new pipeline. **Replace `nono` with your Concourse target's
+name**:
+
+```bash
+fly -t gke set-pipeline -p ozymandias-pipeline -c pipeline-ozymandias.yml
+fly -t gke expose-pipeline -p ozymandias-pipeline
+fly -t gke unpause-pipeline -p ozymandias-pipeline
+fly -t gke trigger-job -j ozymandias-pipeline/ozymandias-job
+```
+
+Let's browse to our job, expand `ozymandias-task` by clicking on it, and allow
+ourselves to luxuriate in the sweet smell of success:
+
+{{< figure src="https://user-images.githubusercontent.com/1020675/143608009-7b215d58-15c3-463c-be81-d93b39a510cb.png" alt="Vault logo" >}}
+
+If you instead see an aborted Concourse job with the error, `failed to
+interpolate task config: undefined vars: ozymandias-secret`, you probably have
+mangled the authentication credentials (`vaultAuthParam`) setting.
 
 ### What We Did Wrong
 
@@ -160,7 +257,7 @@ Hashicorp
 
 We're doing the exact opposite of what they suggest. If we're going to the
 trouble of deploying Vault, we want to make sure we can use it from everywhere,
-security be damned; we don't want to spend time sprinkling separate Vault
+security be damned; we don't want to waste our time sprinkling separate Vault
 deployments like magic fairy dust on each of our environments.
 
 Hashicorp also
@@ -207,3 +304,43 @@ CLI.
 Also, we wanted to learn how to use Vault, and this was a good opportunity.
 Besides, Vault was written in Golang, which is more fashionable than CredHub's
 Java (and starts more quickly, too).
+
+### Footnotes
+
+**<a id="values_file">values_file</a>**
+
+Are you sick of the gargantuan command to deploy Concourse? Then do what we
+do—use a Helm values file (e.g. `concourse-values.yml`). You can see ours
+[here](https://github.com/cunnie/deployments/blob/1a925698535610c45d15befbb4ad6e262c62b80c/terraform/gcp/gke/concourse-values.yml#L6-L10).
+With that file our command to deploy Concourse becomes manageably smaller:
+
+```bash
+helm upgrade gke.nono.io concourse/concourse \
+  -f concourse-values.yml \
+  ...
+```
+
+**<a id="443">443</a>**
+
+You may think, "That `:443` at the end of `https://vault.nono.io:443` is
+redundant & superfluous; I'll redact that on my version. Any programmer worth
+his salt knows that the `https` scheme defaults to port 443."
+
+Well I got news for you, Sunshine: you need that `:443`; if you skip it, you'll
+get the dreaded, "failed to interpolate task config: timed out to login to
+vault" error when your Concourse task attempts to interpolate a variable.
+
+In some ways it's similar to the `openssl s_client -connect vault.nono.io:443`
+command which insists that you specify the port even though 99% of the time that
+port is going to be 443. What, you're not familiar with the `openssl s_client
+-connect` command? Well stick around, it'll come in useful when you have to
+debug certs on someone else's server.
+
+**<a id="double_backslash">double_backslash</a>**
+
+You need the double backslash before the comma; if you don't have it, the
+following error will rear its ugly head when you attempt `helm upgrade`:
+
+```
+Error: INSTALLATION FAILED: failed parsing --set data: key "secret_id:59b8015d-8d4a-fcce-f689-xxxxxxxxxxxx" has no value
+```

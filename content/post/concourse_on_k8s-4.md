@@ -69,7 +69,8 @@ done
 rm secrets/session_signing_key.pub # "You can remove the session_signing_key.pub file if you have one, it is not needed by any process in Concourse"
 ```
 
-Let's re-deploy our Concourse with our newly-generated secrets:
+Let's re-deploy our Concourse with our newly-generated secrets. **Replace
+`gke.nono.io` with your DNS record**:
 
 ```bash
 helm upgrade gke-nono-io concourse/concourse \
