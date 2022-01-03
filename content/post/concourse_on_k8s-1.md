@@ -155,11 +155,15 @@ install Concourse CI.
 
 ### Updates/Errata
 
-**2021-09-16** Added two additional references for more complete/more automated
-ways to spin up Concourse on GKE.
+**2022-01-02** Pointed out that the modifications to the terraform
+configuration enable the creation of a Zonal cluster, which qualifies for the
+GKE free tier.
 
 **2021-09-30** Added an additional reference for those interested in deploying
 to AWS.
+
+**2021-09-16** Added two additional references for more complete/more automated
+ways to spin up Concourse on GKE.
 
 ### Footnotes
 
@@ -168,15 +172,25 @@ to AWS.
 This begs the question, "If we're patterning our templates after HashiCorp's,
 why not use HashiCorp's directly? Why change the templates?"
 
-Our answer: "If you want to use the HashiCorp templates, by all means do
-so—they're great templates!"
+Our templates are $74.40 per month cheaper than Hashicorp's. Specifically, our
+templates create a Zonal cluster; Hashicorp's create a Regional cluster. A Zonal
+cluster [qualifies for the GKE free
+tier](https://cloud.google.com/kubernetes-engine/pricing):
 
-Our templates have been modified from HashiCorp's to suit our purposes; for
-example, we split the templates into a virtual private cloud (VPC) (`vpc.tf`)
-template and a Google Kubernetes Engine (gke) (`gke.tf`) template.  It seemed
-like a good idea at the time. Also, we didn't want to spend a lot of money, so
-instead of three instances in the region, we modified the template to place two
-instances in the same availability zone.
+> The GKE free tier provides $74.40 in monthly credits per billing account that
+> are applied to zonal and Autopilot clusters. If you only use a single Zonal or
+> Autopilot cluster, this credit will at least _cover the complete cost of that
+> cluster_ each month
+
+But if that's not a good reason for you, then by all means use Hashicorp's
+templates—they're great templates!
+
+We've made other tweaks to the templates as well, for example, we split the
+templates into a virtual private cloud (VPC) (`vpc.tf`) template and a Google
+Kubernetes Engine (gke) (`gke.tf`) template.  It seemed like a good idea at the
+time. Also, we didn't want to spend a lot of money, so instead of three
+instances in the region, we modified the template to place two instances in the
+same availability zone (creating a Zonal cluster).
 
 _[`e2-medium` instances [cost $24.46 /
 month](https://cloud.google.com/compute/vm-instance-pricing) in the region
