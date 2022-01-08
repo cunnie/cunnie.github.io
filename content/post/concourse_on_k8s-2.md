@@ -51,8 +51,21 @@ dig gke.nono.io +short # should return 34.135.26.144
 We're going to shamelessly copy the canonical Ingress nginx manifest files and
 modify them to include our static IP address:
 
+_[Much of the following is shamelessly copied from [the ingress-nginx
+docs](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)]_
+
+Assign `cluster-admin` permissions:
+
+```zsh
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)
+```
+
+Let's download our controller manifest and edit it:
+
 ```bash
-curl -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/static/provider/cloud/deploy.yaml \
+curl -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml \
   -o nginx-ingress-controller.yml
 nvim nginx-ingress-controller.yml
 ```
@@ -136,3 +149,7 @@ module "address-fe" {
   global = true
 }
 ```
+
+### Updates/Errata
+
+**2022-01-08** Bumped nginx controller 0.48.1 → 1.1.0
