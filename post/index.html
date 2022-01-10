@@ -59,8 +59,8 @@
 </header>
 <section class=entry-content>
 <p>Recreating the Cluster We want to recreate our cluster while preserving our Vault and Concourse data (we want to recreate our GKE regional cluster as a zonal cluster to take advantage of the GKE free tier which saves us $74.40 per month).
-Note: when we say, “recreate the cluster”, we really mean, “recreate the cluster”. We don’t mean “uninstall & reinstall Concourse CI”.
-If you’re merely doing an uninstall/reinstall, helm uninstall ci-nono-io followed immediately by a helm install ci-nono-io concourse/concourse ....</p>
+Note: when we say, “recreate the cluster”, we really mean, “recreate the cluster”. We destroy the old cluster, including our worker nodes and persistent volumes.
+Backup Vault In the following example, our storage path is /vault/data, but there’s a chance that yours is different....</p>
 </section>
 <footer class=entry-footer>January 8, 2022&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
 <a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 6: Concourse & Vault: Backup & Restore" href=https://blog.nono.io/post/concourse_on_k8s-6/></a>
