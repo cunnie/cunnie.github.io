@@ -33,7 +33,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.6.0 \
+  --version v1.6.1 \
   --set installCRDs=true
 ```
 
@@ -102,12 +102,11 @@ sed -i '' "s/example.example.com/gke.nono.io/g" ingress-kuard.yml
 kubectl apply -f ingress-kuard.yml
 ```
 
-Let's use curl to check the
-GKE load balancer. **Replace `gke.nono.io` with the DNS record
-of your load balancer** set up in the previous blog post:
+Let's use curl to check the GKE load balancer. **Replace `gke.nono.io` with the
+DNS record of your load balancer** set up in the previous blog post:
 
 ```bash
-curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+curl -kivL -H 'Host: gke.nono.io' https://gke.nono.io
 ```
 
 You should see output similar to the following (note that the cert is still
@@ -156,7 +155,7 @@ Let's use curl again to check the GKE load balancer's certificate. **Replace
 blog post:
 
 ```bash
-curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+curl -kivL -H 'Host: gke.nono.io' https://gke.nono.io
 ```
 
 You should see output similar to the following:
@@ -190,7 +189,7 @@ Let's use curl one more time to check the GKE load balancer's certificate.
 the previous blog post:
 
 ```bash
-curl -kivL -H 'Host: gke.nono.io' 'http://gke.nono.io'
+curl -kivL -H 'Host: gke.nono.io' https://gke.nono.io
 ```
 
 You should see output similar to the following:
@@ -220,5 +219,7 @@ Stay tuned for our next installment, where we install Concourse CI on GKE.
 - cert-manager documentation: <https://cert-manager.io/docs/>
 
 ### Updates/Errata
+
+**2022-01-08** Bumped the _cert-manager_ version 1.6.0 → 1.6.1; fixed scheme (was `http`; now is `https`)
 
 **2021-11-13** Bumped the _cert-manager_ version 1.5.0 → 1.6.0
