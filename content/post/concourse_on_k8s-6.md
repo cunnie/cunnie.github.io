@@ -16,14 +16,9 @@ advantage of the [GKE free
 tier](https://cloud.google.com/kubernetes-engine/pricing#cluster_management_fee_and_free_tier)
 which saves us $74.40 per month).
 
-Note: when we say, "recreate the cluster", we really mean, "recreate the cluster".
-We don't mean "uninstall & reinstall Concourse CI".
-
-If you're merely doing an uninstall/reinstall, `helm uninstall ci-nono-io`
-followed immediately by a `helm install ci-nono-io concourse/concourse ...`, you
-don't need to bother doing a backup & restore—k8s will preserve the Persistent
-Volume (PV), and your Concourse will be the same as before (same pipelines, same
-jobs, same history).
+Note: when we say, "recreate the cluster", we really mean, "recreate the
+cluster". We destroy the old cluster, including our worker nodes and persistent
+volumes.
 
 ### Backup Vault
 
@@ -52,6 +47,12 @@ base64 -d < ~/Downloads/vault_bkup.tgz.base64 | tar tvf -
 ```
 
 ### Backup Concourse CI's Database
+
+_Note: the name of our Helm Concourse CI release is "ci-nono-io" (its URL is
+<https://ci.nono.io>). Remember: when you see it, substitute the name of your
+Helm Concourse CI release. You'll see the release name in pod names
+("ci-nono-io-postgresql-0"), secrets ("ci-nono-io-postgresql"), etc. Similarly,
+our Helm Vault release's name is "vault". Yours is probably the same._
 
 Now we move onto backup up Concourse. In the command below, our Concourse CI's
 PostgreSQL's pod's name is `ci-nono-io-postgresql-0`. Substitute your pod's
