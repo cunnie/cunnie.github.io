@@ -72,6 +72,18 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Concourse CI on Kubernetes (GKE), Part 6: Concourse & Vault: Backup & Restore</h2>
+</header>
+<section class=entry-content>
+<p>Recreating the Cluster We want to recreate our cluster while preserving our Vault and Concourse data (we want to recreate our GKE regional cluster as a zonal cluster to take advantage of the GKE free tier which saves us $74.40 per month).
+Note: when we say, “recreate the cluster”, we really mean, “recreate the cluster”. We don’t mean “uninstall & reinstall Concourse CI”.
+If you’re merely doing an uninstall/reinstall, helm uninstall ci-nono-io followed immediately by a helm install ci-nono-io concourse/concourse ....</p>
+</section>
+<footer class=entry-footer>January 8, 2022&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
+<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 6: Concourse & Vault: Backup & Restore" href=https://blog.nono.io/post/concourse_on_k8s-6/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Disk Controller Benchmarks: VMware Paravirtual's vs. LSI Logic Parallel's</h2>
 </header>
 <section class=entry-content>
@@ -116,18 +128,6 @@ Installation Let’s add the Jetstack Helm Repository:...</p>
 </section>
 <footer class=entry-footer>August 11, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Brian Cunnie</footer>
 <a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 3: TLS" href=https://blog.nono.io/post/concourse_on_k8s-3/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Concourse CI on Kubernetes (GKE), Part 2: Ingress</h2>
-</header>
-<section class=entry-content>
-<p>In our previous blog post, we set up our Kubernetes cluster and deployed a pod running nginx, but the experience was disappointing—we couldn’t browse to our pod. Let’s fix that by deploying the nginx Ingress controller.
-Acquire the External IP Address (Elastic IP) We’ll use the Google Cloud console to acquire the external address [external address] for our load balancer.
-Navigate to VPC network → External IP addresses → Reserve Static Address:...</p>
-</section>
-<footer class=entry-footer>August 7, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Brian Cunnie</footer>
-<a class=entry-link aria-label="post link to Concourse CI on Kubernetes (GKE), Part 2: Ingress" href=https://blog.nono.io/post/concourse_on_k8s-2/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

@@ -9,7 +9,18 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 19 Nov 2021 08:12:28 -0700</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jan 2022 04:55:18 -0800</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concourse CI on Kubernetes (GKE), Part 6: Concourse &amp; Vault: Backup &amp; Restore</title>
+      <link>https://blog.nono.io/post/concourse_on_k8s-6/</link>
+      <pubDate>Sat, 08 Jan 2022 04:55:18 -0800</pubDate>
+      
+      <guid>https://blog.nono.io/post/concourse_on_k8s-6/</guid>
+      <description>Recreating the Cluster We want to recreate our cluster while preserving our Vault and Concourse data (we want to recreate our GKE regional cluster as a zonal cluster to take advantage of the GKE free tier which saves us $74.40 per month).
+Note: when we say, &amp;ldquo;recreate the cluster&amp;rdquo;, we really mean, &amp;ldquo;recreate the cluster&amp;rdquo;. We don&amp;rsquo;t mean &amp;ldquo;uninstall &amp;amp; reinstall Concourse CI&amp;rdquo;.
+If you&amp;rsquo;re merely doing an uninstall/reinstall, helm uninstall ci-nono-io followed immediately by a helm install ci-nono-io concourse/concourse .</description>
+    </item>
+    
     <item>
       <title>Disk Controller Benchmarks: VMware Paravirtual&#39;s vs. LSI Logic Parallel&#39;s</title>
       <link>https://blog.nono.io/post/pvscsi/</link>
