@@ -136,12 +136,12 @@ install Concourse CI.
   <https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster>
 - Companion GitHub repository,
   <https://github.com/hashicorp/learn-terraform-provision-gke-cluster>
-- <https://github.com/cloudfoundry/bosh-community-stemcell-ci-infra> is the repo
-  that contains the scripts to spin up Concourse CI on GKE, and may be of
-  interest to those who would like a more automated way of spinning up Concourse
-  on GKE. This repo is actively maintained, and is used by the team that
-  produces the BOSH Bionic stemcells. "It also uses config connector instead of
-  Terraform for managing the cloud SQL instance
+- <https://github.com/cloudfoundry/bosh-community-stemcell-ci-infra> is the
+  repo that contains the scripts to spin up Concourse CI on GKE, and may be of
+  interest to those who would like a more automated way of spinning up
+  Concourse on GKE. This repo is actively maintained, and is used by the team
+  that produces the BOSH Bionic stemcells. "It also uses config connector
+  instead of Terraform for managing the cloud SQL instance
   <https://cloud.google.com/config-connector/docs/overview>." Thanks, Ruben
   Koster!
 - <https://github.com/pivotal-cf/pci-infrastructure/tree/master/k8s> "sets up a
@@ -152,8 +152,14 @@ install Concourse CI.
 - <https://github.com/skyscrapers/terraform-concourse> is a good resource for
   those interested in deploying to AWS instead of GCP. Thanks [Ringo De
   Smet](https://twitter.com/ringods)!
+- [How to Download & Install Terraform on Windows, Linux,
+  Mac](https://spacelift.io/blog/how-to-install-terraform) is a tutorial for
+  installing the terraform CLI. Martyna Łokuciejewska asked me nicely to link
+  to it, so I did.
 
 ### Updates/Errata
+
+**2022-03-12** Added a reference to installing the Terraform CLI.
 
 **2022-01-02** Pointed out that the modifications to the terraform
 configuration enable the creation of a Zonal cluster, which qualifies for the
