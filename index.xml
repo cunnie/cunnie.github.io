@@ -9,7 +9,17 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Jan 2022 04:55:18 -0800</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 12:46:03 -0700</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Underground Guide to Cloud Foundry Acceptance Tests</title>
+      <link>https://blog.nono.io/post/underground_guide_to_cf_acceptance/</link>
+      <pubDate>Mon, 04 Jul 2022 12:46:03 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/underground_guide_to_cf_acceptance/</guid>
+      <description>The Cloud Foundry Acceptance Tests are the gold standard to test the proper functioning of your Cloud Foundry deployment. This guide tells you how to run them. When in doubt, refer to the README.
+Quick Start cd ~/workspace/ git clone git@github.com:cloudfoundry/cf-acceptance-tests.git cd cf-acceptance-tests . ./.envrc bin/update_submodules cp example-cats-config.json cats-config.json export CONFIG=cats-config.json cf api api.cf.nono.io # or whatever your Cloud Foundry&amp;#39;s API endpoint is cf login -u admin cf create-space -o system system # don&amp;#39;t worry if it&amp;#39;s already created cf t -o system -s system cf enable-feature-flag diego_docker # necessary if you&amp;#39;re running the Docker tests (`&amp;#34;include_docker&amp;#34;: true`) Let&amp;rsquo;s configure our cats-config.</description>
+    </item>
+    
     <item>
       <title>Concourse CI on Kubernetes (GKE), Part 6: Concourse &amp; Vault: Backup &amp; Restore</title>
       <link>https://blog.nono.io/post/concourse_on_k8s-6/</link>
