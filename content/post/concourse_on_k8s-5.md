@@ -270,6 +270,13 @@ We're installing in _standalone_ mode, not _HA_ mode. We think _HA_ mode is
 overkill for our use case. Also, our GKE cluster is small because we pay for it
 out-of-pocket, and we don't have the resources to spend on _HA_ mode.
 
+### Addendum: Updating
+
+Here's the correct process for updating:
+
+1. Update vault. Then unseal the vault.
+2. Update Concourse.
+
 ### Addendum: Motivation
 
 "Why go to all this trouble to install Vault? Wasn't the Concourse server
@@ -304,6 +311,10 @@ CLI.
 Also, we wanted to learn how to use Vault, and this was a good opportunity.
 Besides, Vault was written in Golang, which is more fashionable than CredHub's
 Java (and starts more quickly, too).
+
+### Updates/Errata
+
+**2022-07-04** Added the order in which to apply Vault & Concourse updates.
 
 ### Footnotes
 
