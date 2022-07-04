@@ -83,6 +83,7 @@ we're definitely limited to 1Gbe.
 #### Intel to the Rescue!
 
 Nine days ago Intel patched their `ixgbe` driver to include the NBASE-T speeds,
+but with a caveat: they're not enabled by default.
 but that patch will take a while to work its way to the stable release that
 we're using, and we don't want to wait. So what to do? We're gonna build a
 custom kernel with the updated driver.
