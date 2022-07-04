@@ -50,7 +50,7 @@ Create a DNS A record which points to the IP address of your GKE load balancer.<
       <guid>https://blog.nono.io/post/concourse_on_k8s-4/</guid>
       <description>In our previous post, we configured our GKE (Google Kubernetes Engine) to use Let&amp;rsquo;s Encrypt TLS certificates. In this post, the capstone of our series, we install Concourse CI.
 Installation These instructions are a more-opinionated version of the canonical instructions for the Concourse CI Helm chart found here: https://github.com/concourse/concourse-chart.
-First Install: with Helm We use helm to install Concourse. We first add the Helm repo, and then install it.</description>
+First Install: with Helm We use helm to install Concourse. We first add the Helm repo, and then install it. We take the opportunity to bump the default login time from 24 hours to ten days (duration=240h) because we hate re-authenticating to our Concourse every morning.</description>
     </item>
     
     <item>
@@ -85,7 +85,8 @@ Navigate to VPC network → External IP addresses → Reserve Static Address:</d
 We&amp;rsquo;ll deploy it to Google Cloud, to our Google Kubernetes Engine (GKE).
 In this post, we&amp;rsquo;ll use HashiCorp&amp;rsquo;s Terraform to create our cluster.
 We assume you&amp;rsquo;ve already installed the terraform command-line interface (CLI) and created a Google Cloud account.
-mkdir -p ~/workspace/gke cd ~/workspace/gke Next we download the terraform templates and terraform vars file:</description>
+mkdir -p ~/workspace/gke cd ~/workspace/gke Next we download the terraform templates and terraform vars file:
+curl -OL https://raw.</description>
     </item>
     
     <item>
