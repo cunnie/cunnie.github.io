@@ -29,6 +29,10 @@ A2SDi-H-TF](https://www.supermicro.com/en/products/motherboard/A2SDi-H-TF?locale
 which features 2 x 10GBaseT network interfaces. We run FreeBSD 13 on our
 firewall.
 
+#### Aborted
+
+We aborted our attempt to modify the kernel because the Intel X557-AT2 does not support NBASE-T, at least not according to its [datasheet](https://cdrdv2.intel.com/v1/dl/getcontent/334279).
+
 #### Disappointment!
 
 We quickly discovered that our firewall was negotiating the wrong speed with our
