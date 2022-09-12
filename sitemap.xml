@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.nono.io/</loc>
-    <lastmod>2022-07-04T12:46:03-07:00</lastmod>
+    <lastmod>2022-09-10T09:33:02-07:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/</loc>
-    <lastmod>2022-07-04T12:46:03-07:00</lastmod>
+    <lastmod>2022-09-10T09:33:02-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/post/tuning_haproxy/</loc>
+    <lastmod>2022-09-10T09:33:02-07:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/underground_guide_to_cf_acceptance/</loc>
     <lastmod>2022-07-04T12:46:03-07:00</lastmod>
