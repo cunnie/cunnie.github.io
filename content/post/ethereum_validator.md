@@ -22,7 +22,7 @@ but that's not what drove my interest.
 functionality](https://en.wikipedia.org/wiki/Ethereum)". Ether (ETH) is its
 [cryptocurrency](https://www.coinbase.com/price/ethereum).
 
-### The <s>Obstacles</s> Requirements
+### The ~~Obstacles~~ Requirements
 
 Erigon's GitHub's README gives a detailed set of
 [requirements](https://github.com/ledgerwatch/erigon/#system-requirements):
@@ -78,14 +78,13 @@ Clicking **Next** brings you to the networking configuration:
 - **Checked** DHCP Autoconfigure IPv4. I'm a big fan of using DHCP over
   statically-configured IPv4 addresses; if you've ever had to re-IP a large
   network, and I've had to do that at least twice, the ease of editing a single
-  file vastly outweighs the challenge of logging into dozens of different
-  devices and re-configuring manually.
-- vnet_default_interface: **vlan2**. We chose VLAN 2, which is our guest
-  network. Our validator has an open inbound port (30303) from the internet,
-  which increases the chance of it being compromised. If it becomes
-  compromised, we want to limit the blast radius, so we put it on the guest
-  network so that it can't easily be used as a launchpad to attach my machines
-  on my main network.
+  file (`dhcpd.conf`) vastly outweighs the challenge of logging into dozens of
+  different devices and re-configuring manually.
+- vnet_default_interface: **ix1**. We chose our second 10Gbe ethernet
+  interface, which we weren't using for anything. Note, we wanted to place this
+  jail on the guest network, but there were awful performance problems (98%
+  decline in bandwidth). See [References](#not-able-to-use-the-guest-network)
+  for more info.
 - **Checked** Autoconfigure IPv6. I'm an IPv6 fanboy. And the guest network has
   one of the 8 IPv6 /64 networks that Comcast has delegated to me
   (`2601:646:100:69f3::/64`).
@@ -137,9 +136,9 @@ Let's click the **Shell** button in the TrueNAS UI.
 
 ```bash
 /etc/rc.d/sshd onestart
-pkg install zsh sudo git neovim go htop gmake tmux # agree to install pkg management
+pkg install bash zsh sudo git neovim go htop gmake tmux python # agree to install pkg management
 adduser -G wheel -s /usr/local/bin/zsh -w yes
- # follow the prompts
+ # follow the prompts to add user "cunnie"
 visudo
  # uncomment the line "wheel ALL=(ALL:ALL) ALL"
 ```
@@ -148,16 +147,135 @@ We should be able to ssh into our new jail:
 
 ```
 ssh -A cunnie@validator.nono.io
-mkdir workspace
-cd workspace
-git clone git@github.com:ledgerwatch/erigon.git
-cd erigon
-git switch alpha
-gmake erigon
-tmux
-./build/bin/erigon --chain=goerli --torrent.download.rate=20mb
+```
+
+#### Installing the Execution Client ~~Erigon~~ Geth
+
+From <https://goerli.launchpad.ethereum.org/en/select-client>:
+
+> To process incoming validator deposits from the execution layer (formerly
+> 'Eth1' chain), you'll need to run an execution client
+
+I choose ~~[Erigon](https://github.com/ledgerwatch/erigon/)~~
+[Geth](https://geth.ethereum.org/docs/install-and-build/installing-geth) as the
+client because it's written in Golang, and I've had an easier time getting
+Golang-based programs to run under FreeBSD. I originally wanted to use Erigon to
+support "client diversity" (over 66% of the clients are Geth-based), but Erigon
+would `panic()` ("crash") at leasst once a day.
+
+```bash
+mkdir -p ~/workspace
+cd ~/workspace
+git clone https://github.com/ethereum/go-ethereum.git
+cd go-ethereum
+git checkout v1.10.25
+make geth
+sudo install build/bin/geth /usr/local/bin
+ # sudo pkg install go-ethereum # <-- installs older v1.10.21
+tmux # <-- not necessary
+geth \
+  --goerli \
+  --http \
+  --nat extip:73.189.219.4
+geth attach --datadir .ethereum/goerli/ # <-- to troubleshoot
+  net.peerCount # 2
+  net.listening # true
+  admin.peers
+  debug.verbosity(5)
+  net
+  admin
+  debug
+  eth
+```
+
+#### The Concensus Client: Lighthouse
+
+```bash
+sudo pkg install llvm13 cmake protobuf
+ # blindly running shell-scripts is a fool's errand
+ # and we are nothing if not fools
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+exit
+```
+Log back in so that Rust-compiled executables are in our PATH (`$HOME/.cargo/env`).
+
+```bash
+cd ~/workspace
+git clone https://github.com/sigp/lighthouse.git
+cd lighthouse
+git checkout stable
+gmake
+```
+
+_We were gonna install Pryzm because it was Golang, but they didn't have a
+pre-built FreeBSD binary, and their build tool, Bazel, doesn't run on FreeBSD
+according to their [website](https://bazel.build/) (only Windows, Linux, and
+macOS)._
+
+Let's start the client:
+
+```bash
+lighthouse \
+  beacon_node \
+  --network goerli \
+  --execution-endpoint http://127.0.0.1:8545
 ```
 
 ### The Network
 
 {{< figure src="https://docs.google.com/drawings/d/e/2PACX-1vR4aa7YvXRx6cpwwRsH5INVZFEU5CbFr706GACb1b9eKFw-6oIxFi3pHUt2N-trZ8brV_-C6cjRICOg/pub?w=1999&amp;h=662" width="100%" height="100%" alt="Network Diagram" caption="Network Diagram: The firewall port-forwards eth/66 & 67 (port 30303) traffic to validator.nono.io's internal IP, and, on IPv6, passes port 30303 directly through">}}
+
+### Addendum
+
+Disturbing issue at initial sync:
+
+> panic: mdbx_txn_begin: MDBX_PANIC: Maybe free space is over on disk. Otherwise it's hardware failure. Before creating issue please use tools like https://www.memtest86.com to test RAM and tools like https://www.smartmontools.org to test Disk. To handle hardware risks: use ECC RAM, use RAID of disks, run multiple application instances (or do backups). If hardware checks passed - check FS settings - 'fsync' and 'flock' must be enabled.  Otherwise - please create issue in Application repo. On default DURABLE mode, power outage can't cause this error. On other modes - power outage may break last transaction and mdbx_chk can recover db in this case, see '-t' and '-0|1|2' options., label: downloader, trace: [kv_mdbx.go:454 kv_mdbx.go:640 mdbx_piece_completion.go:29 mmap.go:95 torrent.go:276 torrent.go:1331 torrent.go:2084 torrent.go:2214 asm_amd64.s:1571]
+
+Another one, days later:
+
+> WARN[09-23|04:06:11.741] nodeDB.QuerySeeds failed                 err="mdbx_txn_begin: MDBX_PANIC: Maybe free space is over on disk. Otherwise it's hardware failure. Before creating issue please use tools like https://www.memtest86.com to test RAM and tools like https://www.smartmontools.org to test Disk. To handle hardware risks: use ECC RAM, use RAID of disks, run multiple application instances (or do backups). If hardware checks passed - check FS settings - 'fsync' and 'flock' must be enabled.  Otherwise - please create issue in Application repo. On default DURABLE mode, power outage can't cause this error. On other modes - power outage may break last transaction and mdbx_chk can recover db in this case, see '-t' and '-0|1|2' options., label: sentry, trace: [kv_mdbx.go:454 kv_mdbx.go:640 nodedb.go:548 table.go:318 table.go:301 asm_amd64.s:1571]"
+
+To fix (watch out! There's a thirteen-minute delay between hitting ^C and getting a prompt—be patient):
+
+```
+^C
+  INFO[09-23|08:58:05.696] Got interrupt, shutting down...
+  ...
+  INFO[09-23|09:11:04.877] [] etl: temp files removed               total size=484.1MB
+rm -rf ~/.local/share/erigon/chaindata
+./build/bin/erigon --chain=goerli --torrent.download.rate=20mb
+```
+
+Another panic:
+
+> panic: mdbx_txn_begin: MDBX_PANIC: Maybe free space is over on disk. Otherwise it's hardware failure. Before creating issue please use tools like https://www.memtest86.com to test RAM and tools like https://www.smartmontools.org to test Disk. To handle hardware risks: use ECC RAM, use RAID of disks, run multiple application instances (or do backups). If hardware checks passed - check FS settings - 'fsync' and 'flock' must be enabled.  Otherwise - please create issue in Application repo. On default DURABLE mode, power outage can't cause this error. On other modes - power outage may break last transaction and mdbx_chk can recover db in this case, see '-t' and '-0|1|2' options., label: downloader, trace: [kv_mdbx.go:454 kv_mdbx.go:640 mdbx_piece_completion.go:29 mmap.go:95 torrent.go:276 torrent.go:1331 torrent.go:2084 torrent.go:2214 asm_amd64.s:1571]
+
+```
+goroutine 6355434 [running]:
+github.com/anacrolix/torrent/storage.mmapStoragePiece.Completion({{0x82a6b6178, 0xc0017261d0}, {0xc0001cd100, 0x14ee}, {0xd0, 0x3f, 0x88, 0xc8, 0x77, 0x49, ...}, ...})
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/storage/mmap.go:97 +0xcc
+github.com/anacrolix/torrent.(*Torrent).pieceCompleteUncached(0xc00012a010?, 0xc0001e20b0?)
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/torrent.go:276 +0x4e
+github.com/anacrolix/torrent.(*Torrent).updatePieceCompletion(0xc002b7f500, 0x14ee)
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/torrent.go:1331 +0x66
+github.com/anacrolix/torrent.(*Torrent).pieceHashed(0xc002b7f500, 0x14ee, 0x1, {0x0, 0x0?})
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/torrent.go:2084 +0x6f0
+github.com/anacrolix/torrent.(*Torrent).pieceHasher(0xc002b7f500, 0x14ee)
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/torrent.go:2214 +0x4aa
+created by github.com/anacrolix/torrent.(*Torrent).tryCreatePieceHasher
+        github.com/anacrolix/torrent@v1.46.1-0.20220808053819-61302332cfc5/torrent.go:2152 +0x129
+```
+
+#### Not able to use the Guest Network
+
+- <https://www.truenas.com/community/threads/freenas-mini-xl-vnet-jail-bridged-to-vlan-extremely-slow.80878/>
+- <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=230996>
+
+#### Don't `pkg install rust`
+
+`package `lighthouse v3.1.0 (/usr/home/cunnie/workspace/lighthouse/lighthouse)` cannot be built because it requires rustc 1.62 or newer, while the currently active rustc version is 1.61.0`
+
+#### Helpful Howtos
+
+- <https://medium.com/simplystaking/setting-up-an-eth-2-0-validator-node-simply-staking-40b5f96a9e8d>
+- <https://medium.com/coinmonks/how-to-setup-ethereum-2-0-validator-node-lighthouse-meddala-goerli-4f0b85d5c8f>
