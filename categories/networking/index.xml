@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Networking on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/networking/</link>
+    <description>Recent content in Networking on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 28 Nov 2018 17:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Troubleshooting Obscure OpenSSH Failures</title>
+      <link>https://blog.nono.io/post/ssh_handshake_failed/</link>
+      <pubDate>Wed, 28 Nov 2018 17:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/ssh_handshake_failed/</guid>
+      <description>Abstract By using tcpdump to troubleshoot an elusive error, we uncovered a man-in-the-middle (MITM) ssh proxy installed by our information security (InfoSec) team to harden/protect a set of machines which were accessible from the internet. The ssh proxy in question was Palo Alto Network’s (PAN) Layer 7 (i.e. it worked on any port, not solely ssh’s port 22) proxy, and was discovered when we observed a failure to negotiate ciphers during the ssh key exchange.</description>
+    </item>
+    
+  </channel>
+</rss>

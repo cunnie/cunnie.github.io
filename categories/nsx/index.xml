@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NSX on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/nsx/</link>
+    <description>Recent content in NSX on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 01 Nov 2016 09:15:02 -0700</lastBuildDate><atom:link href="https://blog.nono.io/categories/nsx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leveraging NSX&#39;s Features with BOSH&#39;s vSphere CPI</title>
+      <link>https://blog.nono.io/post/nsx_with_bosh/</link>
+      <pubDate>Tue, 01 Nov 2016 09:15:02 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/nsx_with_bosh/</guid>
+      <description>VMWare NSX is a network virtualization platform (frequently paired with the vSphere IaaS (Infrastructure as a Service)). It includes features such as Load Balancers (LBs) and firewall rules, features often found in public-facing IaaSes (e.g. AWS (Amazon Web Services), GCE (Google Compute Engine), and Microsoft Azure) but not native to vSphere.
+BOSH, a VM orchestrator, includes hooks to interoperate with NSX&amp;rsquo;s LB and Distributed Firewall features. These hooks enable BOSH to attach created VMs to existing NSX Load Balancer Pools and NSX Distributed Firewall rulesets.</description>
+    </item>
+    
+  </channel>
+</rss>

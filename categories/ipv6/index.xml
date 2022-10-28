@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IPv6 on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/ipv6/</link>
+    <description>Recent content in IPv6 on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Feb 2020 01:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/ipv6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How To Enable IPv6 on Your Cloud Foundry&#39;s HAProxy</title>
+      <link>https://blog.nono.io/post/haproxy-ipv6/</link>
+      <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/haproxy-ipv6/</guid>
+      <description>0. Abstract HAProxy is an optional load balancer included in the canonical open source Cloud Foundry deployment. Its intended use is on IaaSes (Infrastructures as a Service) that do not offer built-in load balancers [0]. On vSphere, this means without the optional network virtualization solutions, NSX-T and NSX-V. This blog post describes how to assign an IPv6 address to an HAProxy load balancer in a Cloud Foundry deployment.
+1. Pre-requisites Users following this blog post should be familiar with BOSH, BOSH&amp;rsquo;s manifest operations files, IPv6, and deploying Cloud Foundry using cf-deployment.</description>
+    </item>
+    
+    <item>
+      <title>Deploying BOSH VMs with IPv6 Addresses on vSphere</title>
+      <link>https://blog.nono.io/post/bosh-on-ipv6-2/</link>
+      <pubDate>Tue, 16 Jan 2018 19:12:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-on-ipv6-2/</guid>
+      <description>0. Abstract BOSH is a VM orchestrator; a BOSH Director creates, configures, monitors, and deletes VMs. The BOSH Director interoperates with a number of IaaSes (Infrastructure as a Service), one of which is VMware vSphere, a virtualization platform. BOSH traditionally operates exclusively within the IPv4 networking space (i.e. the BOSH Director has an IPv4 address (e.g. 10.0.0.6), and the VMs which it deploys also have IPv4 addresses); however, recent changes have enabled IPv6 networking within the BOSH Framework.</description>
+    </item>
+    
+    <item>
+      <title>Using the beta BOSH CLI to Deploy an IPv6-enabled nginx Server to AWS</title>
+      <link>https://blog.nono.io/post/bosh-on-ipv6/</link>
+      <pubDate>Tue, 20 Dec 2016 20:49:50 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-on-ipv6/</guid>
+      <description>This blog post describes the procedure we followed to use the beta BOSH command line interface (CLI) to deploy an nginx webserver with a native IPv6 address (i.e. 2600:1f16:0a62:5c00::4) to AWS in addition to its IPv4 Elastic IP address (i.e. 52.15.73.90). We were then able to browse the webserver via the IPv6 protocol.
+BOSH does not support IPv6. This is a proof-of-concept. Do not apply IPv6 to your production BOSH Directors or to BOSH CLI-deployed systems.</description>
+    </item>
+    
+  </channel>
+</rss>

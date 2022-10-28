@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Operations Manager on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/operations-manager/</link>
+    <description>Recent content in Operations Manager on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 06 Sep 2018 10:44:30 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/operations-manager/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Safely Upgrading PAS 2.2 with NSX-T Load Balancers</title>
+      <link>https://blog.nono.io/post/upgrade_2.2-2.3_on_nsx-t/</link>
+      <pubDate>Thu, 06 Sep 2018 10:44:30 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/upgrade_2.2-2.3_on_nsx-t/</guid>
+      <description>When customers with vSphere+NSX-T-based foundations apply a stemcell update, update a tile, or upgrade PAS (Pivotal Application Service) from 2.2 to 2.3, their Cloud Foundry may become unreachable as their NSX-T static load balancer server pools have been emptied.
+This blog post describes a method to ensure availability during upgrades. We use a combination of customized Operations Manager resource configs and BOSH VM Extensions.
+The sample workflow in this post is for upgrading PAS 2.</description>
+    </item>
+    
+  </channel>
+</rss>

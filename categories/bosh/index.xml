@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>BOSH on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/bosh/</link>
+    <description>Recent content in BOSH on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Feb 2020 01:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/bosh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How To Enable IPv6 on Your Cloud Foundry&#39;s HAProxy</title>
+      <link>https://blog.nono.io/post/haproxy-ipv6/</link>
+      <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/haproxy-ipv6/</guid>
+      <description>0. Abstract HAProxy is an optional load balancer included in the canonical open source Cloud Foundry deployment. Its intended use is on IaaSes (Infrastructures as a Service) that do not offer built-in load balancers [0]. On vSphere, this means without the optional network virtualization solutions, NSX-T and NSX-V. This blog post describes how to assign an IPv6 address to an HAProxy load balancer in a Cloud Foundry deployment.
+1. Pre-requisites Users following this blog post should be familiar with BOSH, BOSH&amp;rsquo;s manifest operations files, IPv6, and deploying Cloud Foundry using cf-deployment.</description>
+    </item>
+    
+    <item>
+      <title>Safely Upgrading PAS 2.2 with NSX-T Load Balancers</title>
+      <link>https://blog.nono.io/post/upgrade_2.2-2.3_on_nsx-t/</link>
+      <pubDate>Thu, 06 Sep 2018 10:44:30 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/upgrade_2.2-2.3_on_nsx-t/</guid>
+      <description>When customers with vSphere+NSX-T-based foundations apply a stemcell update, update a tile, or upgrade PAS (Pivotal Application Service) from 2.2 to 2.3, their Cloud Foundry may become unreachable as their NSX-T static load balancer server pools have been emptied.
+This blog post describes a method to ensure availability during upgrades. We use a combination of customized Operations Manager resource configs and BOSH VM Extensions.
+The sample workflow in this post is for upgrading PAS 2.</description>
+    </item>
+    
+    <item>
+      <title>Benchmarking the Disk Speed of IaaSes</title>
+      <link>https://blog.nono.io/post/gobonniego_results/</link>
+      <pubDate>Fri, 16 Mar 2018 20:00:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/gobonniego_results/</guid>
+      <description>0. Overview [Disclaimer: the author works for Pivotal Software, of which Dell is an investor. Dell is also an owner of VMware]
+It&amp;rsquo;s helpful to know the performance characteristics of disks when selecting a disk type. For example, the performance of a database server will be greatly affected by the IOPS of the underlying storage. Similarly, a video-streaming server will be affected by the underlying read throughput.
+0.0 Highlights: If you need a fast disk, nothing beats a local vSphere NVMe drive.</description>
+    </item>
+    
+    <item>
+      <title>Deploying BOSH VMs with IPv6 Addresses on vSphere</title>
+      <link>https://blog.nono.io/post/bosh-on-ipv6-2/</link>
+      <pubDate>Tue, 16 Jan 2018 19:12:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-on-ipv6-2/</guid>
+      <description>0. Abstract BOSH is a VM orchestrator; a BOSH Director creates, configures, monitors, and deletes VMs. The BOSH Director interoperates with a number of IaaSes (Infrastructure as a Service), one of which is VMware vSphere, a virtualization platform. BOSH traditionally operates exclusively within the IPv4 networking space (i.e. the BOSH Director has an IPv4 address (e.g. 10.0.0.6), and the VMs which it deploys also have IPv4 addresses); however, recent changes have enabled IPv6 networking within the BOSH Framework.</description>
+    </item>
+    
+    <item>
+      <title>Maintaining BOSH Directors with Concourse CI and bosh-deployment</title>
+      <link>https://blog.nono.io/post/bosh-deployed-with-concourse/</link>
+      <pubDate>Fri, 24 Nov 2017 14:06:25 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-deployed-with-concourse/</guid>
+      <description>&amp;ldquo;BOSH deploys Concourse, and Concourse deploys BOSH&amp;rdquo; —Cloud Foundry koan
+A BOSH Director is a VM (virtual machine) orchestrator which is itself a VM. BOSH solves the problem of keeping its VMs&amp;rsquo; applications (operating systems (stemcells) and releases) up-to-date with the command, bosh deploy; however, this begs the question, &amp;ldquo;what keeps the BOSH Director itself up-to-date?&amp;rdquo;. [Quis custodiet?]
+We explore using Concourse, a Continuous Integration (CI) server, and bosh-deployment [Updating BOSH], in order to create a Concourse pipeline which updates, in turn, a BOSH director on AWS (Amazon Web Services), on Microsoft Azure, and GCP (Google Cloud Platform).</description>
+    </item>
+    
+    <item>
+      <title>Deploying a BOSH Director With SSL Certificates Issued by Commercial CA</title>
+      <link>https://blog.nono.io/post/bosh-ssl/</link>
+      <pubDate>Wed, 16 Aug 2017 17:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-ssl/</guid>
+      <description>0. Abstract A BOSH director is a virtual machine (VM) orchestrator which deploys VMs to various Infrastructures as a Service (IaaS) such as Amazon Web Services (AWS) and Google Cloud Platform (GCP). The BOSH Command Line (CLI) communicates with the director over Secure Sockets Layer (SSL). While most BOSH directors are deployed with self-signed certificates, it is possible to configure a BOSH director with certificates issued by a recognized certificate authority (CA) (e.</description>
+    </item>
+    
+    <item>
+      <title>Deploy To vSphere NSX-T Opaque Networks Using BOSH</title>
+      <link>https://blog.nono.io/post/bosh-vsphere-opaque-networks/</link>
+      <pubDate>Mon, 17 Apr 2017 11:43:14 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-vsphere-opaque-networks/</guid>
+      <description>VMware&amp;rsquo;s vSphere is an Infrastructure as a Service (IaaS) which runs Virtual Machines (VMs). BOSH is a VM orchestrator which automates the creation of VMs. NSX-T is a pluggable Network backend for vSphere (and other hypervisors). NSX-T allows the creation of opaque networks in vSphere, networks whose detail and configuration of the network is unknown to vSphere and which is managed outside vSphere.
+With the release of BOSH vSphere CPI v40, users can attach their BOSH-deployed VMs to an NSX-T opaque network.</description>
+    </item>
+    
+    <item>
+      <title>Using the beta BOSH CLI to Deploy an IPv6-enabled nginx Server to AWS</title>
+      <link>https://blog.nono.io/post/bosh-on-ipv6/</link>
+      <pubDate>Tue, 20 Dec 2016 20:49:50 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-on-ipv6/</guid>
+      <description>This blog post describes the procedure we followed to use the beta BOSH command line interface (CLI) to deploy an nginx webserver with a native IPv6 address (i.e. 2600:1f16:0a62:5c00::4) to AWS in addition to its IPv4 Elastic IP address (i.e. 52.15.73.90). We were then able to browse the webserver via the IPv6 protocol.
+BOSH does not support IPv6. This is a proof-of-concept. Do not apply IPv6 to your production BOSH Directors or to BOSH CLI-deployed systems.</description>
+    </item>
+    
+    <item>
+      <title>Leveraging NSX&#39;s Features with BOSH&#39;s vSphere CPI</title>
+      <link>https://blog.nono.io/post/nsx_with_bosh/</link>
+      <pubDate>Tue, 01 Nov 2016 09:15:02 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/nsx_with_bosh/</guid>
+      <description>VMWare NSX is a network virtualization platform (frequently paired with the vSphere IaaS (Infrastructure as a Service)). It includes features such as Load Balancers (LBs) and firewall rules, features often found in public-facing IaaSes (e.g. AWS (Amazon Web Services), GCE (Google Compute Engine), and Microsoft Azure) but not native to vSphere.
+BOSH, a VM orchestrator, includes hooks to interoperate with NSX&amp;rsquo;s LB and Distributed Firewall features. These hooks enable BOSH to attach created VMs to existing NSX Load Balancer Pools and NSX Distributed Firewall rulesets.</description>
+    </item>
+    
+    <item>
+      <title>How to Customize a BOSH Stemcell</title>
+      <link>https://blog.nono.io/post/bosh-customize-stemcell/</link>
+      <pubDate>Fri, 23 Sep 2016 05:35:01 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-customize-stemcell/</guid>
+      <description>In this blog post, we describe the procedure we followed in order to create a custom Google Compute Engine (GCE) stemcell with a user cunnie whose ~/.ssh/authorized_keys is pre-populated with a specific public key.
+Customizing stemcells is highly discouraged — it voids your warranty, and opens a host of problems which will only cause pain. This post is intended as an educational demonstration of the stemcell building process. You have been warned.</description>
+    </item>
+    
+    <item>
+      <title>Updating a BOSH Release</title>
+      <link>https://blog.nono.io/post/updating-a-bosh-release/</link>
+      <pubDate>Sun, 18 Sep 2016 10:15:30 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/updating-a-bosh-release/</guid>
+      <description>When PowerDNS released version 4.0.1 of their authoritative nameserver, we rushed to update our BOSH Release (which was at version 4.0.0). We thought it would be a walk in the park, but instead it was an epic fail (a final release which couldn&amp;rsquo;t be deployed because the blobs were broken).
+In this blog post we describe the procedure we ultimately followed to successfully create an updated BOSH final release of version 4.</description>
+    </item>
+    
+    <item>
+      <title>Concourse without a Load Balancer</title>
+      <link>https://blog.nono.io/post/concourse-no-elb/</link>
+      <pubDate>Fri, 26 Aug 2016 06:58:07 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/concourse-no-elb/</guid>
+      <description>Abstract Concourse is a continuous integration (CI) server. It can be deployed manually or via BOSH.
+In this blog post, we describe the BOSH deployment of a Concourse CI server to natively accept Secure Sockets Layer (SSL) connections without using a load balancer. This may reduce the complexity and cost [ELB-pricing] of a Concourse deployment.
+2016-09-12: This blog post is obsolete. Newer (v2.0.0+) versions of Concourse allow binding to the privileged ports 80 and 443, eliminating the need for an nginx proxy.</description>
+    </item>
+    
+    <item>
+      <title>How to Deploy a Multi-homed BOSH Director to a vSphere Environment</title>
+      <link>https://blog.nono.io/post/multi-homed-bosh-director/</link>
+      <pubDate>Fri, 13 May 2016 13:37:44 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/multi-homed-bosh-director/</guid>
+      <description>vSphere users ask, &amp;ldquo;How do I configure my BOSH director so that it can communicate with my vCenter but the director&amp;rsquo;s deployed VMs can&amp;rsquo;t?&amp;rdquo;
+One technique is to use a multi-homed BOSH director combined with the BOSH Networking Release (a BOSH release which enables customization of the VM&amp;rsquo;s routing table, allowing more routes than the default gateway).
+Network Diagram The following is a network diagram of our deployment. We want to protect the assets at the top (in blue): the vCenter server and its associated ESXi servers.</description>
+    </item>
+    
+    <item>
+      <title>The World&#39;s Smallest Concourse CI Server</title>
+      <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
+      <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
+      <description>[2016-04-06: This Blog Post is out-of-date; Please refer to the official Concourse documentation for instructions how to install a Concourse server] Continuous Integration (CI) is often used in conjunction with test-driven development (TDD); however, CI servers often bring their own set of challenges: they are usually &amp;ldquo;snowflakes&amp;rdquo;, uniquely configured machines that are difficult to upgrade, re-configure, or re-install. [snowflakes]
+In this blog post, we describe deploying a publicly-accessible, lean (1GB RAM, 1 vCPU, 15GB disk) Concourse CI server using a 350-line manifest.</description>
+    </item>
+    
+  </channel>
+</rss>

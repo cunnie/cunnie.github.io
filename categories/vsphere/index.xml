@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>vSphere on Brian Cunnie&#39;s Technical Blog</title>
+    <link>https://blog.nono.io/categories/vsphere/</link>
+    <description>Recent content in vSphere on Brian Cunnie&#39;s Technical Blog</description>
+    <image>
+      <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
+      <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Feb 2020 01:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/vsphere/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How To Enable IPv6 on Your Cloud Foundry&#39;s HAProxy</title>
+      <link>https://blog.nono.io/post/haproxy-ipv6/</link>
+      <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/haproxy-ipv6/</guid>
+      <description>0. Abstract HAProxy is an optional load balancer included in the canonical open source Cloud Foundry deployment. Its intended use is on IaaSes (Infrastructures as a Service) that do not offer built-in load balancers [0]. On vSphere, this means without the optional network virtualization solutions, NSX-T and NSX-V. This blog post describes how to assign an IPv6 address to an HAProxy load balancer in a Cloud Foundry deployment.
+1. Pre-requisites Users following this blog post should be familiar with BOSH, BOSH&amp;rsquo;s manifest operations files, IPv6, and deploying Cloud Foundry using cf-deployment.</description>
+    </item>
+    
+    <item>
+      <title>How to Install a TLS Certificate on vCenter Server Appliance (VCSA) 6.7 [Updated for vCenter 7]</title>
+      <link>https://blog.nono.io/post/vcenter_6.7_tls/</link>
+      <pubDate>Wed, 09 May 2018 23:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/vcenter_6.7_tls/</guid>
+      <description>The following section is the new Quickstart for installing a TLS certificate on vCenter 7
+vCenter 7 Quickstart On your vCenter, navigate to Menu → Administration → Certificates → Certificate Management
+On the __MACHINE_CERT tile, click Actions, select Generate Certificate Signing Request (CSR).
+Enter the appropriate info; for inspiration, this is what we entered:
+Common name: vcenter-70.nono.io Organization: nono.io Organizational Unit: homelab Country: United States State/Province: California Locality: San Francisco Email Address: yoyo@nono.</description>
+    </item>
+    
+    <item>
+      <title>Deploy To vSphere NSX-T Opaque Networks Using BOSH</title>
+      <link>https://blog.nono.io/post/bosh-vsphere-opaque-networks/</link>
+      <pubDate>Mon, 17 Apr 2017 11:43:14 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/bosh-vsphere-opaque-networks/</guid>
+      <description>VMware&amp;rsquo;s vSphere is an Infrastructure as a Service (IaaS) which runs Virtual Machines (VMs). BOSH is a VM orchestrator which automates the creation of VMs. NSX-T is a pluggable Network backend for vSphere (and other hypervisors). NSX-T allows the creation of opaque networks in vSphere, networks whose detail and configuration of the network is unknown to vSphere and which is managed outside vSphere.
+With the release of BOSH vSphere CPI v40, users can attach their BOSH-deployed VMs to an NSX-T opaque network.</description>
+    </item>
+    
+    <item>
+      <title>Leveraging NSX&#39;s Features with BOSH&#39;s vSphere CPI</title>
+      <link>https://blog.nono.io/post/nsx_with_bosh/</link>
+      <pubDate>Tue, 01 Nov 2016 09:15:02 -0700</pubDate>
+      
+      <guid>https://blog.nono.io/post/nsx_with_bosh/</guid>
+      <description>VMWare NSX is a network virtualization platform (frequently paired with the vSphere IaaS (Infrastructure as a Service)). It includes features such as Load Balancers (LBs) and firewall rules, features often found in public-facing IaaSes (e.g. AWS (Amazon Web Services), GCE (Google Compute Engine), and Microsoft Azure) but not native to vSphere.
+BOSH, a VM orchestrator, includes hooks to interoperate with NSX&amp;rsquo;s LB and Distributed Firewall features. These hooks enable BOSH to attach created VMs to existing NSX Load Balancer Pools and NSX Distributed Firewall rulesets.</description>
+    </item>
+    
+  </channel>
+</rss>
