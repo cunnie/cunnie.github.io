@@ -9,7 +9,17 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 10 Sep 2022 09:33:02 -0700</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Nov 2022 10:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install a TLS Certificate on vCenter Server Appliance (VCSA) 8.0</title>
+      <link>https://blog.nono.io/post/vcenter_8.0_tls/</link>
+      <pubDate>Wed, 02 Nov 2022 10:16:22 +0000</pubDate>
+      
+      <guid>https://blog.nono.io/post/vcenter_8.0_tls/</guid>
+      <description>Quickstart First, create your key and your CSR (Certificate Signing Request). In the following example, we are creating a CSR for our vCenter host, &amp;ldquo;vcenter-80.nono.io&amp;rdquo;:
+CN=vcenter-80.nono.io # &amp;#34;CN&amp;#34; is the abbreviation for &amp;#34;Common Name&amp;#34; openssl genrsa -out $CN.key 3072 openssl req \ -new \ -key $CN.key \ -out $CN.csr \ -sha256 \ -subj &amp;#34;/C=US/ST=California/L=San Francisco/O=nono.io/OU=homelab/CN=${CN}/emailAddress=brian.cunnie@gmail.com&amp;#34; \ -config &amp;lt;(cat &amp;lt;&amp;lt;EOF [ req ] distinguished_name = req_distinguished_name req_extensions = req_ext [ req_distinguished_name ] [ req_ext ] subjectAltName = @alt_names [alt_names] DNS.</description>
+    </item>
+    
     <item>
       <title>Tuning HAProxy in a vSphere Environment</title>
       <link>https://blog.nono.io/post/tuning_haproxy/</link>

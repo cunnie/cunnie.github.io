@@ -3,10 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.nono.io/</loc>
-    <lastmod>2022-09-10T09:33:02-07:00</lastmod>
+    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/categories/</loc>
+    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/post/vcenter_8.0_tls/</loc>
+    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/</loc>
-    <lastmod>2022-09-10T09:33:02-07:00</lastmod>
+    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/categories/vsphere/</loc>
+    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/tuning_haproxy/</loc>
     <lastmod>2022-09-10T09:33:02-07:00</lastmod>
@@ -41,9 +50,6 @@
     <loc>https://blog.nono.io/categories/bdd/</loc>
     <lastmod>2020-02-16T17:16:22+00:00</lastmod>
   </url><url>
-    <loc>https://blog.nono.io/categories/</loc>
-    <lastmod>2020-02-16T17:16:22+00:00</lastmod>
-  </url><url>
     <loc>https://blog.nono.io/post/go-flow-tests-like-code/</loc>
     <lastmod>2020-02-16T17:16:22+00:00</lastmod>
   </url><url>
@@ -63,9 +69,6 @@
     <lastmod>2020-02-01T01:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/categories/ipv6/</loc>
-    <lastmod>2020-02-01T01:16:22+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.nono.io/categories/vsphere/</loc>
     <lastmod>2020-02-01T01:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/nas-performance-tuning/</loc>
