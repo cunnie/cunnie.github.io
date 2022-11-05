@@ -98,8 +98,8 @@ that I used and that worked for me.
 Technical details: Sectigo included a variant of their root certificate
 "[USERTrust RSA Certification Authority](https://crt.sh/?id=1282303295)" that
 had been cross-signed (issued) by the old "[AAA Certificate
-Services](https://crt.sh/?id=331986)" which had been signed with the weak SHA-1
-algorithm, which Google and others have been
+Services](https://crt.sh/?id=331986)" which had been self-signed with the weak
+SHA-1 algorithm, which Google and others have been
 [deprecating](https://security.googleblog.com/2014/09/gradually-sunsetting-sha-1.html)
 since 2016.
 
@@ -130,37 +130,68 @@ is the same as the issuer. In the following example, we use two common TLS
 command line tools (`cfssl` and `openssl`).
 
 First we use `cfssl`, whose output is JSON, which we pipe to `jq` to extract
-the Common Name of the issuer and subject. We choose the problematic
-certificate ("USERTrust RSA Certification Authority") that has been signed by a
-root cert that in turn is self-signed with the weak SHA-1 algorithm ("AAA
-Certificate Services"):
+the Common Name of the issuer and subject and the signature algorithm. We
+choose the problematic certificate ("USERTrust RSA Certification Authority")
+that has been signed by a root cert that in turn is self-signed with the weak
+SHA-1 algorithm ("AAA Certificate Services"):
 
 ```bash
 curl https://crt.sh/?d=1282303295 | \
   cfssl certinfo -cert - | \
-  jq -r '{"Issuer": .issuer.common_name, "Subject": .subject.common_name }'
+  jq -r '{"Issuer": .issuer.common_name, "Subject": .subject.common_name, "Signature Algorithm": .sigalg }'
 ```
 produces:
 ```json
 {
   "Issuer": "AAA Certificate Services",
-  "Subject": "USERTrust RSA Certification Authority"
+  "Subject": "USERTrust RSA Certification Authority",
+  "Signature Algorithm": "SHA384WithRSA"
 }
 ```
 
-With `openssl` we can use a simple `egrep` to extract the information we need.
-We use the self-signed "USERTrust RSA Certification Authority" as an example:
+Now let's look at its issuer's ("AAA Certificate Services") certificate, which is a root
+certificate, and which is self-signed with the weak SHA-1 algorithm:
+
+```bash
+curl https://crt.sh/?d=331986 | \
+  cfssl certinfo -cert - | \
+  jq -r '{"Issuer": .issuer.common_name, "Subject": .subject.common_name, "Signature Algorithm": .sigalg }'
+```
+produces:
+```json
+{
+  "Issuer": "AAA Certificate Services",
+  "Subject": "AAA Certificate Services",
+  "Signature Algorithm": "SHA1WithRSA"
+}
+```
+
+Aha! That's our smoking gun: "SHA1WithRSA" is the culprit, the reason we've
+been getting the "Provided certificate using the weak signature algorithm"
+error.
+
+Let's explore the self-signed variant (the root certificate variant) of the
+"USERTrust RSA Certification Authority", this time with `openssl`. We can use a
+simple `egrep` to extract the information we need:
 
 ```bash
 curl https://crt.sh/?d=1199354 | \
   openssl x509 -noout -text | \
-  egrep "Issuer:|Subject:"
+  egrep "Issuer:|Subject:|Signature Algorithm:"
 ```
 produces:
 ```
+Signature Algorithm: sha384WithRSAEncryption
 Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority
 Subject: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority
+Signature Algorithm: sha384WithRSAEncryption
 ```
+
+_(We don't know why "Signature Algorithm" is repeated)._
+
+We can see that this is a self-signed root certificate with a strong, SHA-384
+signature algorithm. This is the root certificate we should use in our
+certificate chain (CA bundle).
 
 ### References
 
@@ -190,3 +221,11 @@ Subject: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTru
     ([vcenter-80.nono.io.crt](https://raw.githubusercontent.com/cunnie/docs/main/tls/vcenter-80.nono.io.crt))
   - CA Bundle/Certificate Chain
     ([vcenter-80_nono_io.ca-bundle](https://raw.githubusercontent.com/cunnie/docs/main/tls/vcenter-80_nono_io.ca-bundle))
+
+### Corrections & Updates
+
+*2022-11-05*
+
+Expanded the "How to Determine if a Certificate is a Self-Signed Certificate"
+section to include the signature algorithm, and included the problematic root
+cert to drive home the cause of the error.
