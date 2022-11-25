@@ -9,7 +9,18 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 02 Nov 2022 10:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Nov 2022 08:13:55 -0800</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating Multi-Platform Docker Images with Concourse</title>
+      <link>https://blog.nono.io/post/multi-platform_docker_images_with_concourse/</link>
+      <pubDate>Fri, 25 Nov 2022 08:13:55 -0800</pubDate>
+      
+      <guid>https://blog.nono.io/post/multi-platform_docker_images_with_concourse/</guid>
+      <description>Concourse CI/CD (continuous integration/continuous delivery) can create multi-platform Docker images. This blog post describes how.
+A multi-platform docker image is one that contains &amp;ldquo;variants for different architectures&amp;rdquo;.
+Docker images are often created for a single architecture (&amp;ldquo;instruction set architecture&amp;rdquo; or &amp;ldquo;ISA&amp;rdquo;), typically Intel&amp;rsquo;s/AMD&amp;rsquo;s x86-64, but with the advent of ARM64-based offerings such as AWS&amp;rsquo;s Graviton and Apple&amp;rsquo;s M1/M2, It&amp;rsquo;s becoming more common to build multi-platform images to avoid the heavy emulation performance penalty (typically &amp;gt;10x) when running an image on a different architecture.</description>
+    </item>
+    
     <item>
       <title>How to Install a TLS Certificate on vCenter Server Appliance (VCSA) 8.0</title>
       <link>https://blog.nono.io/post/vcenter_8.0_tls/</link>

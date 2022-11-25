@@ -3,15 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.nono.io/</loc>
-    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
+    <lastmod>2022-11-25T08:13:55-08:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/post/multi-platform_docker_images_with_concourse/</loc>
+    <lastmod>2022-11-25T08:13:55-08:00</lastmod>
+  </url><url>
+    <loc>https://blog.nono.io/post/</loc>
+    <lastmod>2022-11-25T08:13:55-08:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/categories/</loc>
     <lastmod>2022-11-02T10:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/post/vcenter_8.0_tls/</loc>
-    <lastmod>2022-11-02T10:16:22+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.nono.io/post/</loc>
     <lastmod>2022-11-02T10:16:22+00:00</lastmod>
   </url><url>
     <loc>https://blog.nono.io/categories/vsphere/</loc>
