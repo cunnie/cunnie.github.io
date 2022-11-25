@@ -100,7 +100,7 @@ jobs:
 
 Putting it all together, we have the following:
 
-- The Concoures [pipeline](https://ci.nono.io/teams/main/pipelines/multi-platform-docker)
+- The Concourse [pipeline](https://ci.nono.io/teams/main/pipelines/multi-platform-docker)
 - The Concourse pipeline
   [definition](https://github.com/cunnie/deployments/blob/c8207ebc06bf2adb4fabe9632d81416f69ce00ae/ci/pipeline-multi-platform-docker.yml)
   (YAML)
