@@ -25,19 +25,12 @@ Cloud Platform) Kubernetes cluster.
 
 ### Quick Start
 
-Create a resource type using my custom build of the upcoming Concourse 7.9
-[registry-image resource](https://github.com/concourse/registry-image-resource):
+Make sure you're on **Concourse 7.9** or later; it has the
+[registry-image](https://github.com/concourse/registry-image-resource) resource
+necessary to create multi-platform images.
 
-```yaml
-resource_types:
-- name: cunnie-registry-image
-  type: registry-image
-  source:
-    repository: cunnie/registry-image
-```
-
-Next, create a Concourse resource, "multi-platform-docker-image", using this
-resource type. Using the example below, Make the following changes:
+Create a Concourse resource, "multi-platform-docker-image". This is the Docker
+image you'll be building. Using the example below, make the following changes:
 
 - replace
   [cunnie/multi-platform](https://hub.docker.com/repository/docker/cunnie/multi-platform)
@@ -49,12 +42,12 @@ resource type. Using the example below, Make the following changes:
 ```yaml
 resources:
 - name: multi-platform-docker-image
-  type: cunnie-registry-image
+  type: registry-image
   icon: docker
   source:
-    repository: cunnie/multi-platform
-    username: cunnie
-    password: ((docker_token))
+    repository: cunnie/multi-platform # ← Replace with the name of your Docker image
+    username: cunnie # ← Replace with your Docker Hub username
+    password: ((docker_token)) # ← Replace with your Docker Hub token (or password)
     tag: latest
 ```
 
@@ -67,7 +60,11 @@ the following changes:
   Concourse input resource "deployments", and it has a subdirectory
   "multi-platform-docker/", and that subdirectory has a "Dockerfile".
 
-Note: `OUTPUT_OCI: true` is required for multi-platform, and so is `image: image/image`
+Note:
+- `IMAGE_PLATFORM` defines the platforms to build. If you're not sure, use
+  `linux/arm64,linux/amd64`
+- `OUTPUT_OCI: true` is required for multi-platform
+- `image: image/image` is required for OCI output
 
 ```yaml
 jobs:
@@ -100,39 +97,25 @@ jobs:
 
 Putting it all together, we have the following:
 
-- The Concourse [pipeline](https://ci.nono.io/teams/main/pipelines/multi-platform-docker)
+- The Concourse
+  [pipeline](https://ci.nono.io/teams/main/pipelines/multi-platform-docker)
 - The Concourse pipeline
-  [definition](https://github.com/cunnie/deployments/blob/c8207ebc06bf2adb4fabe9632d81416f69ce00ae/ci/pipeline-multi-platform-docker.yml)
+  [definition](https://github.com/cunnie/deployments/blob/22b50f6c60e8486e2e73fce996ab6ce6fa836ed1/ci/pipeline-multi-platform-docker.yml)
   (YAML)
 - The
   [Dockerfile](https://github.com/cunnie/deployments/blob/c8207ebc06bf2adb4fabe9632d81416f69ce00ae/multi-platform-docker/Dockerfile)
 - The generated [Docker
   image](https://hub.docker.com/repository/docker/cunnie/multi-platform)
 
-The resulting Docker image is simple: it prints out the architecture of the underlying
-kernel (i.e. "aarch64" for ARM, "x86_64" for Intel) and then exits. See for
-yourself:
+The resulting Docker image is simple: it prints out the architecture of the
+underlying kernel (i.e. "aarch64" for ARM, "x86_64" for Intel) and then exits.
+See for yourself:
 
 ```shell
 docker run -it --rm cunnie/multi-platform
 ```
 
 ### Advanced Topics
-
-If you are skeptical about using my custom resource type
-("cunnie-registry-image"), you can build your own from the official Concourse
-GitHub repo (replacing `cunnie/registry-image` with your Docker image location
-on Docker Hub):
-
-```shell
-git clone https://github.com/concourse/registry-image-resource.git
-cd registry-image-resource
-base_image=ubuntu docker build \
-  --build-arg base_image=ubuntu \
-  -t cunnie/registry-image \
-  -f dockerfiles/ubuntu/Dockerfile \
-  .
-```
 
 If your Docker image needs to be built slightly differently for different
 platforms, use the
@@ -148,3 +131,10 @@ RUN curl -L https://github.com/cunnie/sslip.io/releases/download/2.6.1/sslip.io-
     -o /usr/sbin/sslip.io-dns-server; \
   chmod 755 /usr/sbin/sslip.io-dns-server
 ```
+
+## Corrections & Updates
+
+*2022-12-04*
+
+I updated the post to require Concourse 7.9, which allowed me to remove the
+custom Concourse resource type.
