@@ -73,7 +73,7 @@ Do the following:
   - **Chain of trusted root certificates**: click **Browse File** and select
     `vcenter-80_nono_io.ca-bundle`
   - **Private Key**: click **Browse File** and select
-    `vcenter-80_nono_io.ca-bundle`
+    `vcenter-80.nono.io.key`
 - Click **Replace**.
 
 The change should take effect immediately, though it may take a minute for the
@@ -229,3 +229,8 @@ certificate chain (CA bundle).
 Expanded the "How to Determine if a Certificate is a Self-Signed Certificate"
 section to include the signature algorithm, and included the problematic root
 cert to drive home the cause of the error.
+
+*2023-01-05*
+
+We mistakenly told users to upload the CA bundle when they should have uploaded
+the key. Thanks @obsidianindy.
