@@ -9,7 +9,19 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 02 Jan 2023 16:34:10 -0800</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Jan 2023 19:42:50 -0800</lastBuildDate><atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On-premise is Almost Four Times Cheaper * than the Cloud</title>
+      <link>https://blog.nono.io/post/on-premise_vs_cloud/</link>
+      <pubDate>Wed, 04 Jan 2023 19:42:50 -0800</pubDate>
+      
+      <guid>https://blog.nono.io/post/on-premise_vs_cloud/</guid>
+      <description>* If you don&amp;rsquo;t count the amount of time spent maintaining the on-premise equipment.
+Abstract My 48-VM (virtual machine) homelab configuration costs me approximately $430/month in hardware, electricity, virtualization software, and internet, but an equivalent configuration on AWS (Amazon Web Services) would cost $1,660/month (almost four times as expensive)!
+Disclosures:
+I work for VMware, which sells on-premise virtualization software (i.e. vSphere). I didn&amp;rsquo;t put a dollar value on the time spent maintaining on-premise because I had a hard time assigning a dollar value.</description>
+    </item>
+    
     <item>
       <title>The Least Secure Way to Back Up vCenter 8.0 with TrueNAS 13.0</title>
       <link>https://blog.nono.io/post/backup_vcenter_w_truenas/</link>
