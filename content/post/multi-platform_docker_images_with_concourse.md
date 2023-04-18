@@ -115,6 +115,26 @@ See for yourself:
 docker run -it --rm cunnie/multi-platform
 ```
 
+### Gotchas
+
+Update your Concourse pipelines to use the new resource `registry-image`
+instead of the old, deprecated `docker-image`, otherwise your pipelines will
+pull the old (pre-multi-platform) image, and you'll be sad.
+
+```diff
+jobs:
+  name: unit
+  plan:
+  - get: sslip.io
+    trigger: true
+  - config:
+      image_resource:
+        source:
+          repository: cunnie/fedora-golang-bosh
+-       type: docker-image
++       type: registry-image
+```
+
 ### Advanced Topics
 
 If your Docker image needs to be built slightly differently for different
@@ -133,6 +153,11 @@ RUN curl -L https://github.com/cunnie/sslip.io/releases/download/2.6.1/sslip.io-
 ```
 
 ## Corrections & Updates
+
+*2023-04-18*
+
+Gotcha: update your pipelines to use the new `registry-image` instead of the
+old `docker-image`, lest your pipelines don't pull the new image.
 
 *2022-12-04*
 
