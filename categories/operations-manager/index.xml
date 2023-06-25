@@ -9,6 +9,7 @@
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Thu, 06 Sep 2018 10:44:30 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/operations-manager/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Safely Upgrading PAS 2.2 with NSX-T Load Balancers</title>
