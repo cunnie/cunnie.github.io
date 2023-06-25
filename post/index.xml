@@ -17,8 +17,8 @@
       <pubDate>Sun, 25 Jun 2023 08:05:37 -0800</pubDate>
       
       <guid>https://blog.nono.io/post/nsx_tls/</guid>
-      <description>Create CSR (certificate signing request):
-export CN=nsx.nono.io # change for your NSX&amp;#39;s fully-qualified domain name openssl ecparam -name P-256 -genkey -out ${CN}.key openssl req \ -new \ -key ${CN}.key \ -out ${CN}.csr \ -sha256 \ -nodes \ -subj &amp;#34;/C=US/ST=California/L=San Francisco/O=nono.io/CN=${CN}/emailAddress=brian.cunnie@gmail.com&amp;#34; \ -config &amp;lt;(cat &amp;lt;&amp;lt;EOF [ req ] distinguished_name = req_distinguished_name req_extensions = req_ext [ req_distinguished_name ] [ req_ext ] subjectAltName = @alt_names [alt_names] DNS.1 = ${CN} EOF ) You&amp;rsquo;ll need to catenate your certificate onto its CA bundle (certificate chain); In my case, I did the following:</description>
+      <description>Quickstart First, create your key and your CSR (Certificate Signing Request). In the following example, we create a CSR for our NSX Manager, &amp;ldquo;nsx.nono.io&amp;rdquo;. We use elliptic-curve cryptography because that&amp;rsquo;s what all the cool kids are doing these days (also because the certificates and keys are smaller):
+# change &amp;#34;nsx.nono.io&amp;#34; to be your NSX Manager&amp;#39;s fully-qualified domain name: export CN=nsx.nono.io # &amp;#34;CN&amp;#34; is the abbreviation for &amp;#34;Common Name&amp;#34; openssl ecparam -name P-256 -genkey -out ${CN}.</description>
     </item>
     
     <item>
