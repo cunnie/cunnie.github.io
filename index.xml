@@ -17,7 +17,7 @@
       <pubDate>Sun, 25 Jun 2023 08:05:37 -0800</pubDate>
       
       <guid>https://blog.nono.io/post/nsx_tls/</guid>
-      <description>Quickstart First, create your key and your CSR (Certificate Signing Request). In the following example, we create a CSR for our NSX Manager, &amp;ldquo;nsx.nono.io&amp;rdquo;. We use elliptic-curve cryptography because that&amp;rsquo;s what all the cool kids are doing these days (also because the certificates and keys are smaller):
+      <description>Quickstart 0. Create Key and CSR First, create your key and your CSR (Certificate Signing Request). In the following example, we create a CSR for our NSX Manager, &amp;ldquo;nsx.nono.io&amp;rdquo;. We use elliptic-curve cryptography because that&amp;rsquo;s what all the cool kids are doing these days (also because the certificates and keys are smaller):
 # change &amp;#34;nsx.nono.io&amp;#34; to be your NSX Manager&amp;#39;s fully-qualified domain name: export CN=nsx.nono.io # &amp;#34;CN&amp;#34; is the abbreviation for &amp;#34;Common Name&amp;#34; openssl ecparam -name P-256 -genkey -out ${CN}.</description>
     </item>
     
