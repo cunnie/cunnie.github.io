@@ -17,8 +17,8 @@
       <pubDate>Sun, 25 Jun 2023 08:05:37 -0800</pubDate>
       
       <guid>https://blog.nono.io/post/nsx_tls/</guid>
-      <description>Quickstart 0. Create Key and CSR First, create your key and your CSR (Certificate Signing Request). In the following example, we create a CSR for our NSX Manager, &amp;ldquo;nsx.nono.io&amp;rdquo;. Don&amp;rsquo;t be tempted to use elliptic-curve cryptography even though that&amp;rsquo;s what all the cool kids are doing these days. Instead, stick with the tried-and-true RSA.
-# change &amp;#34;nsx.nono.io&amp;#34; to be your NSX Manager&amp;#39;s fully-qualified domain name: export CN=nsx.nono.io # &amp;#34;CN&amp;#34; is the abbreviation for &amp;#34;Common Name&amp;#34; openssl genrsa -out ${CN}.</description>
+      <description>If you don&amp;rsquo;t like seeing the &amp;ldquo;Your connection is not private&amp;rdquo; or &amp;ldquo;Warning: Potential Security Risk Ahead&amp;rdquo; when you browse to your NSX Manager, then you may want to install a TLS certificate from a commercial CA (Certificate Authority). This post tells you how.
+This NSX manager has a certificate from issued from Sectigo. Note that the padlock in the address bar shows no warning and the certificate&amp;rsquo;s chain-of-trust can be examined.</description>
     </item>
     
     <item>
