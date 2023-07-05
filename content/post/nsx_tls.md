@@ -12,7 +12,6 @@ If you don't like seeing the "Your connection is not private" or "Warning: Poten
 
 {{< figure src="https://github.com/cunnie/cunnie.github.io/assets/1020675/971b47cc-dc82-4c26-9adc-6b3fa20883c3" alt="NSX Manager certificate hierarchy" caption="This NSX manager has a certificate from issued from Sectigo. Note that the padlock in the address bar shows no warning and the certificate's chain-of-trust can be examined.">}}
 
-
 ### 0. Create Key and CSR
 
 Set the environment variable `CN` to the fully-qualified domain name (FQDN) of your NSX Manager, in our case, "nsx.nono.io":
@@ -132,7 +131,7 @@ cat ${CN//./_}.crt \
   > ${CN}.chain.crt
 ```
 
-### 3 Sectigo / Comodo Users: Fix Your Root Certificate
+### 3. Sectigo / Comodo Users: Fix Your Root Certificate
 
 If you bought your certificate from Sectigo, your CA Bundle probably has a "bad" root certificate. "Bad" means a root certificate that has been cross-signed with another root certificate that was self-signed with the weak SHA-1 algorithm. NSX Manager will prevent you from setting this certificate. Here's how to fix.
 
@@ -178,8 +177,6 @@ It returns our certificate's id (your id will be different):
 ```text
 72483a4e-e15a-425e-be40-3c96c0b84a5d
 ```
-
-If it doesn't return _any_ certificate ID, then you probably forget to set "Service Certificate" to "No" when you imported it. To fix, delete your certificate via the web interface & re-import.
 
 Validate the certificate (make sure the "status" is "OK""). Be sure to replace our certificate id with yours:
 
@@ -252,7 +249,16 @@ curl -X POST -s -k --user "${USER_PASS}" \
   "https://${CN}/api/v1/trust-management/certificates/72483a4e-e15a-425e-be40-3c96c0b84a5d?action=apply_certificate&service_type=API&node_id=ab413d42-5050-2404-b8b8-bce8b244d217"
 ```
 
-There's no output from this `curl`.
+There shouldn't be any output from this `curl`; however, if you see the following error message, then you probably forget to set "Service Certificate" to "No" when you imported it. To fix, delete your certificate via the web interface & re-import.
+
+```json
+{
+  "httpStatus" : "BAD_REQUEST",
+  "error_code" : 289,
+  "module_name" : "common-services",
+  "error_message" : "Principal 'admin' with role '[enterprise_admin]' attempts to delete or modify an object of type nsx$Certificate it doesn't own. (createUser=nsx_policy, allowOverwrite=null)"
+}
+```
 
 If you refresh your NSX manager's webpage, you should see the unadorned padlock. Congratulations, you have set your certificate.
 
@@ -260,3 +266,12 @@ If you refresh your NSX manager's webpage, you should see the unadorned padlock.
 
 - [NSX API Reference](https://developer.vmware.com/apis/1583/nsx-t)
 - [NSX-T Data Center Administration Guide: Importing and Replacing Certificates](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/administration/GUID-904871E8-8FC1-42EB-94F0-59DB12EC583F.html)
+- [nsx.nono.io.chain.crt](https://raw.githubusercontent.com/cunnie/cunnie.github.io/main/assets/nsx.nono.io.chain.crt)
+- [nsx_nono_io.ca-bundle](https://raw.githubusercontent.com/cunnie/cunnie.github.io/main/assets/nsx_nono_io.ca-bundle)
+- [nsx_nono_io.crt](https://raw.githubusercontent.com/cunnie/cunnie.github.io/main/assets/nsx_nono_io.crt)
+
+### Corrections & Updates
+
+*2023-07-04*
+
+Put the correct error condition when the "Service Certificate" is wrongly set to "Yes". Added links to various certificates.
