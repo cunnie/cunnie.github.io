@@ -107,6 +107,15 @@ Sectigo has another variant of that same root certificate "[USERTrust RSA
 Certification Authority](https://crt.sh/?id=1199354)", which is self-signed
 with the strong SHA-384 algorithm. This is the variant you should use.
 
+> Renewal / Replacement of machine SSL certificate failed on vcenter-80.nono.io (Review)
+
+We experienced this banner when updating our certificate. Upon examination, we
+noticed our vCenter 8.0.2 had the new certificate (based on the expiration
+date). We logged into https://vcenter-80.nono.io:5480 and selected **Actions →
+Reboot**. Then, when we logged back into our vCenter after reboot, our vCenter
+showed, under **Summary → Issues and Alarms** "Certificate Status". We selected
+**Actions → Reset To Green**.
+
 > Error occurred while fetching tls: The provided MACHINE_SSL certificate and
 > provided private key are not valid.
 
@@ -224,13 +233,17 @@ certificate chain (CA bundle).
 
 ### Corrections & Updates
 
-*2022-11-05*
+*2023-10-28*
 
-Expanded the "How to Determine if a Certificate is a Self-Signed Certificate"
-section to include the signature algorithm, and included the problematic root
-cert to drive home the cause of the error.
+Included new error messages & resolutions.
 
 *2023-01-05*
 
 We mistakenly told users to upload the CA bundle when they should have uploaded
 the key. Thanks @obsidianindy.
+
+*2022-11-05*
+
+Expanded the "How to Determine if a Certificate is a Self-Signed Certificate"
+section to include the signature algorithm, and included the problematic root
+cert to drive home the cause of the error.
