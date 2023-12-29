@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FreeNAS on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/freenas/</link>
     <description>Recent content in FreeNAS on Brian Cunnie&#39;s Technical Blog</description>
     <image>
+      <title>Brian Cunnie&#39;s Technical Blog</title>
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 May 2019 17:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/freenas/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 May 2019 17:16:22 +0000</lastBuildDate>
+    <atom:link href="https://blog.nono.io/categories/freenas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A High-performing Mid-range NAS Server, Part 3: 10 GbE</title>
       <link>https://blog.nono.io/post/nas-performance-tuning/</link>
       <pubDate>Sat, 25 May 2019 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/post/nas-performance-tuning/</guid>
       <description>Abstract &amp;ldquo;How much faster will my VM&amp;rsquo;s disks be if I upgrade my ZFS-based (Z File System) NAS to 10 GbE?&amp;rdquo; The disks will be faster, in some cases, much faster. Our experience is that sequential read throughput will be 1.4✕ faster, write throughput, 10✕ faster, and IOPS, 1.6✕ faster.
 We ran a three-hour benchmark on our NAS server before and after upgrading to 10 GbE. We ran the benchmark again after upgrading.</description>
     </item>
-    
   </channel>
 </rss>

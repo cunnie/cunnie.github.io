@@ -1,186 +1,150 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/</link>
     <description>Recent content in Categories on Brian Cunnie&#39;s Technical Blog</description>
     <image>
+      <title>Brian Cunnie&#39;s Technical Blog</title>
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Nov 2022 10:16:22 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Nov 2022 10:16:22 +0000</lastBuildDate>
+    <atom:link href="https://blog.nono.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vSphere</title>
       <link>https://blog.nono.io/categories/vsphere/</link>
       <pubDate>Wed, 02 Nov 2022 10:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/vsphere/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>BDD</title>
       <link>https://blog.nono.io/categories/bdd/</link>
       <pubDate>Sun, 16 Feb 2020 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/bdd/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Golang</title>
       <link>https://blog.nono.io/categories/golang/</link>
       <pubDate>Sun, 16 Feb 2020 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/golang/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>TDD</title>
       <link>https://blog.nono.io/categories/tdd/</link>
       <pubDate>Sun, 16 Feb 2020 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/tdd/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>BOSH</title>
       <link>https://blog.nono.io/categories/bosh/</link>
       <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/bosh/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>CF</title>
       <link>https://blog.nono.io/categories/cf/</link>
       <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/cf/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>IPv6</title>
       <link>https://blog.nono.io/categories/ipv6/</link>
       <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/ipv6/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>FreeNAS</title>
       <link>https://blog.nono.io/categories/freenas/</link>
       <pubDate>Sat, 25 May 2019 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/freenas/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Logging &amp; Metrics</title>
       <link>https://blog.nono.io/categories/logging-metrics/</link>
       <pubDate>Sat, 25 May 2019 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/logging-metrics/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>2FA</title>
       <link>https://blog.nono.io/categories/2fa/</link>
       <pubDate>Mon, 21 Jan 2019 11:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/2fa/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Google Authenticator</title>
       <link>https://blog.nono.io/categories/google-authenticator/</link>
       <pubDate>Mon, 21 Jan 2019 11:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/google-authenticator/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>TOTP</title>
       <link>https://blog.nono.io/categories/totp/</link>
       <pubDate>Mon, 21 Jan 2019 11:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/totp/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Networking</title>
       <link>https://blog.nono.io/categories/networking/</link>
       <pubDate>Wed, 28 Nov 2018 17:16:22 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/networking/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>NSX-T</title>
       <link>https://blog.nono.io/categories/nsx-t/</link>
       <pubDate>Thu, 06 Sep 2018 10:44:30 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/nsx-t/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Operations Manager</title>
       <link>https://blog.nono.io/categories/operations-manager/</link>
       <pubDate>Thu, 06 Sep 2018 10:44:30 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/operations-manager/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Concourse</title>
       <link>https://blog.nono.io/categories/concourse/</link>
       <pubDate>Fri, 24 Nov 2017 14:06:25 +0000</pubDate>
-      
       <guid>https://blog.nono.io/categories/concourse/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>BOSH CPI</title>
       <link>https://blog.nono.io/categories/bosh-cpi/</link>
       <pubDate>Mon, 17 Apr 2017 11:43:14 -0700</pubDate>
-      
       <guid>https://blog.nono.io/categories/bosh-cpi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>NTP</title>
       <link>https://blog.nono.io/categories/ntp/</link>
       <pubDate>Sat, 28 Jan 2017 12:38:13 -0800</pubDate>
-      
       <guid>https://blog.nono.io/categories/ntp/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>NSX</title>
       <link>https://blog.nono.io/categories/nsx/</link>
       <pubDate>Tue, 01 Nov 2016 09:15:02 -0700</pubDate>
-      
       <guid>https://blog.nono.io/categories/nsx/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

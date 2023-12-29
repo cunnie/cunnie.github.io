@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Concourse on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/concourse/</link>
     <description>Recent content in Concourse on Brian Cunnie&#39;s Technical Blog</description>
     <image>
+      <title>Brian Cunnie&#39;s Technical Blog</title>
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Nov 2017 14:06:25 +0000</lastBuildDate><atom:link href="https://blog.nono.io/categories/concourse/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Nov 2017 14:06:25 +0000</lastBuildDate>
+    <atom:link href="https://blog.nono.io/categories/concourse/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Maintaining BOSH Directors with Concourse CI and bosh-deployment</title>
       <link>https://blog.nono.io/post/bosh-deployed-with-concourse/</link>
       <pubDate>Fri, 24 Nov 2017 14:06:25 +0000</pubDate>
-      
       <guid>https://blog.nono.io/post/bosh-deployed-with-concourse/</guid>
       <description>&amp;ldquo;BOSH deploys Concourse, and Concourse deploys BOSH&amp;rdquo; —Cloud Foundry koan
 A BOSH Director is a VM (virtual machine) orchestrator which is itself a VM. BOSH solves the problem of keeping its VMs&amp;rsquo; applications (operating systems (stemcells) and releases) up-to-date with the command, bosh deploy; however, this begs the question, &amp;ldquo;what keeps the BOSH Director itself up-to-date?&amp;rdquo;. [Quis custodiet?]
 We explore using Concourse, a Continuous Integration (CI) server, and bosh-deployment [Updating BOSH], in order to create a Concourse pipeline which updates, in turn, a BOSH director on AWS (Amazon Web Services), on Microsoft Azure, and GCP (Google Cloud Platform).</description>
     </item>
-    
     <item>
       <title>Concourse has Badges</title>
       <link>https://blog.nono.io/post/concourse-badges/</link>
       <pubDate>Thu, 01 Sep 2016 17:29:49 -0700</pubDate>
-      
       <guid>https://blog.nono.io/post/concourse-badges/</guid>
       <description>The Concourse Continuous Integration (CI) server has an API endpoint that displays a badge which shows health of your project:
 http(s)://concourse-server/api/v1/pipelines/pipeline-name/jobs/job-name/badge
 0. Abstract Open Source projects that have CI (e.g. Bootstrap, Node.js) often feature status badges (also known as images or icons) to display the health of their projects. CI servers such as Travis CI offer status badges. Concourse CI also offers status badges.
 The status badge is a Scalable Vector Graphics (SVG) image available from the Concourse API.</description>
     </item>
-    
     <item>
       <title>Concourse without a Load Balancer</title>
       <link>https://blog.nono.io/post/concourse-no-elb/</link>
       <pubDate>Fri, 26 Aug 2016 06:58:07 -0700</pubDate>
-      
       <guid>https://blog.nono.io/post/concourse-no-elb/</guid>
       <description>Abstract Concourse is a continuous integration (CI) server. It can be deployed manually or via BOSH.
 In this blog post, we describe the BOSH deployment of a Concourse CI server to natively accept Secure Sockets Layer (SSL) connections without using a load balancer. This may reduce the complexity and cost [ELB-pricing] of a Concourse deployment.
 2016-09-12: This blog post is obsolete. Newer (v2.0.0+) versions of Concourse allow binding to the privileged ports 80 and 443, eliminating the need for an nginx proxy.</description>
     </item>
-    
     <item>
       <title>The World&#39;s Smallest Concourse CI Server</title>
       <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
       <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
-      
       <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
       <description>[2016-04-06: This Blog Post is out-of-date; Please refer to the official Concourse documentation for instructions how to install a Concourse server] Continuous Integration (CI) is often used in conjunction with test-driven development (TDD); however, CI servers often bring their own set of challenges: they are usually &amp;ldquo;snowflakes&amp;rdquo;, uniquely configured machines that are difficult to upgrade, re-configure, or re-install. [snowflakes]
 In this blog post, we describe deploying a publicly-accessible, lean (1GB RAM, 1 vCPU, 15GB disk) Concourse CI server using a 350-line manifest.</description>
     </item>
-    
   </channel>
 </rss>
