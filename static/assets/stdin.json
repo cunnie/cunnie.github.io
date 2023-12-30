@@ -1,0 +1,126 @@
+{
+  "method": "create_vm",
+  "arguments": [
+    "882a8a0c-5df4-4e4b-bbe0-292ff1b63c01",
+    "sc-fb254d39-49a8-44b9-baa7-a36537a7a4a0",
+    {
+      "datacenters": [
+        {
+          "clusters": [
+            {
+              "cl": {
+                "resource_pool": "BOSH"
+              }
+            }
+          ],
+          "name": "dc"
+        }
+      ],
+      "cpu": 2,
+      "disk": 10240,
+      "ram": 2048,
+      "vmx_options": {
+        "disk.enableUUID": "1"
+      }
+    },
+    {
+      "vsphere-guest": {
+        "type": "manual",
+        "ip": "10.9.2.37",
+        "netmask": "255.255.254.0",
+        "cloud_properties": {
+          "name": "guest"
+        },
+        "default": [
+          "dns",
+          "gateway"
+        ],
+        "dns": [
+          "10.9.2.1",
+          "8.8.8.8"
+        ],
+        "gateway": "10.9.2.1"
+      }
+    },
+    [],
+    {
+      "bosh": {
+        "blobstores": [
+          {
+            "options": {
+              "endpoint": "https://73.189.219.4:25250",
+              "password": "blahblah",
+              "tls": {
+                "cert": {
+                  "ca": "-----BEGIN CERTIFICATE-----\nMIIEkzCCAvugAwIBAgIQPOqPz6WEbVsZINDkPdNYnjANBgkqhkiG9w0BAQsFADBT\nMQwwCgYDVQQGEwNVU0ExFjAUBgNVBAoTDUNsb3VkIEZvdW5kcnkxKzApBgNVBAMT\nImRlZmF1bHQuYmxvYnN0b3JlLWNhLmJvc2gtaW50ZXJuYWwwHhcNMjMxMDEwMTMy\nMzUzWhcNMjQxMDA5MTMyMzUzWjBTMQwwCgYDVQQGEwNVU0ExFjAUBgNVBAoTDUNs\nb3VkIEZvdW5kcnkxKzApBgNVBAMTImRlZmF1bHQuYmxvYnN0b3JlLWNhLmJvc2gt\naW50ZXJuYWwwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCwCP+qqcPY\nW/FllHfi+aR1nFKv9+XhafZIiz2TI4FTkEY06KXTgvNeOW7uv4fXqeV40mNWh3i6\nhVcnsLWgnipFC7OS7+Gu9Qt8Z7b0NNqL1I520cFBzJyne3lC7mqJXtz9+bFPHRuA\nfF3XHx1NZEIFj4rp8tuJvph269nxkky+RiAPjAf/XBkibgmzKkib2x2Oawi2YjNZ\ncv4SUNrDkzVXCtU54TAioHePo+P9JCzr2VOjJt5G9hCe1ccVvBopdLZBjZl31nX2\nxAlxKHCcmzxbPq4vvDeaqW96fi/h11GlDeJMY2yw9HLmAHQMNTvWhWmLz1K7hErr\nVptzBsSvrC9CWPdFdIX11pKMvNcgwSn2MXplEnlGMI5+PlXAgSN80hBKfKIkG04g\nSU/DywMvxQ+fHwyKrnLRJ8Kf6nG+apHbPoDUsISE5CbKGhXdMNNVVRfe7CYiH7iV\nB0iOU2WBMH3Gh/flWXRlLlQv56gZIa52qAq6vMSrjvpnhpjhLtzCyE8CAwEAAaNj\nMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFJJs\n0paT6ubtwDmZqJc3uT+bfIXdMB8GA1UdIwQYMBaAFJJs0paT6ubtwDmZqJc3uT+b\nfIXdMA0GCSqGSIb3DQEBCwUAA4IBgQCA6QUER0FQi++EmCKyLsf6xWnGo0b5uEvL\n9pJgI6yVI6IXVgoyHcIeWMt92uoAiQ3znDXswOUQtCWbWNGRnfwYAf6dMdZVhCoN\n1jRk8AWbD0qZx8mwGM67QQQ1uUQ8QtUQfJWlQcXampUfKFCsRuICYqEWKw74+Sxi\n4qYnnyqhvIntunKl7tCjv79bBJ6FdpliJc8A7dnpmdM0xZMSpYhdKZILGgrSR9mC\nD1DFPWm8228PH+AEEuK9YPolghH8g1lcmqo8aJGh58gR8oDqEsepL0+Qe7ZwQT8r\nhgFUw08wualuklDp7RNQiKSyXHstVz8r4PxTxJdU7c2MbHW7FOWVKnlQuQl2BH7U\nJhzjUj4YwAhBqHHYuFdkCN9xtgvEEpehjlzX8gxfsLIZwD3vN7mEPfmHSgndx1C0\nAJMliQclCff88uSiS2KjAzhzJ5egy0uUeg4wZDAuntjPcmOkRZQ6zWFlxh3Ac2b2\nBwyQWRHNP2ypGsubBMvEGHPxYCkWaMM=\n-----END CERTIFICATE-----\n"
+                }
+              },
+              "user": "agent"
+            },
+            "provider": "dav"
+          }
+        ],
+        "ntp": [
+          "time1.google.com",
+          "time2.google.com",
+          "time3.google.com",
+          "time4.google.com"
+        ],
+        "mbus": {
+          "cert": {
+            "ca": "-----BEGIN CERTIFICATE-----\nMIIEiTCCAvGgAwIBAgIQd17YcIWoLDETvdEBfHIn0zANBgkqhkiG9w0BAQsFADBO\nMQwwCgYDVQQGEwNVU0ExFjAUBgNVBAoTDUNsb3VkIEZvdW5kcnkxJjAkBgNVBAMT\nHWRlZmF1bHQubmF0cy1jYS5ib3NoLWludGVybmFsMB4XDTIzMTAxMDEzMjM0OFoX\nDTI0MTAwOTEzMjM0OFowTjEMMAoGA1UEBhMDVVNBMRYwFAYDVQQKEw1DbG91ZCBG\nb3VuZHJ5MSYwJAYDVQQDEx1kZWZhdWx0Lm5hdHMtY2EuYm9zaC1pbnRlcm5hbDCC\nAaIwDQYJKoZIhvcNAQEBBQADggGPADCCAYoCggGBANWxV8m/QqOOt6HLjProJ7X8\nrVlqd7GI6X2wTBnnDwQ9VSkKMdiFu33p5XQFDcM+og/A2UuGX48OWQzJVfa3lttO\nCojHATHtZBSwKfCsppHDdS1sFw7AggH3y6QtXeh48uiFTbcFcQFYO9BL7wIDspRt\nKunWXq28CSh9jwM6czbJfPZjccVqJ1Lt7lMkh/Hgr7EUrqzB2O1aGURWHvgIvEAH\ndg8CwUPAiq3LHr3GOZse1y2QBjqzlQESJphvo+cDZ/Kp8fEBEDupIP0sPT2w7Lpb\nUULN4PpID/3emyruPOO3j+9N1Cu1t0K7RnqggW06IjfRHgN4yfFRMAPeadisLvPv\ng2EqYZ3i+xyZuEsale3FCVG3xn8G0RwCiu/qPUPhopCvy8jqTpodNWLG/5tZASIo\nk/5Clq0yT3yGFCzou2tQugH4p0IEKuH/QmDsSONXnq28XZpSYU0vtzGvjcx0HdO4\nGipsHlOZ3FSctCj0XR3n+w5/z0KmswFxQnxMsQwzMQIDAQABo2MwYTAOBgNVHQ8B\nAf8EBAMCAQYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU10o9/KojyCb3VXNz\nZ3JEjTZiWvcwHwYDVR0jBBgwFoAU10o9/KojyCb3VXNzZ3JEjTZiWvcwDQYJKoZI\nhvcNAQELBQADggGBAIqbeIi+RN0Xu5Xtkfn7U5rxiSVmKsuux80w55RMRxsSo6qg\nFlstyFGAR22nAKuAZpeg7LJNfHiuKQ4CSvQyZQJj9GqfMm89ECE773UknU42DgaT\nqQjnDe6RB3CXrJIUrKbgW/RHPjXqfLSbp3cNe+W956M4TdSjy6eTQmtPdL7cNb7O\nE9E0wXQe85mClLNz7t5xNa4hV0GF0ckcKzYdsHoy3RRzi08+Aw4N1jwqH+RFk5TI\nfCLl4t4mXOsLLrB2Q4sjdfuuIrS7Es61Q5pecTOJBMPVDLit+jo8P3K1Mi8w5RK6\nNz4+AHKxn61EDo4zZ2MrH1tUZlmANUBT+SgiRCZhdKYqpWwu3VlNS5M+akGE3vdu\nOxazo4DLbxlNv8s/cYkoV3u0/P8LsfdTxxOi5K9xJ5ygNmovYt0KLiSbTZhAZ/0v\nx7HBZl1gHRFBTilxqFVwgZbTn9dLB6VxqexlE0gpSs6goBiXVUEIFrbeAGDacym9\nf3T3vYRSkE5dX8+l3g==\n-----END CERTIFICATE-----\n\n",
+            "certificate": "-----BEGIN CERTIFICATE-----\nMIIEhDCCAuygAwIBAgIRAPP3wzyoFxGQxnK2a/yINP0wDQYJKoZIhvcNAQELBQAw\nTjEMMAoGA1UEBhMDVVNBMRYwFAYDVQQKEw1DbG91ZCBGb3VuZHJ5MSYwJAYDVQQD\nEx1kZWZhdWx0Lm5hdHMtY2EuYm9zaC1pbnRlcm5hbDAeFw0yMzEyMjkyMjIwNDda\nFw0yNTEyMjgyMjIwNDdaMHMxDDAKBgNVBAYTA1VTQTEWMBQGA1UECgwNQ2xvdWQg\nRm91bmRyeTFLMEkGA1UEAwxCODgyYThhMGMtNWRmNC00ZTRiLWJiZTAtMjkyZmYx\nYjYzYzAxLmJvb3RzdHJhcC5hZ2VudC5ib3NoLWludGVybmFsMIIBojANBgkqhkiG\n9w0BAQEFAAOCAY8AMIIBigKCAYEAoZEddCSu69lPQC+uTNgqfXptlb3YcKttA8Uy\n2hasDRg1aKY5WiTs2AbCZxyfax1uqIlvkY/8P+A7UyqX6PTP9q7mCOPN/EtwKsZo\nrXTPaHXsJFT19qsr1WITGa0+Q6MkawRkBmyXePs2icDtT8Vvegwecbp9h3ik4fHj\nUzU/ezuEZK7q3zMOtIVGkfbrXG63xcimeM7v78e7mlcSumGTaa/D62/UYff0q6Re\n3QQnU2cU0q99NovS4g0IgZ0LDCL0UJb+7RyvjpbV4b/6DRbuLcOt5vP45oET16ZM\nX5hbwPbRJoG83UCPq3z0wsRJ5m0yS+IPowlD7QhSOgqMnIYEwoFgN2xMd4X4V8CD\nRapWkf1hbtc+lKHpdXrXszbaQsw0IxwSH/ON8tyc4FbD3Dc4EzxYtyfI+OKyA+1O\nquu2rj5DWmzlacMO/5aLNDzF/jB2bcdv18E7Nr4m+QNvrsNiHuApDSEK01ohQ3wg\nTGs63I9TYP3UmtR5crKz3SqI9BWbAgMBAAGjODA2MA4GA1UdDwEB/wQEAwIHgDAM\nBgNVHRMBAf8EAjAAMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEB\nCwUAA4IBgQAMYdN7p+HeAdrQBdOYs5SOcgm+hGomWxfoKa153k6FoiEYigxmsGdO\ndkG/ogoijNPYcLIM5kQMBg90H+hzaCchod1ETJOPj0M0w3QgjvLNknnbGrn3B/aB\nFlwqet4HaixioKbNUlwoqV/DsWXu5I5fS7HDCO6PA5optKVMTwVLr/zBGPU0YTkX\nwgZjIojNI9s6wfGa+jevoiPw2DECcoeTDuL/gNdv52dnsQlDJ7MUHGmx/YdLnY8K\nlVxBrvkvI5HbwqGvBfC+TmB/w8AzEyWHAbAxsFRZ7w3RAhlSSjTthh2GEBHfh8ri\nkBweAnSIzn035nz2mMOoToPIbUC3bVkY2LrzhHtF9TrV8AA9om5Gcl6Jph9YHi+E\n8EZDIV9dW9ZCJg2ZiqbAmoPZwh0dwPxexDUOshNfqqbSAq0nQrE9qaHkYoe5U9Bj\nPK02scE6aB6bIPYxk/KsJH+9DYH6fkYKPYCv4srO72mDsyzuDqX/ah1fO8FWCFj9\nTZWHmNrrc9k=\n-----END CERTIFICATE-----\n",
+            "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIG0kifwJxZTDqjUahu2GN8TQ/8If\n-----END RSA PRIVATE KEY-----\n"
+          }
+        },
+        "password": "$6$6064253835fd4dc6$cWJZeBILwK6x1KBcmITOvEJ/AzUmQsCEn6Xwvj78kvDtBGt3ziMd57qc563/HKr.Yope/S8EiTA7AmJgBTT5.0",
+        "group": "bosh-vsphere-dummy-jammy",
+        "groups": [
+          "bosh-vsphere",
+          "dummy",
+          "jammy",
+          "bosh-vsphere-dummy",
+          "dummy-jammy",
+          "bosh-vsphere-dummy-jammy"
+        ]
+      }
+    }
+  ],
+  "context": {
+    "director_uuid": "cb7514a7-1999-4b74-9a1e-f504c4f5ce77",
+    "request_id": "cpi-975150",
+    "vm": {
+      "stemcell": {
+        "api_version": 3
+      }
+    },
+    "datacenters": [
+      {
+        "clusters": [
+          {
+            "cl": {
+              "resource_pool": "BOSH"
+            }
+          }
+        ],
+        "datastore_pattern": "NAS-0",
+        "disk_path": "bosh-vsphere-disks",
+        "name": "dc",
+        "persistent_datastore_pattern": "NAS-0",
+        "template_folder": "bosh-vsphere-templates",
+        "vm_folder": "bosh-vsphere-vms"
+      }
+    ],
+    "enable_human_readable_name": true,
+    "host": "vcenter-80.nono.io",
+    "nsxt": {
+      "ca_cert": "-----BEGIN CERTIFICATE-----\nMIIDcDCCAligAwIBAgIJALznlWbhJgXBMA0GCSqGSIb3DQEBCwUAMGIxDjAMBgNV\nBAMMBW5zeC10MQwwCgYDVQQLDANOU1gxFDASBgNVBAoMC1ZNd2FyZSBJbmMuMRIw\nEAYDVQQHDAlQYWxvIEFsdG8xCzAJBgNVBAgMAkNBMQswCQYDVQQGEwJVUzAeFw0y\nMjA4MDgyMTI5NDVaFw0yNDExMTAyMTI5NDVaMGIxDjAMBgNVBAMMBW5zeC10MQww\nCgYDVQQLDANOU1gxFDASBgNVBAoMC1ZNd2FyZSBJbmMuMRIwEAYDVQQHDAlQYWxv\nIEFsdG8xCzAJBgNVBAgMAkNBMQswCQYDVQQGEwJVUzCCASIwDQYJKoZIhvcNAQEB\nBQADggEPADCCAQoCggEBAN2fmk0tAgHiLIOaPtCTDBlIsXetKxuuej3BR10Wm9tk\nNq+stjEvJ/XLlOpY/D6cFwPbk52TCcGuNYzh91/dLr0YQFmVgwwx1HdXaTv0E2+E\nwwZLWL6FVtdRoitd7Yu7eIcT6SXVsQdg3Nf+T3a8hlY7bNcM/n2oqQBM40as0E3B\nFisk3Iv5VBXI6VJsWs7ON4qZvxo/+yrvz4MuHvLKF+gVsSpLtsV/ffnJdZtTEblH\nzNER427/l5CEP3h5662jtq34pz444msml9htLw7QVBJXrQ4x1aiNcgoMg8DWx4df\n9t+MTjy3pE48PtPEQQlxTrnNrTqiYVQyQJUA2A6oo6UCAwEAAaMpMCcwEwYDVR0l\nBAwwCgYIKwYBBQUHAwEwEAYDVR0RBAkwB4IFbnN4LXQwDQYJKoZIhvcNAQELBQAD\nggEBAF/jg/rRLL/PMWlo9RqOOcz4A2vbOMlspBgyGOSTGPNICMvejahryiI5sD7U\nfbFA4B+DKeo53I71K8saJOhFSHEpA64a8QnJEr5TWKxKwWa8kZhXCZsIUEVg4LtY\nK5kfZGHby6Y/V7LHf1kBCFq2E81+x2J1PhTOzmlbqeMZlx/3k/P1nqBXsXSYK9Mw\nHWCx9gymhZCkN9D9HCu2NdXz98TnNaMObeE++Tox+4OJJSYW4AAzKrGjsKHJuTip\nGa7neFM/+Do22X6NiDo+TeqFx++v7/wEv0OCSzChq+Imcs3/2KAqqY5fMRsJMtCu\nyRJ7n5AUZ5dcI5y/udK8jyE7j1I=\n-----END CERTIFICATE-----\n",
+      "host": "nsx.nono.io",
+      "password": "my-other-secret-password",
+      "username": "admin"
+    },
+    "password": "my-secret-password",
+    "user": "a@vsphere.local"
+  },
+  "api_version": 2
+}
