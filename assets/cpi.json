@@ -1,0 +1,48 @@
+{
+  "cloud": {
+    "plugin": "vsphere",
+    "properties": {
+      "vcenters": [
+        {
+          "host": "vcenter-80.nono.io",
+          "user": "a@vsphere.local",
+          "password": "my-secret-password",
+          "datacenters": [
+            {
+              "name": "dc",
+              "vm_folder": "bosh-vsphere-vms",
+              "template_folder": "bosh-vsphere-templates",
+              "disk_path": "bosh-vsphere-disks",
+              "allow_mixed_datastores": true,
+              "clusters": [
+                {
+                  "cl": {
+                    "resource_pool": "BOSH"
+                  }
+                }
+              ],
+              "datastore_pattern": "NAS-0",
+              "persistent_datastore_pattern": "NAS-0"
+            }
+          ],
+          "default_disk_type": "preallocated",
+          "enable_auto_anti_affinity_drs_rules": false,
+          "memory_reservation_locked_to_max": false,
+          "upgrade_hw_version": false,
+          "enable_human_readable_name": true,
+          "http_logging": false,
+          "connection_options": {
+            "ca_cert": null
+          }
+        }
+      ],
+      "agent": {
+        "ntp": [
+          "0.pool.ntp.org",
+          "1.pool.ntp.org"
+        ],
+        "mbus": "nats://73.189.219.4:4222"
+      }
+    }
+  }
+}
