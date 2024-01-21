@@ -131,23 +131,22 @@ File.open("/tmp/#{Process.pid}.json", 'w') do |file|
 end
 ```
 
-Then I ran a deploy which created a VM: `bosh -d dummy deploy dummy.yml`.
+I ran a deploy which created a VM: `bosh -d dummy deploy dummy.yml`.
 
-Then I checked the `/tmp` directory on the Director for JSON files until I found
+I checked the `/tmp` directory on the Director for JSON files until I found
 the one I wanted. I saved the file as `stdin.json`.
 
 ### Setting the Breakpoint
 
-Now we're ready to start debugging. Let's edit
-`src/vsphere_cpi/lib/cloud/vsphere/vm_creator.rb` and insert the following
+We're ready to start debugging. Let's edit
+`src/vsphere_cpi/lib/cloud/vsphere/vm_creator.rb` and insert the following line
 where we want to dynamically test things:
 
 ```ruby
-require 'pry-byebug'
-binding.pry
+require 'pry-byebug'; binding.pry
 ```
 
-Now let's run the CPI from our workstation, passing the two JSON files as
+Let's run the CPI from our workstation, passing the two JSON files as
 arguments:
 
 ```
@@ -209,3 +208,7 @@ References:
 
 - [`cpi.json`](/assets/cpi.json)
 - [`stdin.json`](/assets/stdin.json)
+
+### Updates/Errata
+
+**2024-01-21** Minor style changes.
