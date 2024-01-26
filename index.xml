@@ -18,7 +18,7 @@
       <link>https://blog.nono.io/post/debugging_vsphere_cpi_api/</link>
       <pubDate>Mon, 01 Jan 2024 14:51:43 -0800</pubDate>
       <guid>https://blog.nono.io/post/debugging_vsphere_cpi_api/</guid>
-      <description>This Blog Post Is Not For You This blog post is directed towards people who are working with the BOSH vSphere CPI (Cloud Provider Interface), which is probably not you. There are more interesting things to read. If you want suggestions, try Ulysses by Sir Alfred Lord Tennyson, a poem about an aged hero seeking to recapture his adventures of youth.
+      <description>This Blog Post Is Not For You This blog post is directed towards people who are working with the BOSH vSphere CPI (Cloud Provider Interface), which is not you. There are more interesting things to read. If you want suggestions, try Ulysses by Sir Alfred Lord Tennyson, a poem about an aged hero seeking to recapture his adventures of youth.
 Challenge: Extending the Size of the Root Disk I&amp;rsquo;d like to extend the size of the root partition, but it&amp;rsquo;s a challenge: if I don&amp;rsquo;t make exactly the correct vSphere API calls, my changes will fail, and the feedback loop is slow (hot-patching a BOSH Director and then running a deploy takes at least 5 minutes each attempt).</description>
     </item>
     <item>
