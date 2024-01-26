@@ -7,7 +7,7 @@ draft: false
 ### This Blog Post Is Not For You
 
 This blog post is directed towards people who are working with the BOSH vSphere
-CPI (Cloud Provider Interface), which is probably not you. There are more
+CPI (Cloud Provider Interface), which is not you. There are more
 interesting things to read. If you want suggestions, try
 _[Ulysses](https://www.poetryfoundation.org/poems/45392/ulysses)_ by Sir Alfred
 Lord Tennyson, a poem about an aged hero seeking to recapture his adventures of
@@ -209,6 +209,61 @@ References:
 - [`cpi.json`](/assets/cpi.json)
 - [`stdin.json`](/assets/stdin.json)
 
+### Debugging Integration Tests
+
+Kick off a build, e.g. <https://ci.bosh-ecosystem.cf-app.com/teams/vsphere-cpi/pipelines/vsphere-cpi/jobs/lifecycle-7.0-nsxt31/builds/latest>.
+
+Intercept it:
+
+```bash
+fly -t bosh i \
+    --team vsphere-cpi \
+    -u https://ci.bosh-ecosystem.cf-app.com/teams/vsphere-cpi/pipelines/vsphere-cpi/jobs/lifecycle-7.0-nsxt31/builds/252
+```
+
+Choose the "test" task. Set up your environment.
+
+```
+apt update && apt install -y git neovim less fd-find
+```
+
+Source in the [necessary environment variables](https://github.com/cloudfoundry/bosh-vsphere-cpi-release/blob/master/ci/tasks/run-lifecycle.sh#L6-L7):
+
+```bash
+source bosh-cpi-src/.envrc
+source environment/metadata
+export PATH="$PATH:$PWD/bosh-cpi-src/src/iso9660wrap"
+```
+
+Scan the output of the integration tests running in the browser: look for the
+stemcell ID and set that (this saves a lot of time uploading):
+
+```bash
+export BOSH_VSPHERE_STEMCELL_ID="sc-9f526a87-9e9b-44a4-935c-321e141c5f64"
+```
+
+Edit your integration test. This is a good time for strategic use of `require
+'pry-byebug'; binding.pry`:
+
+```bash
+nvim bosh-cpi-src/src/vsphere_cpi/spec/integration/root_size_disk_gb_spec.rb
+```
+
+Now run _only_ your integration test. You don't want to run _all_ the tests
+because it can take more than four hours, and you probably don't have the
+patience of the Buddha:
+
+```bash
+pushd bosh-cpi-src/src/vsphere_cpi
+bundle exec rspec \
+    ${RSPEC_FLAGS:-''} \
+    --require ./spec/support/verbose_formatter.rb \
+    --format VerboseFormatter \
+    spec/integration/root_size_disk_gb_spec.rb
+```
+
 ### Updates/Errata
+
+**2024-01-26** Added _Debugging Integration Tests_.
 
 **2024-01-21** Minor style changes.
