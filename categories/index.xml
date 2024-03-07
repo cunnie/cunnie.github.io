@@ -14,7 +14,7 @@
     <lastBuildDate>Wed, 02 Nov 2022 10:16:22 +0000</lastBuildDate>
     <atom:link href="https://blog.nono.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>vSphere</title>
+      <title>VSphere</title>
       <link>https://blog.nono.io/categories/vsphere/</link>
       <pubDate>Wed, 02 Nov 2022 10:16:22 +0000</pubDate>
       <guid>https://blog.nono.io/categories/vsphere/</guid>
@@ -71,9 +71,9 @@
     </item>
     <item>
       <title>Logging &amp; Metrics</title>
-      <link>https://blog.nono.io/categories/logging-metrics/</link>
+      <link>https://blog.nono.io/categories/logging--metrics/</link>
       <pubDate>Sat, 25 May 2019 17:16:22 +0000</pubDate>
-      <guid>https://blog.nono.io/categories/logging-metrics/</guid>
+      <guid>https://blog.nono.io/categories/logging--metrics/</guid>
       <description></description>
     </item>
     <item>
