@@ -195,7 +195,7 @@ reachable from the internet.
 ranges** (> 1k IP addresses); they will cause `bosh deploy` to hang.
 
 **Make sure your application binds to the IPv6 address** of your VM if you plan on
-using the IPv6 endpoint (e.g. <http://[2601:646\:100:69f1::165]/>). You may
+using the IPv6 endpoint (e.g. <http://[2601:646:100:69f1::165]/>). You may
 need to make additional configuration changes, possibly code changes.
 
 Tech notes: the underlying system call (kernel interface) to create a socket,
