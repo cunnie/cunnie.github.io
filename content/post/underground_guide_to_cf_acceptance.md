@@ -21,7 +21,6 @@ cd ~/workspace/
 git clone git@github.com:cloudfoundry/cf-acceptance-tests.git
 cd cf-acceptance-tests
 . ./.envrc
-bin/update_submodules
 cp example-cats-config.json cats-config.json
 export CONFIG=cats-config.json
 cf api api.cf.nono.io # or whatever your Cloud Foundry's API endpoint is
@@ -29,7 +28,13 @@ cf login -u admin
 cf create-space -o system system # don't worry if it's already created
 cf t -o system -s system
 cf enable-feature-flag diego_docker # necessary if you're running the Docker tests (`"include_docker": true`)
+cf enable-feature-flag service_instance_sharing # necessary if you're running the sharing tests (`"include_service_instance_sharing": true`)
 ```
+
+If you don't have the Cloud Foundry CLI (command line interface), follow the
+[installation
+instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+Install the latest version (v8).
 
 Let's configure our `cats-config.json`. You should know the values for all the
 replacements except `credhub_secret`; we'll explain how to get that next:
@@ -140,3 +145,11 @@ Means you've forgotten to `cf enable-feature-flag diego_docker`.
 ```
 
 Means you've either set the wrong `credhub_secret` in `cats-config.json` or you forgot to create & bind the `credhub` security group.
+
+
+## Corrections & Updates
+
+*2024-03-06*
+
+Added instructions to download the CF CLI. Also included
+instructions to enable service instance sharing.
