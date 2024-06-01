@@ -123,7 +123,8 @@ Here's a truncated sample of a `create_vm` call which, I've saved to a file,
 
 A reasonable question to ask is, "Brian, how did you get the `create_vm` JSON?"
 I'm glad you asked. I added the following lines of Ruby to
-[`/var/vcap/packages/vsphere_cpi/bin/vsphere_cpi`](https://github.com/cloudfoundry/bosh-vsphere-cpi-release/blob/b95bac3d8cf50e1332663684336c30ccd1a492a7/src/vsphere_cpi/bin/vsphere_cpi#L38):
+[`/var/vcap/packages/vsphere_cpi/bin/vsphere_cpi`](https://github.com/cloudfoundry/bosh-vsphere-cpi-release/blob/b95bac3d8cf50e1332663684336c30ccd1a492a7/src/vsphere_cpi/bin/vsphere_cpi#L38).
+Put this after the `cpi_rpc_api_request_raw = ARGF.read` on line 36:
 
 ```Ruby
 File.open("/tmp/#{Process.pid}.json", 'w') do |file|
@@ -151,7 +152,8 @@ arguments:
 
 ```
 cd ~/workspace/bosh-vsphere-cpi-release/src/vsphere_cpi/
-bin/vsphere_cpi cpi.json stdin.json
+bundle
+bundle exec bin/vsphere_cpi cpi.json stdin.json
 ```
 
 The previous command will create the VM while printing a slew of log messages
@@ -263,6 +265,8 @@ bundle exec rspec \
 ```
 
 ### Updates/Errata
+
+**2024-06-01** More precise instructions.
 
 **2024-01-26** Added _Debugging Integration Tests_.
 
