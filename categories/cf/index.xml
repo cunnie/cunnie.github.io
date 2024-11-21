@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CF on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/cf/</link>
@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 01 Feb 2020 01:16:22 +0000</lastBuildDate>
     <atom:link href="https://blog.nono.io/categories/cf/index.xml" rel="self" type="application/rss+xml" />
@@ -18,8 +18,18 @@
       <link>https://blog.nono.io/post/haproxy-ipv6/</link>
       <pubDate>Sat, 01 Feb 2020 01:16:22 +0000</pubDate>
       <guid>https://blog.nono.io/post/haproxy-ipv6/</guid>
-      <description>0. Abstract HAProxy is an optional load balancer included in the canonical open source Cloud Foundry deployment. Its intended use is on IaaSes (Infrastructures as a Service) that do not offer built-in load balancers [0]. On vSphere, this means without the optional network virtualization solutions, NSX-T and NSX-V. This blog post describes how to assign an IPv6 address to an HAProxy load balancer in a Cloud Foundry deployment.
-1. Pre-requisites Users following this blog post should be familiar with BOSH, BOSH&amp;rsquo;s manifest operations files, IPv6, and deploying Cloud Foundry using cf-deployment.</description>
+      <description>&lt;h3 id=&#34;0-abstract&#34;&gt;0. Abstract&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.haproxy.org/&#34;&gt;HAProxy&lt;/a&gt; is an optional load balancer included in
+the canonical open source &lt;a href=&#34;https://github.com/cloudfoundry/cf-deployment&#34;&gt;Cloud Foundry
+deployment&lt;/a&gt;. Its intended use is
+on IaaSes (Infrastructures as a Service) that do not offer built-in load
+balancers [0]. On vSphere, this means without the optional network
+virtualization solutions, NSX-T and NSX-V. This blog post describes how to
+assign an IPv6 address to an HAProxy load balancer in a Cloud Foundry
+deployment.&lt;/p&gt;
+&lt;h3 id=&#34;1-pre-requisites&#34;&gt;1. Pre-requisites&lt;/h3&gt;
+&lt;p&gt;Users following this blog post should be familiar with BOSH, BOSH&amp;rsquo;s manifest
+operations files, IPv6, and deploying Cloud Foundry using &lt;em&gt;cf-deployment&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

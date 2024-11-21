@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Concourse on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/concourse/</link>
@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Fri, 24 Nov 2017 14:06:25 +0000</lastBuildDate>
     <atom:link href="https://blog.nono.io/categories/concourse/index.xml" rel="self" type="application/rss+xml" />
@@ -18,36 +18,89 @@
       <link>https://blog.nono.io/post/bosh-deployed-with-concourse/</link>
       <pubDate>Fri, 24 Nov 2017 14:06:25 +0000</pubDate>
       <guid>https://blog.nono.io/post/bosh-deployed-with-concourse/</guid>
-      <description>&amp;ldquo;BOSH deploys Concourse, and Concourse deploys BOSH&amp;rdquo; —Cloud Foundry koan
-A BOSH Director is a VM (virtual machine) orchestrator which is itself a VM. BOSH solves the problem of keeping its VMs&amp;rsquo; applications (operating systems (stemcells) and releases) up-to-date with the command, bosh deploy; however, this begs the question, &amp;ldquo;what keeps the BOSH Director itself up-to-date?&amp;rdquo;. [Quis custodiet?]
-We explore using Concourse, a Continuous Integration (CI) server, and bosh-deployment [Updating BOSH], in order to create a Concourse pipeline which updates, in turn, a BOSH director on AWS (Amazon Web Services), on Microsoft Azure, and GCP (Google Cloud Platform).</description>
+      <description>&lt;p&gt;&lt;em&gt;&amp;ldquo;BOSH deploys Concourse, and Concourse deploys BOSH&amp;rdquo; —Cloud Foundry koan&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A BOSH Director is a VM (virtual machine) orchestrator which is itself a VM.
+BOSH solves the problem of keeping its VMs&amp;rsquo; applications (operating systems
+(stemcells) and releases) up-to-date with the command, &lt;code&gt;bosh deploy&lt;/code&gt;; however,
+this begs the question, &amp;ldquo;what keeps the BOSH Director itself up-to-date?&amp;rdquo;.
+&lt;sup&gt;&lt;a href=&#34;#quis&#34; class=&#34;alert-link&#34;&gt;[Quis custodiet?]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;We explore using &lt;a href=&#34;https://concourse.ci/&#34;&gt;Concourse&lt;/a&gt;, a Continuous Integration
+(CI) server, and
+&lt;a href=&#34;https://github.com/cloudfoundry/bosh-deployment/&#34;&gt;bosh-deployment&lt;/a&gt; &lt;sup&gt;&lt;a
+href=&#34;#bosh_up_to_date&#34; class=&#34;alert-link&#34;&gt;[Updating BOSH]&lt;/a&gt;&lt;/sup&gt;, in order
+to create a &lt;a href=&#34;https://github.com/cloudfoundry/bosh-deployment/&#34;&gt;Concourse
+pipeline&lt;/a&gt; which updates, in
+turn, a BOSH director on AWS (Amazon Web Services), on Microsoft Azure, and GCP
+(Google Cloud Platform). Updating all three BOSH directors can be accomplished
+with a single click. &lt;sup&gt;&lt;a href=&#34;#one_click&#34; class=&#34;alert-link&#34;&gt;[One
+click]&lt;/a&gt;&lt;/sup&gt; Best of all, our directors are re-deployed with a recent
+stemcell, BOSH release, and CPI release.  &lt;sup&gt;&lt;a href=&#34;#how_recent&#34;
+class=&#34;alert-link&#34;&gt;[How recent?]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Concourse has Badges</title>
       <link>https://blog.nono.io/post/concourse-badges/</link>
       <pubDate>Thu, 01 Sep 2016 17:29:49 -0700</pubDate>
       <guid>https://blog.nono.io/post/concourse-badges/</guid>
-      <description>The Concourse Continuous Integration (CI) server has an API endpoint that displays a badge which shows health of your project:
-http(s)://concourse-server/api/v1/pipelines/pipeline-name/jobs/job-name/badge
-0. Abstract Open Source projects that have CI (e.g. Bootstrap, Node.js) often feature status badges (also known as images or icons) to display the health of their projects. CI servers such as Travis CI offer status badges. Concourse CI also offers status badges.
-The status badge is a Scalable Vector Graphics (SVG) image available from the Concourse API.</description>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://concourse.ci/&#34;&gt;Concourse&lt;/a&gt; Continuous Integration (CI) server has an
+API endpoint that displays a badge which shows health of your project:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;http(s)://&lt;span style=&#34;color: green; font-style: italic&#34;&gt;concourse-server&lt;/span&gt;/api/v1/pipelines/&lt;span style=&#34;color: green; font-style: italic&#34;&gt;pipeline-name&lt;/span&gt;/jobs/&lt;span style=&#34;color: green; font-style: italic&#34;&gt;job-name&lt;/span&gt;/badge&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;0-abstract&#34;&gt;0. Abstract&lt;/h2&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://blog.nono.io/images/passing.svg&#34;/&gt; 
+&lt;/figure&gt;
+
+&lt;p&gt;Open Source projects that have CI (e.g.
+&lt;a href=&#34;https://github.com/twbs/bootstrap&#34;&gt;Bootstrap&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/nodejs/node&#34;&gt;Node.js&lt;/a&gt;) often feature status badges (also
+known as images or icons) to display the health of their projects.  CI servers
+such as &lt;a href=&#34;https://travis-ci.org/&#34;&gt;Travis CI&lt;/a&gt; offer status badges. Concourse CI
+also offers status badges.&lt;/p&gt;
+&lt;p&gt;The status badge is a &lt;a href=&#34;https://en.wikipedia.org/wiki/Scalable_Vector_Graphics&#34;&gt;Scalable Vector
+Graphics&lt;/a&gt; (SVG) image
+available from the Concourse API. &lt;sup&gt;&lt;a href=&#34;https://blog.nono.io/post/concourse-badges/#concourse_versions&#34;&gt;[Concourse
+versions]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Concourse without a Load Balancer</title>
       <link>https://blog.nono.io/post/concourse-no-elb/</link>
       <pubDate>Fri, 26 Aug 2016 06:58:07 -0700</pubDate>
       <guid>https://blog.nono.io/post/concourse-no-elb/</guid>
-      <description>Abstract Concourse is a continuous integration (CI) server. It can be deployed manually or via BOSH.
-In this blog post, we describe the BOSH deployment of a Concourse CI server to natively accept Secure Sockets Layer (SSL) connections without using a load balancer. This may reduce the complexity and cost [ELB-pricing] of a Concourse deployment.
-2016-09-12: This blog post is obsolete. Newer (v2.0.0+) versions of Concourse allow binding to the privileged ports 80 and 443, eliminating the need for an nginx proxy.</description>
+      <description>&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://concourse.ci/&#34;&gt;Concourse&lt;/a&gt; is a continuous integration (CI) server. It
+can be deployed manually or via
+&lt;a href=&#34;http://concourse.ci/clusters-with-bosh.html&#34;&gt;BOSH&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this blog post, we describe the BOSH deployment of a Concourse CI server to
+natively accept Secure Sockets Layer (SSL) connections without using a load
+balancer. This may reduce the complexity and cost
+&lt;sup&gt;&lt;a href=&#34;https://blog.nono.io/post/concourse-no-elb/#ELB-pricing&#34;&gt;[ELB-pricing]&lt;/a&gt;&lt;/sup&gt; of a Concourse deployment.&lt;/p&gt;
+&lt;div class=&#34;alert alert-danger&#34; role=&#34;alert&#34;&gt; 2016-09-12: This blog post is
+obsolete. Newer (v2.0.0+) versions of Concourse allow binding to the privileged
+ports 80 and 443, eliminating the need for an nginx proxy. Here is an example
+of a BOSH-deployed Concourse server that binds natively to ports 80 &amp; 443: &lt;a
+href=&#34;https://github.com/cunnie/deployments/blob/62d0ed813879440f656b6e0bd6f984d708c4bff2/concourse-ntp-pdns-gce.yml#L48-L51&#34;&gt;BOSH
+manifest&lt;/a&gt;.  &lt;/div&gt;
+&lt;h3 id=&#34;0-pre-requisites&#34;&gt;0. Pre-requisites&lt;/h3&gt;
+&lt;p&gt;Deploy Concourse with BOSH. Follow the instructions
+&lt;a href=&#34;http://concourse.ci/clusters-with-bosh.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The World&#39;s Smallest Concourse CI Server</title>
       <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
       <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
       <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
-      <description>[2016-04-06: This Blog Post is out-of-date; Please refer to the official Concourse documentation for instructions how to install a Concourse server] Continuous Integration (CI) is often used in conjunction with test-driven development (TDD); however, CI servers often bring their own set of challenges: they are usually &amp;ldquo;snowflakes&amp;rdquo;, uniquely configured machines that are difficult to upgrade, re-configure, or re-install. [snowflakes]
-In this blog post, we describe deploying a publicly-accessible, lean (1GB RAM, 1 vCPU, 15GB disk) Concourse CI server using a 350-line manifest.</description>
+      <description>&lt;h3 id=&#34;2016-04-06-this-blog-post-is-out-of-date-please-refer-to-the-official-concourse-documentationhttpconcourseciinstallinghtml-for-instructions-how-to-install-a-concourse-server&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_integration&#34;&gt;Continuous Integration&lt;/a&gt;
+(CI) is often used in conjunction with test-driven development (TDD);
+however, CI servers often
+bring their own set of challenges: they are usually &amp;ldquo;snowflakes&amp;rdquo;,
+uniquely configured machines that are difficult to upgrade, re-configure, or
+re-install. &lt;sup&gt;&lt;a href=&#34;https://blog.nono.io/post/worlds-smallest-concourse-server/#snowflakes&#34;&gt;[snowflakes]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;In this blog post, we describe deploying a publicly-accessible, lean
+(1GB RAM, 1 vCPU, 15GB disk)
+&lt;a href=&#34;http://concourse.ci/&#34;&gt;Concourse&lt;/a&gt; CI server using a 350-line manifest.
+Upgrades/re-configurations/re-installs are as simple as editing a file
+and typing one command (&lt;em&gt;bosh-init&lt;/em&gt;).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

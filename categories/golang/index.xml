@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Golang on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/golang/</link>
@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 16 Feb 2020 17:16:22 +0000</lastBuildDate>
     <atom:link href="https://blog.nono.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
@@ -18,9 +18,13 @@
       <link>https://blog.nono.io/post/go-flow-tests-like-code/</link>
       <pubDate>Sun, 16 Feb 2020 17:16:22 +0000</pubDate>
       <guid>https://blog.nono.io/post/go-flow-tests-like-code/</guid>
-      <description>My co-worker Belinda Liu turned to me and said, &amp;ldquo;I don&amp;rsquo;t like these tests at all; they&amp;rsquo;re hard to follow, and I&amp;rsquo;m not sure what they&amp;rsquo;re testing.&amp;rdquo;
-I looked at the tests that I had spent much of yesterday afternoon working on. She was right: they were hard to follow (even for me, who had written some of them!).
-How had we gotten here? Our code was straightforward, but our tests were byzantine (excessively complicated).</description>
+      <description>&lt;p&gt;My co-worker Belinda Liu turned to me and said, &amp;ldquo;I don&amp;rsquo;t like these tests at all;
+they&amp;rsquo;re hard to follow, and I&amp;rsquo;m not sure what they&amp;rsquo;re testing.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;I looked at the tests that I had spent much of yesterday afternoon working on.
+She was right: they &lt;em&gt;were&lt;/em&gt; hard to follow (even for me, who had written some of
+them!).&lt;/p&gt;
+&lt;p&gt;How had we gotten here? Our code was straightforward, but our tests were
+byzantine (excessively complicated). We identified two problems:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

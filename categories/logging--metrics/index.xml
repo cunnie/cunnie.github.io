@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Logging &amp; Metrics on Brian Cunnie&#39;s Technical Blog</title>
     <link>https://blog.nono.io/categories/logging--metrics/</link>
@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 25 May 2019 17:16:22 +0000</lastBuildDate>
     <atom:link href="https://blog.nono.io/categories/logging--metrics/index.xml" rel="self" type="application/rss+xml" />
@@ -18,17 +18,47 @@
       <link>https://blog.nono.io/post/nas-performance-tuning/</link>
       <pubDate>Sat, 25 May 2019 17:16:22 +0000</pubDate>
       <guid>https://blog.nono.io/post/nas-performance-tuning/</guid>
-      <description>Abstract &amp;ldquo;How much faster will my VM&amp;rsquo;s disks be if I upgrade my ZFS-based (Z File System) NAS to 10 GbE?&amp;rdquo; The disks will be faster, in some cases, much faster. Our experience is that sequential read throughput will be 1.4✕ faster, write throughput, 10✕ faster, and IOPS, 1.6✕ faster.
-We ran a three-hour benchmark on our NAS server before and after upgrading to 10 GbE. We ran the benchmark again after upgrading.</description>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;How much faster will my VM&amp;rsquo;s disks be if I upgrade my
+&lt;a href=&#34;https://en.wikipedia.org/wiki/ZFS&#34;&gt;ZFS&lt;/a&gt;-based (Z File System) NAS to 10 GbE?&amp;rdquo;
+The disks will be faster, in some cases, much faster. Our experience is that
+sequential read throughput will be 1.4✕ faster, write throughput, 10✕ faster,
+and IOPS, 1.6✕ faster.&lt;/p&gt;
+&lt;p&gt;We ran a three-hour benchmark on our NAS server before and after upgrading to 10
+GbE. We ran the benchmark again after upgrading. The benchmark looped through
+write-read-iops tests continuously.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Benchmarking the Disk Speed of IaaSes</title>
       <link>https://blog.nono.io/post/gobonniego_results/</link>
       <pubDate>Fri, 16 Mar 2018 20:00:22 +0000</pubDate>
       <guid>https://blog.nono.io/post/gobonniego_results/</guid>
-      <description>0. Overview [Disclaimer: the author works for Pivotal Software, of which Dell is an investor. Dell is also an owner of VMware]
-It&amp;rsquo;s helpful to know the performance characteristics of disks when selecting a disk type. For example, the performance of a database server will be greatly affected by the IOPS of the underlying storage. Similarly, a video-streaming server will be affected by the underlying read throughput.
-0.0 Highlights: If you need a fast disk, nothing beats a local vSphere NVMe drive.</description>
+      <description>&lt;h2 id=&#34;0-overview&#34;&gt;0. Overview&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;[Disclaimer: the author works for Pivotal Software, of which Dell is an
+investor. Dell is also an owner of VMware]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s helpful to know the performance characteristics of disks when selecting a
+disk type. For example, the performance of a database server will be greatly
+affected by the &lt;a href=&#34;https://en.wikipedia.org/wiki/IOPS&#34;&gt;IOPS&lt;/a&gt; of the underlying
+storage. Similarly, a video-streaming server will be affected by the
+underlying read throughput.&lt;/p&gt;
+&lt;h3 id=&#34;00-highlights&#34;&gt;0.0 Highlights:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;If you need a fast disk, nothing beats a local vSphere NVMe drive. Nothing.
+Whether its IOPS, read throughput, or write throughput, NVMe is the
+winner hands down.&lt;/li&gt;
+&lt;li&gt;Google&amp;rsquo;s SSD (Solid State Drive) storage has 22× the IOPS of its standard
+storage. For general purpose use, always go with the SSD; however, if you&amp;rsquo;re
+doing streaming (long reads or writes), the standard storage may be the better
+(and cheaper) choice.&lt;/li&gt;
+&lt;li&gt;AWS&amp;rsquo;s io1 disk is a waste of money unless you need an IOPS &amp;gt; 4k (the
+gp2 disk has an IOPS of ~4k). AWS&amp;rsquo;s now-deprecated standard storage
+has a decent IOPS of ~2k.&lt;/li&gt;
+&lt;li&gt;The key to getting IOPS out of Azure is to enable &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/premium-storage-performance#disk-caching&#34;&gt;Host Disk
+Caching&lt;/a&gt;,
+which can catapult an anemic 120 IOPS to a competitive 8k IOPS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;01-metrics-iaases-and-results&#34;&gt;0.1 Metrics, IaaSes, and Results&lt;/h3&gt;
+&lt;p&gt;In this blog post we record three metrics:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
