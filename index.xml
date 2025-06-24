@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- 0.140.2</generator>
+    <generator>Hugo -- 0.147.9</generator>
     <language>en</language>
     <lastBuildDate>Mon, 01 Jan 2024 14:51:43 -0800</lastBuildDate>
     <atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
@@ -793,7 +793,7 @@ These machines are particularly sensitive as they control hundreds of VMs.&lt;/p
       <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
       <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
       <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
-      <description>&lt;h3 id=&#34;2016-04-06-this-blog-post-is-out-of-date-please-refer-to-the-official-concourse-documentationhttpconcourseciinstallinghtml-for-instructions-how-to-install-a-concourse-server&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;heading&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_integration&#34;&gt;Continuous Integration&lt;/a&gt;
 (CI) is often used in conjunction with test-driven development (TDD);
 however, CI servers often
