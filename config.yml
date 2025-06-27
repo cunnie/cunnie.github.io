@@ -70,8 +70,8 @@ params:
     socialIcons:
         - name: github
           url: "https://github.com/cunnie/cunnie.github.io"
-        - name: twitter
-          url: "https://twitter.com/nono_io"
+        - name: mastodon
+          url: "https://ruby.social/@cunnie"
         - name: email
           url: "mailto:brian.cunnie@gmail.com"
         - name: RsS
