@@ -14,3 +14,35 @@ draft: true
 - 1 x spare Seagate 4TB IronWolf ST4000VN006
 - [Samsung SSD 960 PRO 2TB NVMe m.2 2280](https://semiconductor.samsung.com/consumer-storage/internal-ssd/960pro/)
 - [LIAN LI PC-Q25B Black Aluminum Mini-ITX Tower Computer Case](https://www.newegg.com/lian-li-mini-itx-tower-aluminum-computer-case-black-pc-q25b/p/N82E16811112339?srsltid=AfmBOopZj5lUxwUrnKqfw8I3sazkJ-GfzBwvriCTJyyzbcK2N-HZbuRx)
+
+## NVIDIA T4
+
+[NVIDIA T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)
+
+- 70W
+- small PCIe form factor
+- Noctua PWM fan & shroud included
+
+```
+nvidia-smi
+Sun Jun 29 07:37:05 2025
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.230.02             Driver Version: 535.230.02   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla T4                       Off | 00000000:01:00.0 Off |                    0 |
+| N/A   71C    P8              12W /  70W |      2MiB / 15360MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+```
