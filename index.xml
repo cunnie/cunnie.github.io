@@ -11,8 +11,26 @@
     </image>
     <generator>Hugo -- 0.149.0</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jan 2024 14:51:43 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Sep 2025 06:34:13 -0700</lastBuildDate>
     <atom:link href="https://blog.nono.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What&#39;s at the Other End of 8.8.8.8?</title>
+      <link>https://blog.nono.io/post/8.8.8.8/</link>
+      <pubDate>Tue, 02 Sep 2025 06:34:13 -0700</pubDate>
+      <guid>https://blog.nono.io/post/8.8.8.8/</guid>
+      <description>&lt;p&gt;&lt;code&gt;8.8.8.8&lt;/code&gt; is Google&amp;rsquo;s &amp;ldquo;&lt;a href=&#34;https://developers.google.com/speed/public-dns&#34;&gt;free, global DNS resolution
+service&lt;/a&gt;&amp;rdquo;, so popular that it&amp;rsquo;s
+been lampooned by &lt;a href=&#34;https://xkcd.com/1361/&#34;&gt;XKCD&lt;/a&gt;. It has a wonderfully
+straightforward front-end: the IP address &lt;code&gt;8.8.8.8&lt;/code&gt;. But that begs the
+question: what&amp;rsquo;s on the back-end? Do the authoritative nameservers receive
+queries from &lt;code&gt;8.8.8.8&lt;/code&gt; or some other IP address?&lt;/p&gt;
+&lt;p&gt;Spoiler: the queries don&amp;rsquo;t originate from &lt;code&gt;8.8.8.8&lt;/code&gt;; instead, the queries
+originate from a range of IP addresses, some IPv4, some IPv6.&lt;/p&gt;
+&lt;h3 id=&#34;testing-8888&#34;&gt;Testing 8.8.8.8&lt;/h3&gt;
+&lt;p&gt;To see how &lt;code&gt;8.8.8.8&lt;/code&gt; queries authoritative nameservers, I need an authoritative
+nameserver. Luckily, I happen to be in possession of such a nameserver (well,
+four such nameservers).&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Debugging the vSphere API via the BOSH vSphere CPI from Your Workstation</title>
       <link>https://blog.nono.io/post/debugging_vsphere_cpi_api/</link>
