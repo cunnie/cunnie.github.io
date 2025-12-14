@@ -4,7 +4,6 @@ date: 2023-07-02T08:05:37-08:00
 short: |
     How to install a Transport Layer Security (TLS) certificate issued by a
     commercial Certificate Authority (CA) on a VMware NSX 4.1
-title: How to Install a TLS Certificate on NSX 4.1
 draft: false
 ---
 
