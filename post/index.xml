@@ -9,7 +9,7 @@
       <url>https://nono.io/images/brian_cunnie_profile.jpg</url>
       <link>https://nono.io/images/brian_cunnie_profile.jpg</link>
     </image>
-    <generator>Hugo -- 0.156.0</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 02 Sep 2025 06:34:13 -0700</lastBuildDate>
     <atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
@@ -210,34 +210,34 @@ terminated our SSL) by carefully matching our 4-core HAProxy with 2 x 4-core
 Gorouters (which were on a &lt;em&gt;much&lt;/em&gt; slower ESXi host).&lt;/p&gt;
 &lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th style=&#34;text-align: right&#34;&gt;Bandwidth MB/second&lt;/th&gt;
-          &lt;th&gt;Configuration&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: right&#34;&gt;201.27MB&lt;/td&gt;
-          &lt;td&gt;1 HAProxy: 1 vCPU&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: right&#34;&gt;136.47MB&lt;/td&gt;
-          &lt;td&gt;1 HAProxy: 2 vCPUs&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: right&#34;&gt;270.56MB&lt;/td&gt;
-          &lt;td&gt;2 Gorouters: 1 vCPU&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: right&#34;&gt;350.48MB&lt;/td&gt;
-          &lt;td&gt;2 Gorouters: 2 vCPUs&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: right&#34;&gt;447.49MB&lt;/td&gt;
-          &lt;td&gt;1 HAProxy, 2 Gorouters: 4 vCPUs&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: right&#34;&gt;Bandwidth MB/second&lt;/th&gt;
+					&lt;th&gt;Configuration&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: right&#34;&gt;201.27MB&lt;/td&gt;
+					&lt;td&gt;1 HAProxy: 1 vCPU&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: right&#34;&gt;136.47MB&lt;/td&gt;
+					&lt;td&gt;1 HAProxy: 2 vCPUs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: right&#34;&gt;270.56MB&lt;/td&gt;
+					&lt;td&gt;2 Gorouters: 1 vCPU&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: right&#34;&gt;350.48MB&lt;/td&gt;
+					&lt;td&gt;2 Gorouters: 2 vCPUs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: right&#34;&gt;447.49MB&lt;/td&gt;
+					&lt;td&gt;1 HAProxy, 2 Gorouters: 4 vCPUs&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;0-haproxy-with-1-vcpu&#34;&gt;0. HAProxy with 1 vCPU&lt;/h4&gt;
 &lt;p&gt;HAProxy had only 1 vCPU during this iteration, and the CPU was maxed to 100%
