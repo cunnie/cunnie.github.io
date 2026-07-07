@@ -55,18 +55,18 @@ to deploy our BOSH director. Here is our BOSH director&rsquo;s manifest:</p><div
 </span></span><span style=display:flex><span>  <span style=color:#f92672>instances</span>: <span style=color:#ae81ff>1</span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>stemcell</span>: <span style=color:#ae81ff>default</span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>templates</span>:
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: nats, release</span>: <span style=color:#ae81ff>bosh}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: postgres, release</span>: <span style=color:#ae81ff>bosh}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: blobstore, release</span>: <span style=color:#ae81ff>bosh}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: director, release</span>: <span style=color:#ae81ff>bosh}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: health_monitor, release</span>: <span style=color:#ae81ff>bosh}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: vsphere_cpi, release</span>: <span style=color:#ae81ff>bosh-vsphere-cpi}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>nats, release</span>: <span style=color:#ae81ff>bosh}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>postgres, release</span>: <span style=color:#ae81ff>bosh}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>blobstore, release</span>: <span style=color:#ae81ff>bosh}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>director, release</span>: <span style=color:#ae81ff>bosh}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>health_monitor, release</span>: <span style=color:#ae81ff>bosh}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>vsphere_cpi, release</span>: <span style=color:#ae81ff>bosh-vsphere-cpi}</span>
 </span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>routes</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>release</span>: <span style=color:#ae81ff>networking</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>properties</span>:                 <span style=color:#75715e># This customizes the BOSH Director&#39;s</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>networking.routes</span>:        <span style=color:#75715e># routing table so it can reach</span>
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>net</span>: <span style=color:#ae81ff>172.16.1.0</span>         <span style=color:#75715e># the two networks to which it deploys</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>netmask</span>: <span style=color:#f92672>255.255.255.0  # VMs</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>netmask</span>: <span style=color:#ae81ff>255.255.255.0</span>  <span style=color:#75715e># VMs:</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>interface</span>: <span style=color:#ae81ff>eth1        </span> <span style=color:#75715e># - CF Public Network  (172.16.1.0/24)</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>gateway</span>: <span style=color:#ae81ff>172.16.0.1</span>     <span style=color:#75715e># - CF Private Network (172.16.2.0/24)</span>
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>net</span>: <span style=color:#ae81ff>172.16.2.0</span>
@@ -78,8 +78,8 @@ to deploy our BOSH director. Here is our BOSH director&rsquo;s manifest:</p><div
 </span></span><span style=display:flex><span>  <span style=color:#f92672>persistent_disk</span>: <span style=color:#ae81ff>40_960</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>networks</span>:
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: bosh-management-network, static_ips: [10.0.1.6], default</span>: [<span style=color:#ae81ff>dns,gateway]}</span>
-</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name: bosh-routing-network, static_ips</span>: [<span style=color:#ae81ff>172.16.0.6</span>]}
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>bosh-management-network, static_ips</span>: <span style=color:#f92672>[10.0.1.6], default</span>: [<span style=color:#ae81ff>dns,gateway]}</span>
+</span></span><span style=display:flex><span>  - {<span style=color:#f92672>name</span>: <span style=color:#f92672>bosh-routing-network, static_ips</span>: [<span style=color:#ae81ff>172.16.0.6</span>]}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>properties</span>:
 </span></span><span style=display:flex><span>    <span style=color:#f92672>nats</span>:
@@ -99,8 +99,8 @@ to deploy our BOSH director. Here is our BOSH director&rsquo;s manifest:</p><div
 </span></span><span style=display:flex><span>      <span style=color:#f92672>address</span>: <span style=color:#ae81ff>172.16.0.6</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>port</span>: <span style=color:#ae81ff>25250</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>dav</span>
-</span></span><span style=display:flex><span>      <span style=color:#f92672>director</span>: {<span style=color:#f92672>user: director, password</span>: <span style=color:#ae81ff>director-password}</span>
-</span></span><span style=display:flex><span>      <span style=color:#f92672>agent</span>: {<span style=color:#f92672>user: agent, password</span>: <span style=color:#ae81ff>agent-password}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>director</span>: {<span style=color:#f92672>user</span>: <span style=color:#f92672>director, password</span>: <span style=color:#ae81ff>director-password}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>agent</span>: {<span style=color:#f92672>user</span>: <span style=color:#f92672>agent, password</span>: <span style=color:#ae81ff>agent-password}</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>director</span>:
 </span></span><span style=display:flex><span>      <span style=color:#f92672>address</span>: <span style=color:#ae81ff>127.0.0.1</span>
@@ -111,11 +111,11 @@ to deploy our BOSH director. Here is our BOSH director&rsquo;s manifest:</p><div
 </span></span><span style=display:flex><span>        <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>local</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>local</span>:
 </span></span><span style=display:flex><span>          <span style=color:#f92672>users</span>:
-</span></span><span style=display:flex><span>          - {<span style=color:#f92672>name: admin, password</span>: <span style=color:#ae81ff>admin}</span>
-</span></span><span style=display:flex><span>          - {<span style=color:#f92672>name: hm, password</span>: <span style=color:#ae81ff>hm-password}</span>
+</span></span><span style=display:flex><span>          - {<span style=color:#f92672>name</span>: <span style=color:#f92672>admin, password</span>: <span style=color:#ae81ff>admin}</span>
+</span></span><span style=display:flex><span>          - {<span style=color:#f92672>name</span>: <span style=color:#f92672>hm, password</span>: <span style=color:#ae81ff>hm-password}</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>hm</span>:
-</span></span><span style=display:flex><span>      <span style=color:#f92672>director_account</span>: {<span style=color:#f92672>user: hm, password</span>: <span style=color:#ae81ff>hm-password}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>director_account</span>: {<span style=color:#f92672>user</span>: <span style=color:#f92672>hm, password</span>: <span style=color:#ae81ff>hm-password}</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>resurrector_enabled</span>: <span style=color:#66d9ef>true</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>vcenter</span>: <span style=color:#75715e>&amp;vcenter</span> <span style=color:#75715e># &lt;--- Replace values below</span>
@@ -162,15 +162,15 @@ be able to contact the director and the deployment will fail.</p><p>Here is our 
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#f92672>vm_types</span>:
 </span></span><span style=display:flex><span>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>tiny</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu: 1, ram: 1024, disk</span>: <span style=color:#ae81ff>1024</span> }
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu</span>: <span style=color:#f92672>1, ram</span>: <span style=color:#f92672>1024, disk</span>: <span style=color:#ae81ff>1024</span> }
 </span></span><span style=display:flex><span>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>medium</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu: 2, ram: 2048, disk</span>: <span style=color:#ae81ff>81_920 }</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu</span>: <span style=color:#f92672>2, ram</span>: <span style=color:#f92672>2048, disk</span>: <span style=color:#ae81ff>81_920 }</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#f92672>compilation</span>:
 </span></span><span style=display:flex><span>  <span style=color:#f92672>workers</span>: <span style=color:#ae81ff>6</span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>network</span>: <span style=color:#ae81ff>bosh-management-network</span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>reuse_compilation_vms</span>: <span style=color:#66d9ef>true</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu: 2, ram: 2048, disk</span>: <span style=color:#ae81ff>1024</span> }
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cloud_properties</span>: { <span style=color:#f92672>cpu</span>: <span style=color:#f92672>2, ram</span>: <span style=color:#f92672>2048, disk</span>: <span style=color:#ae81ff>1024</span> }
 </span></span></code></pre></div><p>Here is our deployment manifest (a very simple deployment):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>simple</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#f92672>director_uuid</span>: <span style=color:#ae81ff>__BOSH_DIRECTOR_UUID__</span>
