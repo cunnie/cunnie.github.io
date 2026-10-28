@@ -58,7 +58,9 @@ takes at least 5 minutes each attempt).&lt;/p&gt;</description>
 &lt;figure&gt;
     &lt;img loading=&#34;lazy&#34; src=&#34;https://github.com/cunnie/cunnie.github.io/assets/1020675/971b47cc-dc82-4c26-9adc-6b3fa20883c3&#34;
          alt=&#34;NSX Manager certificate hierarchy&#34;/&gt; &lt;figcaption&gt;
-            &lt;p&gt;This NSX manager has a certificate from issued from Sectigo. Note that the padlock in the address bar shows no warning and the certificate&amp;rsquo;s chain-of-trust can be examined.&lt;/p&gt;</description>
+            &lt;p&gt;This NSX manager has a certificate from issued from Sectigo. Note that the padlock in the address bar shows no warning and the certificate&amp;rsquo;s chain-of-trust can be examined.&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;</description>
     </item>
     <item>
       <title>On-premise is Almost Four Times Cheaper * than the Cloud</title>
@@ -133,7 +135,9 @@ automatically&lt;/li&gt;
 &lt;figure&gt;
     &lt;img loading=&#34;lazy&#34; src=&#34;https://user-images.githubusercontent.com/1020675/210378500-cee6db21-5ec0-40f4-a58a-a7e6484e2018.png&#34;
          alt=&#34;TrueNAS Services Configuration Screen&#34;/&gt; &lt;figcaption&gt;
-            &lt;p&gt;Remember to start the FTP service and configure it to start automatically. Once that&amp;rsquo;s done, you can configure it by clicking on the ✎ icon in the Actions column.&lt;/p&gt;</description>
+            &lt;p&gt;Remember to start the FTP service and configure it to start automatically. Once that&amp;rsquo;s done, you can configure it by clicking on the ✎ icon in the Actions column.&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;</description>
     </item>
     <item>
       <title>Creating Multi-Platform Docker Images with Concourse</title>
@@ -694,7 +698,8 @@ addition  to its IPv4 Elastic IP address (i.e. 52.15.73.90).  We were then able
 to browse the webserver &lt;em&gt;via the IPv6 protocol.&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-error&#34; role=&#34;alert&#34;&gt;
 &lt;p&gt;BOSH does not support IPv6. This is a proof-of-concept. Do not apply IPv6 to
-your production BOSH Directors or to BOSH CLI-deployed systems.&lt;/p&gt;</description>
+your production BOSH Directors or to BOSH CLI-deployed systems.&lt;/p&gt;
+&lt;/div&gt;</description>
     </item>
     <item>
       <title>Leveraging NSX&#39;s Features with BOSH&#39;s vSphere CPI</title>
@@ -724,7 +729,8 @@ custom Google Compute Engine (GCE) stemcell with a user &lt;code&gt;cunnie&lt;/c
 &lt;div class=&#34;alert alert-error&#34; role=&#34;alert&#34;&gt;
 &lt;p&gt;Customizing stemcells is highly discouraged — it voids your warranty, and opens
 a host of problems which will only cause pain. This post is intended as an
-educational demonstration of the stemcell building process. You have been warned.&lt;/p&gt;</description>
+educational demonstration of the stemcell building process. You have been warned.&lt;/p&gt;
+&lt;/div&gt;</description>
     </item>
     <item>
       <title>Updating a BOSH Release</title>
@@ -811,7 +817,7 @@ These machines are particularly sensitive as they control hundreds of VMs.&lt;/p
       <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
       <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
       <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;2016-04-06-this-blog-post-is-out-of-date-please-refer-to-the-official-concourse-documentation-for-instructions-how-to-install-a-concourse-server&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_integration&#34;&gt;Continuous Integration&lt;/a&gt;
 (CI) is often used in conjunction with test-driven development (TDD);
 however, CI servers often

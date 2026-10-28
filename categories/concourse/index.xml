@@ -89,7 +89,7 @@ manifest&lt;/a&gt;.  &lt;/div&gt;
       <link>https://blog.nono.io/post/worlds-smallest-concourse-server/</link>
       <pubDate>Sat, 24 Oct 2015 13:52:48 -0700</pubDate>
       <guid>https://blog.nono.io/post/worlds-smallest-concourse-server/</guid>
-      <description>&lt;h3 id=&#34;heading&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;2016-04-06-this-blog-post-is-out-of-date-please-refer-to-the-official-concourse-documentation-for-instructions-how-to-install-a-concourse-server&#34;&gt;&lt;em&gt;[2016-04-06: This Blog Post is out-of-date; Please refer to the official &lt;a href=&#34;http://concourse.ci/installing.html&#34;&gt;Concourse documentation&lt;/a&gt; for instructions how to install a Concourse server]&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_integration&#34;&gt;Continuous Integration&lt;/a&gt;
 (CI) is often used in conjunction with test-driven development (TDD);
 however, CI servers often
