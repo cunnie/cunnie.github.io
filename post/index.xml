@@ -11,8 +11,25 @@
     </image>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 02 Sep 2025 06:34:13 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 12:15:03 -0700</lastBuildDate>
     <atom:link href="https://blog.nono.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Engineering: Income over the Course of a Career</title>
+      <link>https://blog.nono.io/post/software_engineering_income/</link>
+      <pubDate>Wed, 28 Oct 2026 12:15:03 -0700</pubDate>
+      <guid>https://blog.nono.io/post/software_engineering_income/</guid>
+      <description>&lt;p&gt;A Software Engineer’s Annual Gross Income
+(&lt;a href=&#34;https://en.wikipedia.org/wiki/Adjusted_gross_income&#34;&gt;AGI&lt;/a&gt;) over 35 years,
+adjusted for inflation. AGI is a US tax measurement of an individual’s total
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Gross_income&#34;&gt;gross income&lt;/a&gt; minus specific
+deductions.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Chart of AGI relative to 1987, adjusted for inflation&#34; loading=&#34;lazy&#34; src=&#34;https://blog.nono.io/images/software_engineering_income.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is a chart that displays my AGI for the years 1987 through 2025 relative
+to my 1987 AGI, adjusted for inflation. For example, in 1987 the number is 1.0
+(my 1987 AGI is 1.0✕ my 1987 AGI). In 1998, my AGI was 2.0 (I had effectively
+doubled my income that year relative to 1987’s income). This data was extracted
+from my tax returns.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>What&#39;s at the Other End of 8.8.8.8?</title>
       <link>https://blog.nono.io/post/8.8.8.8/</link>
